@@ -1,6 +1,2 @@
 console.log("Hello World")
-/*  ---    ---  
-   |.  |  |.  |
-    ---    ---
-  ///    V     ///
- */
+console.log("Goodbye World")
