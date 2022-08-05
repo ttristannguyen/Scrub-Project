@@ -1,5 +1,0 @@
-def scuffed_code(X):
-    X = []
-    for i in X:
-        print('D')
-print(scuffed_code(X))
