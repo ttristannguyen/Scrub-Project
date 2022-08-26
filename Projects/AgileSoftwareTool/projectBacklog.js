@@ -14,3 +14,29 @@
 // Step 11: This "edit task details" button takes a user to a pre-filled - editable - form, allowing them to edit any detail in the form that they want. 
 
 
+let projectBacklogItem = class {
+    constructor(taskName, taskDescription, taskType, taskStoryPoint, taskPriority)
+    {
+        this.taskName = taskName;
+        this.taskDescription = taskDescription;
+        this.taskType = taskType;
+        this.taskStoryPoint = taskStoryPoint;
+        this.taskPriority = taskPriority;
+    }
+
+}
+
+function taskCreationOnClick()
+{
+    taskName = document.getElementById("taskName").value 
+    taskDescription = document.getElementById("taskDescription").value 
+    taskType = document.getElementById("taskType").value 
+    taskStoryPoint = document.getElementById("taskStoryPoint").value 
+    taskPriority = document.getElementById("priority").value 
+
+    let productBackLogItemObj = new projectBacklogItem(taskName,taskDescription,taskType,taskStoryPoint,taskPriority);
+    localStorage.setItem('projectBacklogItem',JSON.stringify(productBackLogItemObj));
+    window.open('')
+}
+
+
