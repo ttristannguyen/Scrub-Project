@@ -36,7 +36,24 @@ function taskCreationOnClick()
 
     let productBackLogItemObj = new projectBacklogItem(taskName,taskDescription,taskType,taskStoryPoint,taskPriority);
     localStorage.setItem('projectBacklogItem',JSON.stringify(productBackLogItemObj));
-    window.open('')
+    window.location.href = 'projectBacklog.html'
 }
 
+function onProjectBacklogLoad()
+{
+    //Run through entirety of local storage. Parse the elements back into objects 
+    //for each object, print the summarised info into a dynamically created div element 
+    /*
+        var div = document.createElement('div');
+  
+  // Set some attributes
+  div.style.width = '200px';
+  div.style.height = '200px';
+  div.style.backgroundColor = 'red';
+  
+  // Append the div to the body
+  document.body.appendChild(div);
+    */
 
+
+}
