@@ -13,6 +13,7 @@
 // step 10: When viewing the detailed view of the task, the details are not editable, however, a user should be able to "edit task details" 
 // Step 11: This "edit task details" button takes a user to a pre-filled - editable - form, allowing them to edit any detail in the form that they want. 
 
+let projectBacklogItemsArray = []; //This will store multiple instances of the PBI objects
 
 let projectBacklogItem = class {
     constructor(taskName, taskDescription, taskType, taskStoryPoint, taskPriority)
@@ -35,7 +36,8 @@ function taskCreationOnClick()
     taskPriority = document.getElementById("priority").value 
 
     let productBackLogItemObj = new projectBacklogItem(taskName,taskDescription,taskType,taskStoryPoint,taskPriority);
-    localStorage.setItem('projectBacklogItem',JSON.stringify(productBackLogItemObj));
+    projectBacklogItemsArray.push(productBackLogItemObj)
+    localStorage.setItem('projectBacklogItemArray',JSON.stringify(projectBacklogItemsArray));
     window.location.href = 'projectBacklog.html'
 }
 
