@@ -13,7 +13,19 @@
 // step 10: When viewing the detailed view of the task, the details are not editable, however, a user should be able to "edit task details" 
 // Step 11: This "edit task details" button takes a user to a pre-filled - editable - form, allowing them to edit any detail in the form that they want. 
 
-let projectBacklogItemsArray = []; //This will store multiple instances of the PBI objects
+//let projectBacklogItemsArray = []; //This will store multiple instances of the PBI objects
+function onTaskCreationLoad()
+{
+    if (localStorage.getItem('projectBacklogItemArray') )
+{
+    console.log("TEST")
+}
+else
+{
+    localStorage.setItem('projectBacklogItemArray',JSON.stringify([]));
+}
+
+}
 
 let projectBacklogItem = class {
     constructor(taskName, taskDescription, taskType, taskStoryPoint, taskPriority)
@@ -36,26 +48,36 @@ function taskCreationOnClick()
     taskPriority = document.getElementById("priority").value 
 
     let productBackLogItemObj = new projectBacklogItem(taskName,taskDescription,taskType,taskStoryPoint,taskPriority);
-    projectBacklogItemsArray.push(productBackLogItemObj)
-    localStorage.setItem('projectBacklogItemArray',JSON.stringify(projectBacklogItemsArray));
-    window.location.href = 'projectBacklog.html'
+    projectBacklogItemsParsed = JSON.parse(localStorage.getItem('projectBacklogItemArray'))
+    projectBacklogItemsParsed.push(productBackLogItemObj)
+    localStorage.setItem('projectBacklogItemArray',JSON.stringify(projectBacklogItemsParsed));
+
 }
+
+function taskCreationBackOnClick()
+{
+    window.location.replace('projectBacklog.html')
+}
+
 
 function onProjectBacklogLoad()
 {
     //Run through entirety of local storage. Parse the elements back into objects 
     //for each object, print the summarised info into a dynamically created div element 
-    /*
-        var div = document.createElement('div');
-  
-  // Set some attributes
-  div.style.width = '200px';
-  div.style.height = '200px';
-  div.style.backgroundColor = 'red';
-  
-  // Append the div to the body
-  document.body.appendChild(div);
-    */
+    array = JSON.parse(localStorage.getItem('projectBacklogItemArray'));
+    let htmlElements = "";
+    for (let i = 0; i < array.length; i++) {
+        let taskName = array[i].taskName; //this is the name of the task from the new object
+        let priority = array[i].taskPriority; //Gets the priority for dynamic entering
+        let storyPoints = array[i].taskStoryPoint;
+       htmlElements += ' <div class = "mdl-cell mdl-cell--4-col graybox">'+taskName + ' , ' + priority + ' , ' + storyPoints + '</div>';
+    }
+    let taskPlacement = document.getElementById("taskPlacement");
+    taskPlacement.innerHTML = htmlElements;
 
+}
 
+function addTaskOnClick()
+{
+    window.location.href = 'taskCreation.html'   
 }

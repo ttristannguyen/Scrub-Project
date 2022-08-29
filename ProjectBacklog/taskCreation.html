@@ -71,9 +71,9 @@ cursor: pointer;
 </style>
 
 </head>
-<body>
+<body onload="onTaskCreationLoad()">
 
-<form class="taskCreationForm" method="get" enctype="application/x-www-form-urlencoded" action="/html/codes/html_form_handler.cfm">
+<form class="taskCreationForm" method="get" >
 
 <p>
 <label>Task name: 
@@ -108,7 +108,9 @@ cursor: pointer;
 
 
 
-<p><button id="taskCreationDoneBtn" onClick="taskCreationOnClick()">Done</button></p>
+<p><button id="taskCreationDoneBtn" onClick="taskCreationOnClick()">Save</button></p>
+
+<p><button id="taskCreationBackBtn" onClick="taskCreationBackOnClick()">Back</button></p>
 
 </form>
 

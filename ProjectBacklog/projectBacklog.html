@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">    
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-
+    <script src="projectBacklog.js"></script>
     <title></title>
 </head>
 
-<body>
+<body onload="onProjectBacklogLoad()">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             mdl-layout--fixed-header"> <!-- Layout Starts Here-->
 
@@ -46,15 +46,12 @@
         <!-- Add Task Button-->
         <div style="text-align: center;" id = "addTaskButton" >
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-            <!-- onclick= "addTaskButton()" ->
+            <!-- onclick= "addTaskOnClick()" ->
                 Add Task
             </button>
         </div>
 
         <div class = "mdl-grid" id = "taskPlacement">
-            <div class = "mdl-cell mdl-cell--4-col graybox">PlaceHolder</div>
-            <div class = "mdl-cell mdl-cell--4-col graybox">PlaceHolder</div>
-            <div class = "mdl-cell mdl-cell--4-col graybox">PlaceHolder</div>
 
          </div>
 
