@@ -1,10 +1,13 @@
 #addTaskButton{
     position: absolute;
     width: 100%;
-    bottom: 5%
+    bottom: 5%;
+    left: 5%
 
     
 }
+
+
 .mdl-cell {
     background: #bdbdbd;
     padding: 60px 0;

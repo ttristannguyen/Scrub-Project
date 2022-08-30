@@ -1,0 +1,18 @@
+h1 {
+    color:rgb(44, 45, 96);
+    text-align:center;
+}
+
+#backButton{
+    position:absolute;
+    left:5px;
+    bottom:5px;
+
+}
+
+#editButton{
+    position:absolute;
+    right:5px;
+    bottom:5px;
+
+}
