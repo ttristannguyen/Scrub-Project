@@ -70,10 +70,25 @@ function onProjectBacklogLoad()
         let taskName = array[i].taskName; //this is the name of the task from the new object
         let priority = array[i].taskPriority; //Gets the priority for dynamic entering
         let storyPoints = array[i].taskStoryPoint;
-       htmlElements += ' <div class = "mdl-cell mdl-cell--4-col graybox">'+taskName + ' , ' + priority + ' , ' + storyPoints + '</div>';
+       htmlElements += ' <div class = "mdl-cell mdl-cell--4-col graybox"' + 'id=' + '"' + i + '"' + '>' + taskName + ' , ' + priority + ' , ' + storyPoints + '</div>';
     }
     let taskPlacement = document.getElementById("taskPlacement");
     taskPlacement.innerHTML = htmlElements;
+
+    for (let j = 0; j<array.length; j++)
+    {
+            let button = document.createElement('button');
+            button.type = 'button';
+            button.innerHTML = 'See/edit details';
+            button.className = 'btn-styled';
+        
+            button.onclick = function() {
+                
+            };
+            let id = j.toString();
+            let container = document.getElementById(id);
+            container.appendChild(button);
+    }
 
 }
 
