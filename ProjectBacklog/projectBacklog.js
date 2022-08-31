@@ -110,7 +110,7 @@ function detailedViewContent()
     //Get the local storage items 
     //Parse the local storage items
     //Get the item for the currently selected item (via button id?)
-    taskIDString = localStorage.getItem('currentTaskId'); //Gets the ID of the current button (position within the local storage array)
+    taskIDString = JSON.parse(localStorage.getItem('currentTaskId')); //Gets the ID of the current button (position within the local storage array)
     array = JSON.parse(localStorage.getItem('projectBacklogItemArray')); //Gets the entire array
     elementNum = parseInt(taskIDString);
     currentTask = array[elementNum];
@@ -133,11 +133,16 @@ function saveEditedDetails()
     taskPriority = document.getElementById("priority").value 
     let productBackLogItemObj = new projectBacklogItem(taskName,taskDescription,taskType,taskStoryPoint,taskPriority);
     array = JSON.parse(localStorage.getItem('projectBacklogItemArray'))
-    taskIDString = localStorage.getItem('currentTaskId');
+    taskIDString = JSON.parse(localStorage.getItem('currentTaskId'));
     elementNum = parseInt(taskIDString);    
     array[elementNum] = productBackLogItemObj; //FIND AND REPLACE
     //Need to re-set back into local storage
     localStorage.setItem('projectBacklogItemArray',JSON.stringify(array));
     
 
+}
+
+function editDetailBackOnClick()
+{
+    window.location.href = projectBacklog.html;
 }

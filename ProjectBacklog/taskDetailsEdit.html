@@ -83,8 +83,9 @@ cursor: pointer;
 
 <p>
 <label>Task description: 
-<textarea  name="taskDescription" id = "taskDescription" maxlength = "500" required>
-</textarea> 
+<input  name="taskDescription" id = "taskDescription" maxlength = "500" required>
+</input> 
+
 </p>
 
 <p>
@@ -108,9 +109,9 @@ cursor: pointer;
 
 
 
-<p><button id="taskViewSaveEditsBtn" onClick="saveEditedDetails()">Save edits</button></p>
+<p><button id="taskViewSaveBtn" onClick="saveEditedDetails()">Save edits</button></p>
 
-<p><button id="taskViewBackBtn" onClick="taskViewBackOnClick()">Back</button></p>
+<p><button id="taskViewBackBtn" onClick="editDetailBackOnClick">Back</button></p>
 
 </form>
 
