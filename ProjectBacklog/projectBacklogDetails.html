@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="projectBacklogDetials.css">
+    <link rel="stylesheet" href="projectBacklogDetails.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">    
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -11,51 +11,39 @@
 </head>
 
 <body onload="onProjectBacklogDetailsLoad()">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
-            mdl-layout--fixed-header"> <!-- Layout Starts Here-->
+
 
   <header class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <div class="mdl-layout-spacer"></div>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                  mdl-textfield--floating-label mdl-textfield--align-right">
-        <!-- <label class="mdl-button mdl-js-button mdl-button--icon"
-               for="fixed-header-drawer-exp">
-          <i class="material-icons">search</i>
-        </label>
-        <div class="mdl-textfield__expandable-holder">
-          <input class="mdl-textfield__input" type="text" name="sample"
-                 id="fixed-header-drawer-exp">
-        </div> -->
-      </div>
-    </div> <!-- Layout Ends Here-->
+
   </header>
 
-  <div class="mdl-layout__drawer"> <!-- Nav Bar Starts Here-->
-    <span class="mdl-layout-title"><b>Sprint Backlog</bß></span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="../ProjectBacklog/projectBacklog.html">Project Backlog</a>
-      <a class="mdl-navigation__link" href="sprintList.html">Sprint List</a>
-      <a class="mdl-navigation__link" href="../TeamMembers/teamMembers.html">Team Members</a>
-    </nav>
   </div> <!-- Nav Bar Ends Here-->
   <main class="mdl-layout__content">
 
-    <div class="page-content" id = "taskDescription"> <!-- Page Content Starts Here--> 
-    </div>
+    <div class="page-content"> <!-- Page Content Starts Here--> 
+    
 
-    <div style="text-align: left;" id = "backButton" >
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" 
-      <!-- onclick= "backToPBOnClick()" ->
-            Back
-     </div>
+      <div style="text-align: left;" class = "taskDetails" id = "taskDescription"></div>
 
-    <div style="text-align: bottom right;" id = "editButton" >
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="editTaskDetails()">
+      <div style="text-align:left;" id = "Buttons" >
+
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" 
+        <!-- onclick= "backToPBOnClick()" ->
+              Back
+        </button>
+  
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="editTaskDetails()">
           Edit Task Details
       </button>
+      </div>
     </div>
-    
+
+   
+    <!-- <div style="text-align:left;" id = "backButton" >
+      
+     </div> -->
+
+ 
 
 
   </main>
