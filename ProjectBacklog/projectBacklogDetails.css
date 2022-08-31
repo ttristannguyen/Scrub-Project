@@ -1,0 +1,11 @@
+h1 {
+    color:rgb(44, 45, 96);
+    text-align:center;
+}
+
+#Buttons{
+    position:absolute;
+    width: 100%;
+    bottom: 5%;
+    left: 5%
+}

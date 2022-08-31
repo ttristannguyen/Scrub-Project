@@ -27,27 +27,15 @@ else
 
 }
 
-let projectBacklogItem = class {
-    constructor(taskName, taskDescription, taskType, taskStoryPoint, taskPriority)
-    {
-        this.taskName = taskName;
-        this.taskDescription = taskDescription;
-        this.taskType = taskType;
-        this.taskStoryPoint = taskStoryPoint;
-        this.taskPriority = taskPriority;
-    }
-
-}
-
 function taskCreationOnClick()
 {
-    taskName = document.getElementById("taskName").value 
-    taskDescription = document.getElementById("taskDescription").value 
-    taskType = document.getElementById("taskType").value 
-    taskStoryPoint = document.getElementById("taskStoryPoint").value 
-    taskPriority = document.getElementById("priority").value 
+    let taskName = document.getElementById("taskName").value 
+    let taskDescription = document.getElementById("taskDescription").value 
+    let taskType = document.getElementById("taskType").value 
+    let taskStoryPoint = document.getElementById("taskStoryPoint").value 
+    let taskPriority = document.getElementById("priority").value 
 
-    let productBackLogItemObj = new projectBacklogItem(taskName,taskDescription,taskType,taskStoryPoint,taskPriority);
+    let productBackLogItemObj = new ProjectBacklogItem(taskName,taskDescription,taskType,taskStoryPoint,taskPriority);
     projectBacklogItemsParsed = JSON.parse(localStorage.getItem('projectBacklogItemArray'))
     projectBacklogItemsParsed.push(productBackLogItemObj)
     localStorage.setItem('projectBacklogItemArray',JSON.stringify(projectBacklogItemsParsed));
@@ -91,21 +79,21 @@ function backToPBOnClick()
 
 function moreDetailsOnClick()
 {
+    
     window.location.href = 'projectBacklogDetails.html';
 
 }
 
-function onProjectBacklogDetailsLoad(i)
+function onProjectBacklogDetailsLoad()
 {
     array = JSON.parse(localStorage.getItem('projectBacklogItemArray'));
     let htmlElements = "";
-    // for (let i = 0; i < array.length; i++) {
-    let taskName = array[i].taskName; 
-    let taskType = array[i].taskType; 
-    let taskDescriptions = array[i].taskDescription;
-    let storyPoints = array[i].taskStoryPoint;
-    let priority = array[i].taskPriority;htmlElements += '<div class="page-content" id = "taskDescriptions"><h1> Detailed Description of '+ taskName + '</h1> <h2>Task description:'+ taskDescription + '</h2> <h3></h3> <h2>Task type: '+ taskType + '</h2> <h3></h3> <h2>Story points associated: '+ storyPoints + '</h2> <h3></h3> <h2>Priority: ' + priority + '</h2> <h3></h3></div>';
-    // }
+    let taskName = array[0].taskName; //this is the name of the task from the new object
+    let priority = array[0].taskPriority; //Gets the priority for dynamic entering
+    let taskDescriptions = array[0].taskDescription; //this is the name of the task from the new object
+    let taskType = array[0].taskType; //Gets the priority for dynamic entering
+    let storyPoints = array[0].taskStoryPoint;
+    htmlElements += '<div class="taskDetails" id = "taskDescriptions"><h1> Detailed Description of '+ taskName + '</h1> <h2>Task description:'+ taskDescriptions + '</h2> <h3></h3> <h2>Task type: '+ taskType + '</h2> <h3></h3> <h2>Story points associated: '+ storyPoints + '</h2> <h3></h3> <h2>Priority: ' + priority + '</h2> <h3></h3></div>';
     let taskDescription = document.getElementById("taskDescription");
     taskDescription.innerHTML = htmlElements;
 
