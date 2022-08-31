@@ -70,7 +70,8 @@ function onProjectBacklogLoad()
         let taskName = array[i].taskName; //this is the name of the task from the new object
         let priority = array[i].taskPriority; //Gets the priority for dynamic entering
         let storyPoints = array[i].taskStoryPoint;
-       htmlElements += ' <div class = "mdl-cell mdl-cell--4-col graybox">'+taskName + ' , ' + priority + ' , ' + storyPoints + '</div>';
+       htmlElements += ' <div class = "mdl-cell mdl-cell--4-col graybox">'+taskName + ' , ' + priority + ' , ' + storyPoints + ' <button class="mdl-button mdl-js-button mdl-js-ripple-effect" <!-- onclick= "moreDetailsOnClick()" -> More details </button></div>';
+
     }
     let taskPlacement = document.getElementById("taskPlacement");
     taskPlacement.innerHTML = htmlElements;
@@ -80,4 +81,32 @@ function onProjectBacklogLoad()
 function addTaskOnClick()
 {
     window.location.href = 'taskCreation.html'   
+}
+
+// Below is the functions of PBI details
+function backToPBOnClick()
+{
+    window.location.href = 'projectBacklog.html';
+}
+
+function moreDetailsOnClick()
+{
+    window.location.href = 'projectBacklogDetails.html';
+
+}
+
+function onProjectBacklogDetailsLoad(i)
+{
+    array = JSON.parse(localStorage.getItem('projectBacklogItemArray'));
+    let htmlElements = "";
+    // for (let i = 0; i < array.length; i++) {
+    let taskName = array[i].taskName; 
+    let taskType = array[i].taskType; 
+    let taskDescriptions = array[i].taskDescription;
+    let storyPoints = array[i].taskStoryPoint;
+    let priority = array[i].taskPriority;htmlElements += '<div class="page-content" id = "taskDescriptions"><h1> Detailed Description of '+ taskName + '</h1> <h2>Task description:'+ taskDescription + '</h2> <h3></h3> <h2>Task type: '+ taskType + '</h2> <h3></h3> <h2>Story points associated: '+ storyPoints + '</h2> <h3></h3> <h2>Priority: ' + priority + '</h2> <h3></h3></div>';
+    // }
+    let taskDescription = document.getElementById("taskDescription");
+    taskDescription.innerHTML = htmlElements;
+
 }

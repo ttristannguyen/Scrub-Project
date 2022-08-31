@@ -10,7 +10,7 @@
     <title></title>
 </head>
 
-<body>
+<body onload="onProjectBacklogDetailsLoad()">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             mdl-layout--fixed-header"> <!-- Layout Starts Here-->
 
@@ -32,7 +32,7 @@
   </header>
 
   <div class="mdl-layout__drawer"> <!-- Nav Bar Starts Here-->
-    <span class="mdl-layout-title"><b>Sprint Backlog</b></span>
+    <span class="mdl-layout-title"><b>Sprint Backlog</bß></span>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link" href="../ProjectBacklog/projectBacklog.html">Project Backlog</a>
       <a class="mdl-navigation__link" href="sprintList.html">Sprint List</a>
@@ -41,32 +41,22 @@
   </div> <!-- Nav Bar Ends Here-->
   <main class="mdl-layout__content">
 
-    <div class="page-content" id = "taskDescription"> <!-- Page Content Starts Here-->
-      <h1> Detailed Description of </h1>
-      <h2>Task description:</h2>
-      <h3></h3>
-      <h2>Task type:</h2>
-      <h3></h3>
-      <h2>Story points associated:</h2>
-      <h3></h3>
-      <h2>Priority:</h2>
-      <h3></h3>
-      <div style="text-align: left;" id = "backButton" >
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="backToPB()">
-            Back
-        </button>
-      </div>
-
-      <div style="text-align: bottom right;" id = "editButton" >
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="editTaskDetails()">
-            Edit Task Details
-        </button>
-      </div>
+    <div class="page-content" id = "taskDescription"> <!-- Page Content Starts Here--> 
     </div>
-      
 
+    <div style="text-align: left;" id = "backButton" >
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" 
+      <!-- onclick= "backToPBOnClick()" ->
+            Back
+     </div>
 
-    </div> <!-- Page Content Ends Here-->
+    <div style="text-align: bottom right;" id = "editButton" >
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="editTaskDetails()">
+          Edit Task Details
+      </button>
+    </div>
+    
+
 
   </main>
 
@@ -74,5 +64,5 @@
 
 </body>
 <!-- Attach JS files -->
-<script src="ProjectBacklogDetails/projectBacklogDetails.js"></script> 
+<script src="projectBacklog.js"></script> 
 </html>
