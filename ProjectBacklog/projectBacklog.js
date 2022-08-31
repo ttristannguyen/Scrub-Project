@@ -1,5 +1,5 @@
-//This file aims at providing the functionality to add a task in the project backlog page,
-//*This is done by the following steps: 
+// This file aims at providing the functionality to add a task in the project backlog page,
+// This is done by the following steps: 
 // Step 1: User clicks on Add a task button DONE
 // Step 2: This takes the user to a new page called "taskCreation.html" DONE
 // Step 3: This page includes a form-style data input DONE
