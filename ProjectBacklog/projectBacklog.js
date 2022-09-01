@@ -58,7 +58,7 @@ function onProjectBacklogLoad()
         let taskName = array[i].taskName; //this is the name of the task from the new object
         let priority = array[i].taskPriority; //Gets the priority for dynamic entering
         let storyPoints = array[i].taskStoryPoint;
-       htmlElements += ' <div class = "mdl-cell mdl-cell--4-col graybox">'+taskName + ' , ' + priority + ' , ' + storyPoints + ' <button class="mdl-button mdl-js-button mdl-js-ripple-effect" <!-- onclick= "moreDetailsOnClick()" -> More details </button></div>';
+       htmlElements += ' <div class = "mdl-cell mdl-cell--4-col graybox">'+taskName + ' , ' + priority + ' , ' + storyPoints + ' <button class="mdl-button mdl-js-button mdl-js-ripple-effect" <!-- onclick= "moreDetailsOnClick(${i})" -> More details </button></div>';
 
     }
     let taskPlacement = document.getElementById("taskPlacement");
@@ -66,35 +66,19 @@ function onProjectBacklogLoad()
 
 }
 
+
 function addTaskOnClick()
 {
     window.location.href = 'taskCreation.html'   
 }
 
-// Below is the functions of PBI details
-function backToPBOnClick()
-{
-    window.location.href = 'projectBacklog.html';
-}
-
-function moreDetailsOnClick()
+function moreDetailsOnClick(taskIndex)
 {
     
     window.location.href = 'projectBacklogDetails.html';
+    
+
+    
 
 }
 
-function onProjectBacklogDetailsLoad()
-{
-    array = JSON.parse(localStorage.getItem('projectBacklogItemArray'));
-    let htmlElements = "";
-    let taskName = array[0].taskName; //this is the name of the task from the new object
-    let priority = array[0].taskPriority; //Gets the priority for dynamic entering
-    let taskDescriptions = array[0].taskDescription; //this is the name of the task from the new object
-    let taskType = array[0].taskType; //Gets the priority for dynamic entering
-    let storyPoints = array[0].taskStoryPoint;
-    htmlElements += '<div class="taskDetails" id = "taskDescriptions"><h1> Detailed Description of '+ taskName + '</h1> <h2>Task description:'+ taskDescriptions + '</h2> <h3></h3> <h2>Task type: '+ taskType + '</h2> <h3></h3> <h2>Story points associated: '+ storyPoints + '</h2> <h3></h3> <h2>Priority: ' + priority + '</h2> <h3></h3></div>';
-    let taskDescription = document.getElementById("taskDescription");
-    taskDescription.innerHTML = htmlElements;
-
-}
