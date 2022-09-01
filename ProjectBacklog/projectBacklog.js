@@ -144,5 +144,5 @@ function saveEditedDetails()
 
 function editDetailBackOnClick()
 {
-    window.location.href = projectBacklog.html;
+    window.location.replace('projectBacklog.html')
 }
