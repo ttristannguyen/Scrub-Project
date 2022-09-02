@@ -56,7 +56,7 @@ function taskCreationOnClick()
 
 function taskCreationBackOnClick()
 {
-    window.location.replace('projectBacklog.html')
+    window.location = 'projectBacklog.html'
 }
 
 
@@ -138,11 +138,12 @@ function saveEditedDetails()
     array[elementNum] = productBackLogItemObj; //FIND AND REPLACE
     //Need to re-set back into local storage
     localStorage.setItem('projectBacklogItemArray',JSON.stringify(array));
-    
+    console.log("TEST 1")
 
 }
 
 function editDetailBackOnClick()
 {
+    console.log("TEST 2");
     window.location.replace('projectBacklog.html')
 }
