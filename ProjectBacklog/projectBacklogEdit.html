@@ -21,18 +21,39 @@
   <main class="mdl-layout__content">
 
     <div class="page-content"> <!-- Page Content Starts Here--> 
-    
-      <h1 for="taskName"> Detailed Description of </h1> 
-      <h2>Task description: </h2> 
-      <h3></h3>
-      <h2>Task type: </h2> 
-      <h3></h3> 
-      <h2>Story points associated: </h2> 
-      <h3></h3> <h2>Priority: </h2> 
-      <h3></h3>
-      <div style="text-align: left;" class = "taskDetails" id = "taskDescription"></div>
+        <form action="#">
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" id="taskName">
+                <label class="mdl-textfield__label" for="taskName">Task Name...</label>
+            </div>
+        </form>
+        <form action="#">
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" id="taskDescription">
+                <label class="mdl-textfield__label" for="taskDescription"> Task Description...</label>
+            </div>
+        </form>
+        <form action="#">
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" id="taskType">
+                <label class="mdl-textfield__label" for="taskType">Task Type...</label>
+            </div>
+        </form>
+        <p>
+            <label>Story points for task (1-4):
+                <input type="range" min="0" max="4" value="0" step="1" id="taskStoryPoint">
+            </label>
+            </p>
+        
+        <fieldset id="taskPriority">
+        <legend>Priority</legend>
+        <p><label class="choice"> <input id = "priority" type="radio" required value="High Priority"> High Priority </label></p>
+        <p><label class="choice"> <input id = "priority" type="radio"  required value="Medium level priority"> Medium level priority </label></p>
+        <p><label class="choice"> <input id = "priority" type="radio" required value="Low priority"> Low priority </label></p>
+        </fieldset>
 
-      <div style="text-align:left;" id = "Buttons" >
+    
+      <div style="text-align:left;"  >
 
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" 
         <!-- onclick= "saveOnClick()" ->

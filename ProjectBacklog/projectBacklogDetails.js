@@ -15,7 +15,6 @@ function backToPBOnClick()
 
 function editTaskDetails()
 {
-    localStorage.setItem(TASK_KEY, task);
     
     window.location.href = 'projectBacklogEdit.html';
 }
