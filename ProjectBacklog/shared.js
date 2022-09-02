@@ -1,43 +1,43 @@
 // Predefined keys for LS
 const TASK_KEY = "currentTaskIndex"
 const PBILIST_KEY = "PBIListData"
-// class ProjectBacklogItem {
-//     constructor(taskName, taskDescription, taskType, taskStoryPoint, taskPriority)
-//     {
-//         this.taskName = taskName;
-//         this.taskDescription = taskDescription;
-//         this.taskType = taskType;
-//         this.taskStoryPoint = taskStoryPoint;
-//         this.taskPriority = taskPriority;
-//     }
-//     get taskName() {return this.taskName}
-//     get taskDescription() {return this.taskDescription}
-//     get taskType() {return this.taskType}
-//     get taskStoryPoint() {return this.taskStoryPoint}
-//     get taskPriority() {return this.taskPriority}
-//     fromData(data) {
-//         this.taskName = data.taskName;
-//         this.taskDescription = data.taskDescription;
-//         this.taskType = data.taskType;
-//         this.taskStoryPoint = data.taskStoryPoint;
-//         this.taskPriority = data.taskPriority;
-//     }
+class ProjectBacklogItem {
+    constructor(taskName, taskDescription, taskType, taskStoryPoint, taskPriority)
+    {
+        this.taskName = taskName;
+        this.taskDescription = taskDescription;
+        this.taskType = taskType;
+        this.taskStoryPoint = taskStoryPoint;
+        this.taskPriority = taskPriority;
+    }
+    get taskName() {return this.taskName}
+    get taskDescription() {return this.taskDescription}
+    get taskType() {return this.taskType}
+    get taskStoryPoint() {return this.taskStoryPoint}
+    get taskPriority() {return this.taskPriority}
+    fromData(data) {
+        this.taskName = data.taskName;
+        this.taskDescription = data.taskDescription;
+        this.taskType = data.taskType;
+        this.taskStoryPoint = data.taskStoryPoint;
+        this.taskPriority = data.taskPriority;
+    }
 
-// }
+}
 
 class PBIList {
     constructor() {
         this.PBIList = [];
     }
     get PBIList() { return this.PBIList; }
-    addItem(PBI) {
+    addTask(PBI) {
 
         if (PBI instanceof ProjectBacklogItem) {
 
             this.PBIList.push(PBI);
         }
     }
-    getItem(task_key) {
+    getTask(task_key) {
 
         return this.PBIList[task_key];
 
@@ -58,14 +58,14 @@ class PBIList {
 
 
 function checkLSData(key) {
-    if (localStorage.getItem(key) != null) {
+    if (localStorage.getTask(key) != null) {
         return true;
     }
     return false;
 }
 
 function retrieveLSData(key) {
-    let data = localStorage.getItem(key);
+    let data = localStorage.getTask(key);
     try {
         data = JSON.parse(data);
     }
@@ -79,3 +79,6 @@ function updateLSData(key, data) {
     let json = JSON.stringify(data);
     localStorage.setItem(key, json);
 }
+
+// Globel variable
+let PBIList = new PBIList();
