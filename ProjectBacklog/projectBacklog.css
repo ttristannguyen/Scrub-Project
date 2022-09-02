@@ -10,16 +10,33 @@
 .mdl-cell {
     background: #bdbdbd;
     padding: 120px 0;
-    text-align: center;
+
     background-color: rgb(255, 255, 255);
     border-style: solid;
     border-width: 4px;
     font-weight: bold, ridge;
+    text-align: center;
     max-height: 100px;
     max-width: 320px;
     margin: 10px;
     font-size: medium;
     font-weight: bold;
     
+    
+    
 
   }
+#taskText {
+    font-size: medium;
+    font-weight: bold;
+    position: absolute;
+    top: 30%;
+    /* text-align: center; */
+    left: 20%;
+}
+.btn-styled {
+    position: absolute;
+    top: 60%;
+    text-align: center;
+    left: 30%;
+}
