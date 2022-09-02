@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<script src="projectBacklog.js"></script>
+<title>DETAILS ABOUT YOUR TASK</title>
+
+<!-- CSS -->
+<style>
+.taskViewForm {
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+font-size: 0.8em;
+width: 20em;
+padding: 1em;
+border: 1px solid #ccc;
+}
+
+.taskViewForm * {
+box-sizing: border-box;
+}
+
+.taskViewForm fieldset {
+border: none;
+padding: 0;
+}
+
+.taskViewForm legend,
+.taskViewForm label {
+padding: 0;
+font-weight: bold;
+}
+
+.taskViewForm label.choice {
+font-size: 0.9em;
+font-weight: normal;
+}
+
+.taskViewForm input[type="text"],
+.taskViewForm input[type="tel"],
+.taskViewForm input[type="email"],
+.taskViewForm input[type="datetime-local"],
+.taskViewForm select,
+.taskViewForm textarea {
+display: block;
+width: 100%;
+border: 1px solid #ccc;
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+font-size: 0.9em;
+padding: 0.3em;
+}
+
+.taskViewForm textarea {
+height: 100px;
+}
+
+.taskViewForm button {
+padding: 1em;
+border-radius: 0.5em;
+background: #eee;
+border: none;
+font-weight: bold;
+margin-top: 1em;
+}
+
+.taskViewForm button:hover {
+background: #ccc;
+cursor: pointer;
+}
+</style>
+
+</head>
+<body onload="detailedViewContent()">
+
+<form class="taskViewForm" method="get" >
+
+<p>
+<label>Task name: 
+<input type="text" name="taskName" id = "taskName" required>
+</label> 
+</p>
+
+<p>
+<label>Task description: 
+<input  name="taskDescription" id = "taskDescription" maxlength = "500" required>
+</input> 
+
+</p>
+
+<p>
+<label>Task type 
+<input  type="text" name="taskType" id = "taskType" required>
+</label>
+</p>
+
+<p>
+    <label>Story points for task (1-4):
+        <input type="range" min="0" max="4" value="0" step="1" id="taskStoryPoint">
+    </label>
+    </p>
+
+<fieldset>
+<legend>Priority</legend>
+<p><label class="choice"> <input id = "priority" type="radio" required value="High Priority"> High Priority </label></p>
+<p><label class="choice"> <input id = "priority" type="radio"  required value="Medium level priority"> Medium level priority </label></p>
+<p><label class="choice"> <input id = "priority" type="radio" required value="Low priority"> Low priority </label></p>
+</fieldset>
+
+
+
+<p><button id="taskViewSaveBtn" onClick="saveEditedDetails()">Save edits</button></p>
+
+<p><button id="taskViewBackBtn" onClick="taskCreationBackOnClick()">Back</button></p>
+
+</form>
+
+</body>
+</html>
