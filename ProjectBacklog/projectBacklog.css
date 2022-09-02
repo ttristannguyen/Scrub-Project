@@ -42,3 +42,10 @@
     text-align: center;
     left: 30%;
 }
+
+.btn-styled_del {
+    position: absolute;
+    top: 70%;
+    text-align: center;
+    left: 40%;
+}

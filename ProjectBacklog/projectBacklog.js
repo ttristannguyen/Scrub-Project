@@ -88,9 +88,23 @@ function onProjectBacklogLoad()
                 createDetailedView()
                 localStorage.setItem('currentTaskId',JSON.stringify(button.id))
             };
+            
+            let button2 = document.createElement('button');
+            button2.type = 'button';
+            button2.innerHTML = 'Delete';
+            button2.className = 'btn-styled_del';
+            button2.id = "" + j + ""
+            button2.onclick = function() {
+                deletePBI()
+                localStorage.setItem('currentTaskId',JSON.stringify(button2.id))
+            };
+
             let id = j.toString();
             let container = document.getElementById(id);
             container.appendChild(button);
+            container.appendChild(button2);
+
+
     }
 
 }
