@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <script src="projectBacklog.js"></script>
-<title>CREATE YOUR TASK</title>
+<title>DETAILS ABOUT YOUR TASK</title>
 
 <!-- CSS -->
 <style>
-.taskCreationForm {
+.taskViewForm {
 font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 font-size: 0.8em;
 width: 20em;
@@ -17,32 +17,32 @@ padding: 1em;
 border: 1px solid #ccc;
 }
 
-.taskCreationForm * {
+.taskViewForm * {
 box-sizing: border-box;
 }
 
-.taskCreationForm fieldset {
+.taskViewForm fieldset {
 border: none;
 padding: 0;
 }
 
-.taskCreationForm legend,
-.taskCreationForm label {
+.taskViewForm legend,
+.taskViewForm label {
 padding: 0;
 font-weight: bold;
 }
 
-.taskCreationForm label.choice {
+.taskViewForm label.choice {
 font-size: 0.9em;
 font-weight: normal;
 }
 
-.taskCreationForm input[type="text"],
-.taskCreationForm input[type="tel"],
-.taskCreationForm input[type="email"],
-.taskCreationForm input[type="datetime-local"],
-.taskCreationForm select,
-.taskCreationForm textarea {
+.taskViewForm input[type="text"],
+.taskViewForm input[type="tel"],
+.taskViewForm input[type="email"],
+.taskViewForm input[type="datetime-local"],
+.taskViewForm select,
+.taskViewForm textarea {
 display: block;
 width: 100%;
 border: 1px solid #ccc;
@@ -51,11 +51,11 @@ font-size: 0.9em;
 padding: 0.3em;
 }
 
-.taskCreationForm textarea {
+.taskViewForm textarea {
 height: 100px;
 }
 
-.taskCreationForm button {
+.taskViewForm button {
 padding: 1em;
 border-radius: 0.5em;
 background: #eee;
@@ -64,16 +64,16 @@ font-weight: bold;
 margin-top: 1em;
 }
 
-.taskCreationForm button:hover {
+.taskViewForm button:hover {
 background: #ccc;
 cursor: pointer;
 }
 </style>
 
 </head>
-<body onload="onTaskCreationLoad()">
+<body onload="detailedViewContent()">
 
-<form class="taskCreationForm" method="get" >
+<form class="taskViewForm" method="get" >
 
 <p>
 <label>Task name: 
@@ -83,8 +83,9 @@ cursor: pointer;
 
 <p>
 <label>Task description: 
-<textarea  name="taskDescription" id = "taskDescription" maxlength = "500" required>
-</textarea> 
+<input  name="taskDescription" id = "taskDescription" maxlength = "500" required>
+</input> 
+
 </p>
 
 <p>
@@ -108,9 +109,9 @@ cursor: pointer;
 
 
 
-<p><button id="taskCreationDoneBtn" onClick="taskCreationOnClick()">Done</button></p>
+<p><button id="taskViewSaveBtn" onClick="saveEditedDetails()">Save edits</button></p>
 
-<p><button id="taskCreationBackBtn" onClick="taskCreationBackOnClick()">Back</button></p>
+<p><button id="taskViewBackBtn" onClick="taskCreationBackOnClick()">Back</button></p>
 
 </form>
 
