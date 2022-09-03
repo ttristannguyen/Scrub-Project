@@ -1,0 +1,34 @@
+.page-content {
+    margin: 5%;
+}
+
+.selectionColumn {
+    float: left;
+    width: 33.33%;
+}
+
+.selectionColumn table {
+    margin: auto;
+    width: 90%;
+    padding: 10px;
+}
+
+.assignButton {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.unassignButton {
+
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.page-content:after {
+    content: "";
+    display: table;
+    clear: both;
+
+}
