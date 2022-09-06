@@ -3,43 +3,52 @@ function loadPB() {
 }
 
 function loadSB() {
-    return JSON.parse(localStorage.getItem('sprintBacklogItemArray'))
+    let sprintID = JSON.parse(localStorage.getItem("currentSprintId"))
+    let currentSprint = JSON.parse(localStorage.getItem("sprintBacklogArray"))[sprintID];
+    return currentSprint.sprintTaskList
 }
 
 function assignTasks() {
-    console.log("Task Assigning ...");
-    
     let productBacklog = loadPB();
     let sprintBacklog = loadSB();
     let checkBoxes = document.getElementsByName("pBCheckbox");
+    // let memberSelected = document.getElementById("selectedMember").value;
+    // if (!memberSelected) return
+
 
     // Shifting PBIs
     let removedItems = [];
     for(i = 0; i < checkBoxes.length; i++) {
         if (checkBoxes[i].checked) {
+            // productBacklog[i].tm = memberSelected; // Assigning team member
             sprintBacklog.push(productBacklog[i]);
-            removedItems.push(productBacklog[i]);
+            removedItems.push(productBacklog[i].taskName);
         }
     }
-        
+    
+    let item;
     // Removing Items from pBList
     for(i = 0; i < productBacklog.length; i++) {
-        if (removedItems.includes(productBacklog[i])) {
+        if (removedItems.includes(productBacklog[i].taskName)) {
             item = productBacklog.splice(i, 1);
-            console.log(`Removed Item: ${item}`)
+            // console.log(`Removed Item: ${item.taskName}`)
             i--;
         }
     }
 
     localStorage.setItem('projectBacklogItemArray', JSON.stringify(productBacklog));
-    localStorage.setItem('sprintBacklogItemArray', JSON.stringify(sprintBacklog));
+    
+    // Updating sprintList data
+    let sprintID = JSON.parse(localStorage.getItem("currentSprintId"))
+    let sprintBacklogArray = JSON.parse(localStorage.getItem("sprintBacklogArray"));
+    sprintBacklogArray[sprintID].sprintTaskList = sprintBacklog
+    localStorage.setItem('sprintBacklogArray', JSON.stringify(sprintBacklogArray))
 
-    displayPB(productBacklog);
-    displaySB(sprintBacklog);
+
+    loadBacklogs()
 }
 
 function unassignTasks() {
-    console.log("Task Unassigning ...");
     let productBacklog = loadPB();
     let sprintBacklog = loadSB();
     let checkBoxes = document.getElementsByName("sBCheckbox");
@@ -48,57 +57,53 @@ function unassignTasks() {
     let removedItems = [];
     for(i = 0; i < checkBoxes.length; i++) {
         if (checkBoxes[i].checked) {
+            // sprintBacklog[i].tm = null; // Unassign Task
             productBacklog.push(sprintBacklog[i]);
-            removedItems.push(sprintBacklog[i]);
+            removedItems.push(sprintBacklog[i].taskName);
         }
     }
 
+    let item;
     // Removing Items from pBList
     for(i = 0; i < sprintBacklog.length; i++) {
-        if (removedItems.includes(sprintBacklog[i])) {
-            sprintBacklog.splice(i, 1);
-            console.log(`Removed Item: ${item}`)
+        if (removedItems.includes(sprintBacklog[i].taskName)) {
+            item = sprintBacklog.splice(i, 1);
+            // console.log(`Removed Item: ${item.taskName}`)
             i--;
         }
     }
 
     localStorage.setItem('projectBacklogItemArray', JSON.stringify(productBacklog));
-    localStorage.setItem('sprintBacklogItemArray', JSON.stringify(sprintBacklog));
+    
+    // Updating sprintList data
+    let sprintID = JSON.parse(localStorage.getItem("currentSprintId"))
+    let sprintBacklogArray = JSON.parse(localStorage.getItem("sprintBacklogArray"));
+    sprintBacklogArray[sprintID].sprintTaskList = sprintBacklog
+    localStorage.setItem('sprintBacklogArray', JSON.stringify(sprintBacklogArray))
 
-    displayPB(productBacklog);
-    displaySB(sprintBacklog);
+    loadBacklogs()
 }
 
 function loadBacklogs() {
-    let productBacklog = ['PBI Item 1', 'PBI Item 2', 'PBI Item 3', 'PBI Item 4', 'PBI Item 5'];
-    let sprintBacklog = ['Spr Item 1', 'Spr Item 2', 'Spr Item 3', 'Spr Item 4', 'Spr Item 5'];
-
-    localStorage.setItem('projectBacklogItemArray', JSON.stringify(productBacklog));
-    localStorage.setItem('sprintBacklogItemArray', JSON.stringify(sprintBacklog));
-    console.log("Backlogs Stored");
-
-    productBacklog = loadPB();
-    sprintBacklog = loadSB(); 
-    displayPB(productBacklog)  
-    displaySB(sprintBacklog)
+    displayPB(loadPB())  
+    displaySB(loadSB())
 }
 
 function displayPB(productBacklog) {
     let output = '';
 
     for (let i = 0; i < productBacklog.length; i++) {
-        if (productBacklog[i] != 1) {
-            output += `
-                <tr>
-                    <td>
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="pBList${i}">
-                            <input type="checkbox" id="pBList${i}" class="mdl-checkbox__input" name="pBCheckbox">
-                        </label>
-                    </td>
-                    <td class="mdl-data-table__cell--non-numeric">${productBacklog[i]}</td>
-                </tr>
-            `
-        }
+        idString = `pBtask${i}`;
+        output += `
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric" id="'${idString}'" onclick="showDialog('${idString}')">${productBacklog[i].taskName}</td>
+                <td>
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="pBList${i}">
+                    <input type="checkbox" id="pBList${i}" class="mdl-checkbox__input" name="pBCheckbox">
+                </label>
+            </td>
+            </tr>
+        `
     }
 
     // Assigning html
@@ -110,21 +115,66 @@ function displaySB(sprintBacklog) {
     let output = '';
 
     for (let i = 0; i < sprintBacklog.length; i++) {
-        if (sprintBacklog[i] != 1) {
-            output += `
-                <tr>
-                    <td>
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="sBList${i}">
-                            <input type="checkbox" id="sBList${i}" class="mdl-checkbox__input" name="sBCheckbox">
-                        </label>
-                    </td>
-                    <td class="mdl-data-table__cell--non-numeric">${sprintBacklog[i]}</td>
-                </tr>
-            `
-        }
+        idString = `sBtask${i}`;
+        output += `
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric" id = "${idString}" onclick="showDialog('${idString}')">${sprintBacklog[i].taskName}</td>
+                <td>
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="sBList${i}">
+                        <input type="checkbox" id="sBList${i}" class="mdl-checkbox__input" name="sBCheckbox">
+                    </label>
+                </td>
+            </tr>
+        `
     }
 
     // Assigning html
     let sprintBacklogTableBody = document.getElementById("sprintBacklogList");
     sprintBacklogTableBody.innerHTML = output;
+}
+
+function showDialog(taskID) {
+    let backlog;
+    if (taskID.slice(0,2) == "pB") {
+        backlog = loadPB()
+    }
+    else {
+        backlog = loadSB()
+    }
+
+    let taskNumber = taskID.slice(6, taskID.length)
+    let task = backlog[taskNumber]
+    let modal = document.getElementById("modal");
+    let taskName = document.getElementById("modalTaskName");
+    let taskDesc = document.getElementById("modalTaskDesc");
+    let pColour = priorityColour(task.taskPriority)
+
+    // Generating HTML
+    taskName.innerHTML = task.taskName;
+    taskDesc.innerHTML = `
+        <h5>Task Description</h3>
+        <p>${task.taskDescription}</p>
+        <p class = "taskDescPriority" style="background-color: ${pColour};">${task.taskPriority}</p>
+        <p>Type: ${task.taskType}</p>
+        <p>Assignee: ${null}</p>
+        <p>Story Points: ${task.taskStoryPoint}</p>
+    `;
+    modal.showModal();
+}
+
+function priorityColour(priority) {
+    if(priority == "High Priority") {
+        return "red"
+    }
+    else if(priority == "Medium Priority") {
+        return "orange"
+    }
+    else {
+        return "green"
+    }
+}
+
+function closeDialog() {
+    modal = document.getElementById("modal");
+    modal.close();
 }
