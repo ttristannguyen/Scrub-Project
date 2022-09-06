@@ -45,13 +45,17 @@ function taskCreationOnClick()
     taskDescription = document.getElementById("taskDescription").value 
     taskType = document.getElementById("taskType").value 
     taskStoryPoint = document.getElementById("taskStoryPoint").value 
-    taskPriority = document.getElementById("priority").value 
+    var tagName = document.getElementsByTagName("input")
+    for (var i = 0 ; i < tagName.length ; i++){
+        if (tagName[i].type == 'radio' && tagName[i].checked){ var taskPriority = tagName[i].value}
+    }
+
 
     let productBackLogItemObj = new projectBacklogItem(taskName,taskDescription,taskType,taskStoryPoint,taskPriority);
     projectBacklogItemsParsed = JSON.parse(localStorage.getItem('projectBacklogItemArray'))
     projectBacklogItemsParsed.push(productBackLogItemObj)
     localStorage.setItem('projectBacklogItemArray',JSON.stringify(projectBacklogItemsParsed));
-
+    window.location = 'projectBacklog.html'
 }
 
 function taskCreationBackOnClick()
@@ -69,6 +73,8 @@ function onProjectBacklogLoad()
     for (let i = 0; i < array.length; i++) {
         let taskName = array[i].taskName; //this is the name of the task from the new object
         let priority = array[i].taskPriority; //Gets the priority for dynamic entering
+        console.log(priority)
+        // Switch Case to determine which value
         let storyPoints = array[i].taskStoryPoint;
        htmlElements += ' <div class = "mdl-cell mdl-cell--3-col graybox" style = "position: relative; top: 90%"' + 'id=' + '"' + i + '"' + '>' + "<p id = 'taskText'>" + taskName + '<br>' + "Priority: " + priority + '<br>' +"Story Points: " + storyPoints + "<br>" + "<\p>" + '</div>';
     }
@@ -88,9 +94,23 @@ function onProjectBacklogLoad()
                 createDetailedView()
                 localStorage.setItem('currentTaskId',JSON.stringify(button.id))
             };
+            
+            let button2 = document.createElement('button');
+            button2.type = 'button';
+            button2.innerHTML = 'Delete';
+            button2.className = 'btn-styled_del';
+            button2.id = "" + j + ""
+            button2.onclick = function() {
+                deletePBI()
+                localStorage.setItem('currentTaskId',JSON.stringify(button2.id))
+            };
+
             let id = j.toString();
             let container = document.getElementById(id);
             container.appendChild(button);
+            container.appendChild(button2);
+
+
     }
 
 }
@@ -115,11 +135,29 @@ function detailedViewContent()
     elementNum = parseInt(taskIDString);
     currentTask = array[elementNum];
     document.getElementById('taskName').setAttribute('value',currentTask.taskName);
-    document.getElementById('taskDescription').setAttribute('value',currentTask.taskDescription);
-    document.getElementById('taskType').setAttribute('value',currentTask.taskType);
+    document.getElementById('taskDescription').value = currentTask.taskDescription
+    switch (currentTask.taskType){
+        case "Ui":
+            document.getElementById('taskType').value = "UI";
+            break;
+        case "Testing":
+            document.getElementById('taskType').value = "Testing";
+            break;
+        case "Core":
+            document.getElementById('taskType').value = "Core";
+            break;
+        default:
+            console.log("A")
+            break;
+    }
     document.getElementById('taskStoryPoint').setAttribute('value',currentTask.taskStoryPoint);
-    document.getElementById('priority').setAttribute('value',currentTask.taskPriority);
-
+    let inputTag = document.getElementsByTagName('input')
+    for (var i = 0 ; i < inputTag.length ; i++) {
+        if (inputTag[i].type == 'radio' && inputTag[i].value == currentTask.taskPriority){
+            inputTag[i].checked = true
+        }
+    }
+    // editDetailPriority.checked = true;
     
 
 }
@@ -130,7 +168,19 @@ function saveEditedDetails()
     taskDescription = document.getElementById("taskDescription").value 
     taskType = document.getElementById("taskType").value 
     taskStoryPoint = document.getElementById("taskStoryPoint").value 
-    taskPriority = document.getElementById("priority").value 
+    taskPriorityTag = document.getElementsByTagName('input')
+    
+    if (taskName == "" || taskDescription == "" || taskType == ""){
+        console.log("taskName " + taskName )
+        console.log("taskdesc " + taskDescription )
+        console.log("tasktype " + taskType)
+        return 
+    }
+    for (var i = 0 ; i < taskPriorityTag.length ; i++) {
+        if (taskPriorityTag[i].type == 'radio' && taskPriorityTag[i].checked){ var taskPriority = taskPriorityTag[i].value}
+        
+    }
+    console.log(taskPriority)
     let productBackLogItemObj = new projectBacklogItem(taskName,taskDescription,taskType,taskStoryPoint,taskPriority);
     array = JSON.parse(localStorage.getItem('projectBacklogItemArray'))
     taskIDString = JSON.parse(localStorage.getItem('currentTaskId'));
@@ -139,6 +189,7 @@ function saveEditedDetails()
     //Need to re-set back into local storage
     localStorage.setItem('projectBacklogItemArray',JSON.stringify(array));
     console.log("TEST 1")
+    window.location.replace('projectBacklog.html')
 
 }
 
