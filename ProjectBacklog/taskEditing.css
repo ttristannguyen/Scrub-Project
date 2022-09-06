@@ -1,0 +1,19 @@
+form { 
+    position: relative;
+    margin: 0 auto; 
+    width:250px;
+    top: 30px;
+    }
+
+#taskViewSaveBtn{
+        position: absolute;
+        left:46%;
+        top: 75%;
+        width: 120px;
+    }
+#taskViewBackBtn{
+        position: absolute;
+        left:46%;
+        top:83%;
+        width: 120px;
+    }  
