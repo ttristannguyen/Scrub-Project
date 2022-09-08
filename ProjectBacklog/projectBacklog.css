@@ -76,7 +76,8 @@
 }
 #deleteBtn {
     position: relative;
-    bottom: 60px;
+    right: 173px;
+    top: 160px;
 }
 #detailViewBtn {
     position: relative;
