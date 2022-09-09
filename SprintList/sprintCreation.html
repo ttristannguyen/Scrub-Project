@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<script src="sprint.js"></script>
+<title>CREATE YOUR SPRINT</title>
+
+<!-- CSS -->
+<style>
+.taskCreationForm {
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+font-size: 0.8em;
+width: 20em;
+padding: 1em;
+border: 1px solid #ccc;
+}
+
+.taskCreationForm * {
+box-sizing: border-box;
+}
+
+.taskCreationForm fieldset {
+border: none;
+padding: 0;
+}
+
+.taskCreationForm legend,
+.taskCreationForm label {
+padding: 0;
+font-weight: bold;
+}
+
+.taskCreationForm label.choice {
+font-size: 0.9em;
+font-weight: normal;
+}
+
+.taskCreationForm input[type="text"],
+.taskCreationForm input[type="tel"],
+.taskCreationForm input[type="email"],
+.taskCreationForm input[type="datetime-local"],
+.taskCreationForm select,
+.taskCreationForm textarea {
+display: block;
+width: 100%;
+border: 1px solid #ccc;
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+font-size: 0.9em;
+padding: 0.3em;
+}
+
+.taskCreationForm textarea {
+height: 100px;
+}
+
+.taskCreationForm button {
+padding: 1em;
+border-radius: 0.5em;
+background: #eee;
+border: none;
+font-weight: bold;
+margin-top: 1em;
+}
+
+.taskCreationForm button:hover {
+background: #ccc;
+cursor: pointer;
+}
+</style>
+
+</head>
+<body onload="onSprintCreationLoad()">
+
+<form class="sprintCreationForm" method="get" >
+
+<p>
+<label>Sprint name: 
+<input type="text" name="sprintName" id = "sprintName" required>
+</label> 
+</p>
+
+<p>
+<label>Sprint Start Date: 
+<textarea  name="sprintStartDate" id = "sprintStartDate" required>
+</textarea> 
+</p>
+
+<p>
+<label>Sprint End Date:  
+<input  type="sprintEndDate" name="sprintEndDate" id = "sprintEndDate" required>
+</label>
+</p>
+
+
+
+</form>
+
+
+<p><button id="sprintCreationDoneBtn" onClick="sprintCreationDoneBtnOnClick()">Done</button></p>
+
+<p><button id="sprintCreationBackBtn" onClick="sprintCreationBackOnClick()">Back</button></p>
+
+</body>
+</html>
