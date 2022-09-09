@@ -10,8 +10,13 @@
     <title></title>
 </head>
 
+<<<<<<< HEAD
 <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+=======
+<body onload="onTeamMembersLoad()">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+>>>>>>> edd8196ad75d3b678a67ac34f2b5d2a22238d0d2
             mdl-layout--fixed-header"> <!-- Layout Starts Here-->
 
   <header class="mdl-layout__header">
@@ -19,7 +24,7 @@
       <div class="mdl-layout-spacer"></div>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                   mdl-textfield--floating-label mdl-textfield--align-right">
-        <!-- <label class="mdl-button mdl-js-button mdl-button--icon"
+        <!-- <label class="mdl-butt`on mdl-js-button mdl-button--icon"
                for="fixed-header-drawer-exp">
           <i class="material-icons">search</i>
         </label>
@@ -42,6 +47,20 @@
   <main class="mdl-layout__content">
 
     <div class="page-content"> <!-- Page Content Starts Here-->
+
+        <!-- Add Team Members-->
+
+        <div id = "addTeamMember" >
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+          <!-- onclick= "addTeamMemberOnClick()" ->
+              Add Team Member
+          </button>
+      </div>
+
+      <div class = "mdl-grid" id = "memberPlacement">
+
+       </div>
+
     </div> <!-- Page Content Ends Here-->
 
   </main>
