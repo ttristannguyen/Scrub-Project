@@ -136,6 +136,21 @@ function addTaskOnClick()
     window.location.href = 'taskCreation.html'   
 }
 
+function deletePBI()
+{ 
+    
+    if (confirm("Are you sure you wanna delete the task ?")) {
+        array = JSON.parse(localStorage.getItem('projectBacklogItemArray'));
+        taskIDString = JSON.parse(localStorage.getItem('currentTaskId'));
+        elementNum = parseInt(taskIDString);
+        delete array[elementNum];
+        array = array.filter(n => n) 
+        localStorage.setItem('projectBacklogItemArray',JSON.stringify(array));
+        location.reload();  
+    }
+    
+    
+}
 function createDetailedView()
 {
     window.location.href = "taskDetailsEdit.html"
