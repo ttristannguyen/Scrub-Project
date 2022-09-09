@@ -16,6 +16,7 @@
 //let projectBacklogItemsArray = []; //This will store multiple instances of the PBI objects
 function onTaskCreationLoad()
 {
+    // localStorage.setItem('currentTaskID',JSON.stringify(0))
     if (localStorage.getItem('projectBacklogItemArray') )
 {
     console.log("TEST")
