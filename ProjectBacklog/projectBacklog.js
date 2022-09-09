@@ -67,51 +67,67 @@ function taskCreationBackOnClick()
 function onProjectBacklogLoad()
 {
     //Run through entirety of local storage. Parse the elements back into objects 
-    //for each object, print the summarised info into a dynamically created div element 
+    //for each object, print the summarised info into a dynamically created div element
+    let filterBy = document.getElementById("filterBy").value;
+    var elements = 0
+    console.log(filterBy)
     array = JSON.parse(localStorage.getItem('projectBacklogItemArray'));
     let htmlElements = "";
     for (let i = 0; i < array.length; i++) {
         let taskName = array[i].taskName; //this is the name of the task from the new object
         let priority = array[i].taskPriority; //Gets the priority for dynamic entering
         console.log(priority)
-        // Switch Case to determine which value
         let storyPoints = array[i].taskStoryPoint;
-       htmlElements += ' <div class = "mdl-cell mdl-cell--3-col graybox" style = "position: relative; top: 90%"' + 'id=' + '"' + i + '"' + '>' + "<p id = 'taskText'>" + taskName + '<br>' + "Priority: " + priority + '<br>' +"Story Points: " + storyPoints + "<br>" + "<\p>" + '</div>';
+        if (array[i].taskType == filterBy){
+            elements += 1
+            htmlElements += "<div class = 'mdl-cell mdl-cell--3-col graybox' onclick = 'createdDetailedView()' style = 'position: relative; top: 90%'" + 'id=' + '"' + i + '"' + '>' + "<p id = 'taskText'>" + taskName + '<br>' + "Priority: " + priority + '<br>' +"Story Points: " + storyPoints + "<\p>" + "</div>" +
+            // "<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--green-400' + onclick = 'createDetailedView()' id = 'detailViewBtn'> See/Edit Details </button>" + 
+            "<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = 'deletePBI()' id = 'deleteBtn'> Delete </button>";
+        }
+        if (filterBy == "All"){
+            elements = array.length
+            htmlElements += ' <div class = "mdl-cell mdl-cell--3-col graybox" onclick = "createDetailedView()" style = "position: relative; top: 90%"' + 'id=' + '"' + i + '"' + '>' + "<p id = 'taskText'>" + taskName + '<br>' + "Priority: " + priority + '<br>' +"Story Points: " + storyPoints  + "<\p>" + "</div>" + 
+            // "<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--green-400' + onclick = 'createDetailedView()' id = 'detailViewBtn'> See/Edit Details </button>" + 
+            "<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = 'deletePBI()' id = 'deleteBtn'> Delete </button>";
+        }
     }
     let taskPlacement = document.getElementById("taskPlacement");
     taskPlacement.innerHTML = htmlElements;
 
-    for (let j = 0; j<array.length; j++)
-    {
-            let button = document.createElement('button');
-            button.type = 'button';
-            button.innerHTML = 'See/edit details';
-            button.className = 'btn-styled';
-            button.id = "" + j + "";
-            button.onclick = function() {
-                //I want to be able to click on the button, be taken to a 'detailed view' page, where i can possibly make a change to the task. 
-                //This will edit the task in local storage.
-                createDetailedView()
-                localStorage.setItem('currentTaskId',JSON.stringify(button.id))
-            };
+    // for (let j = 0; j<elements.length; j++)
+    // {
+        
+    //     let button = document.createElement('button');
+    //     button.type = 'button';
+    //     button.innerHTML = 'See/edit details';
+    //     button.className = 'btn-styled';
+    //     button.id = "" + j + "";
+    //     button.onclick = function() {
+    //         //I want to be able to click on the button, be taken to a 'detailed view' page, where i can possibly make a change to the task. 
+    //         //This will edit the task in local storage.
+    //         createDetailedView()
+    //         localStorage.setItem('currentTaskId',JSON.stringify(button.id))
+    //     };
+    //     console.log(button)
             
-            let button2 = document.createElement('button');
-            button2.type = 'button';
-            button2.innerHTML = 'Delete';
-            button2.className = 'btn-styled_del';
-            button2.id = "" + j + ""
-            button2.onclick = function() {
-                deletePBI()
-                localStorage.setItem('currentTaskId',JSON.stringify(button2.id))
-            };
+    //     let button2 = document.createElement('button');
+    //     button2.type = 'button';
+    //     button2.innerHTML = 'Delete';
+    //     button2.className = 'btn-styled_del';
+    //     button2.id = "" + j + ""
+    //     button2.onclick = function() {
+    //         deletePBI()
+    //         localStorage.setItem('currentTaskId',JSON.stringify(button2.id))
+    //     };
 
-            let id = j.toString();
-            let container = document.getElementById(id);
-            container.appendChild(button);
-            container.appendChild(button2);
+    //     let id = j.toString();
+    //     let container = document.getElementById(id);
+    //     console.log(container)
+    //     container.appendChild(button);
+    //     container.appendChild(button2);
 
 
-    }
+    // }
 
 }
 

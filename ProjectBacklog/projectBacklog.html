@@ -34,11 +34,22 @@
   <main class="mdl-layout__content">
 
     <div class="page-content" > <!-- Page Content Starts Here-->
+      <label id = "filterText">Filter By</label> 
+      <div class="mdl-selectfield mdl-js-selectfield">
+        <select class="mdl-selectfield__select" id="filterBy" name="filterBy" onchange="onProjectBacklogLoad()">
+          <option value="All">All</option>
+          <option value="UI">Ui Based</option>
+          <option value="Testing">Testing</option>
+          <option value="Core">Core</option>
+          
+    
+        </select>
+    </div>
 
         <!-- Add Task Button-->
         <div style="text-align: left;" id = "addTaskButton" >
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-            <!-- onclick= "addTaskOnClick()" ->
+            onclick= "addTaskOnClick()">
                 Add Task
             </button>
         </div>
