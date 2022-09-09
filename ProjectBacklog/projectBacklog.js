@@ -50,6 +50,14 @@ function taskCreationOnClick()
     for (var i = 0 ; i < tagName.length ; i++){
         if (tagName[i].type == 'radio' && tagName[i].checked){ var taskPriority = tagName[i].value}
     }
+    console.log(taskName)
+    console.log(taskDescription)
+    if (taskName == null || taskDescription == null || taskPriority == null){
+        errorMessageLocation = document.getElementById('errorMessage')
+        errorMessageLocation.innerHTML = "Please Fill Out the Task Name , Description and Priority"
+        return
+    }
+
 
 
     let productBackLogItemObj = new projectBacklogItem(taskName,taskDescription,taskType,taskStoryPoint,taskPriority);
