@@ -1,7 +1,4 @@
-FIT2101 readme file for afel0004
-hello
-hello 
-Stefan Su - 32521197
-Tristan Nguyen - 32484925
-Yao Liu - 32447361
-shannon -32590180f
+
+
+Please Refer to "Testing Sprint 1" in the Teams Google Drive, for all the test cases and expectations of the code
+within the first sprint.
