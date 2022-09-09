@@ -42,7 +42,7 @@
     font-size: medium;
     font-weight:bold;
     position: relative;
-    left: 20px
+    left: 80px
     
     
     
@@ -76,7 +76,7 @@
 }
 #deleteBtn {
     position: relative;
-    right: 173px;
+    right: 113px;
     top: 160px;
 }
 #detailViewBtn {
