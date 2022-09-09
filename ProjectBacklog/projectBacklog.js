@@ -16,6 +16,7 @@
 //let projectBacklogItemsArray = []; //This will store multiple instances of the PBI objects
 function onTaskCreationLoad()
 {
+    console.log("abc")
     if (localStorage.getItem('projectBacklogItemArray') )
 {
     console.log("TEST")
@@ -53,6 +54,7 @@ function taskCreationOnClick()
 
     let productBackLogItemObj = new projectBacklogItem(taskName,taskDescription,taskType,taskStoryPoint,taskPriority);
     projectBacklogItemsParsed = JSON.parse(localStorage.getItem('projectBacklogItemArray'))
+    console.log(productBackLogItemObj)
     projectBacklogItemsParsed.push(productBackLogItemObj)
     localStorage.setItem('projectBacklogItemArray',JSON.stringify(projectBacklogItemsParsed));
     window.location = 'projectBacklog.html'
