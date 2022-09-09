@@ -81,19 +81,21 @@ function onProjectBacklogLoad()
         let storyPoints = array[i].taskStoryPoint;
         if (array[i].taskType == filterBy){
             elements += 1
-            htmlElements += "<div class = 'mdl-cell mdl-cell--3-col graybox' onclick = 'createdDetailedView()' style = 'position: relative; top: 90%'" + 'id=' + '"' + i + '"' + '>' + "<p id = 'taskText'>" + taskName + '<br>' + "Priority: " + priority + '<br>' +"Story Points: " + storyPoints + "<\p>" + "</div>" +
+            htmlElements += `<div class = 'mdl-cell mdl-cell--3-col graybox' onclick = createDetailedView(${i}) style = 'position: relative; top: 90%' id="${i}"><p id = 'taskText'>${taskName}<br>Priority: ${priority}<br>Story Points:${storyPoints}<\p></div>` +
             // "<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--green-400' + onclick = 'createDetailedView()' id = 'detailViewBtn'> See/Edit Details </button>" + 
-            "<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = 'deletePBI()' id = 'deleteBtn'> Delete </button>";
+            `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = 'deletePBI(${i})' id = 'deleteBtn'> Delete </button>`;
         }
         if (filterBy == "All"){
             elements = array.length
-            htmlElements += ' <div class = "mdl-cell mdl-cell--3-col graybox" onclick = "createDetailedView()" style = "position: relative; top: 90%"' + 'id=' + '"' + i + '"' + '>' + "<p id = 'taskText'>" + taskName + '<br>' + "Priority: " + priority + '<br>' +"Story Points: " + storyPoints  + "<\p>" + "</div>" + 
+            htmlElements += `<div class = 'mdl-cell mdl-cell--3-col graybox' onclick = createDetailedView(${i}) style = 'position: relative; top: 90%' id="${i}"><p id = 'taskText'>${taskName}<br>Priority: ${priority}<br>Story Points:${storyPoints}<\p></div>` +
             // "<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--green-400' + onclick = 'createDetailedView()' id = 'detailViewBtn'> See/Edit Details </button>" + 
-            "<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = 'deletePBI()' id = 'deleteBtn'> Delete </button>";
+            `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = deletePBI(${i}) id = 'deleteBtn'> Delete </button>`;
         }
     }
     let taskPlacement = document.getElementById("taskPlacement");
     taskPlacement.innerHTML = htmlElements;
+
+    
 
     // for (let j = 0; j<elements.length; j++)
     // {
@@ -137,14 +139,14 @@ function addTaskOnClick()
     window.location.href = 'taskCreation.html'   
 }
 
-function deletePBI()
-{ 
+function deletePBI(index){
     
     if (confirm("Are you sure you wanna delete the task ?")) {
         array = JSON.parse(localStorage.getItem('projectBacklogItemArray'));
-        taskIDString = JSON.parse(localStorage.getItem('currentTaskId'));
-        elementNum = parseInt(taskIDString);
-        delete array[elementNum];
+        // taskIDString = JSON.parse(localStorage.getItem('currentTaskId'));
+        
+        // elementNum = parseInt(taskIDString);
+        delete array[index];
         array = array.filter(n => n) 
         localStorage.setItem('projectBacklogItemArray',JSON.stringify(array));
         location.reload();  
@@ -153,20 +155,27 @@ function deletePBI()
     
     
 }
-function createDetailedView()
+function createDetailedView(index)
 {
+    // console.log(index)
     window.location.href = "taskDetailsEdit.html"
+    localStorage.setItem('currentTaskId',JSON.stringify(index))
+    
+
 }
 
 function detailedViewContent()
-{
+{   
+
     //Get the local storage items 
     //Parse the local storage items
     //Get the item for the currently selected item (via button id?)
     taskIDString = JSON.parse(localStorage.getItem('currentTaskId')); //Gets the ID of the current button (position within the local storage array)
     array = JSON.parse(localStorage.getItem('projectBacklogItemArray')); //Gets the entire array
     elementNum = parseInt(taskIDString);
+    
     currentTask = array[elementNum];
+    console.log(currentTask)
     document.getElementById('taskName').setAttribute('value',currentTask.taskName);
     document.getElementById('taskDescription').value = currentTask.taskDescription
     switch (currentTask.taskType){
