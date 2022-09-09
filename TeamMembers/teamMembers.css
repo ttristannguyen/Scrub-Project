@@ -1,9 +1,9 @@
 #addTeamMembers{
-    position: absolute;
+    position: fixed;
+    left: 55%;
     width: 100%;
     bottom: 5%
-
-    
+  
 }
 .mdl-cell {
     background: #bdbdbd;
@@ -12,3 +12,4 @@
     color: #424242;
     font-weight: bold;
   }
+
