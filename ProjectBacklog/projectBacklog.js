@@ -147,6 +147,7 @@ function deletePBI()
         array = array.filter(n => n) 
         localStorage.setItem('projectBacklogItemArray',JSON.stringify(array));
         location.reload();  
+        console.log("A")
     }
     
     
