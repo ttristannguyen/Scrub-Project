@@ -67,10 +67,12 @@ function onProjectBacklogLoad()
     array = JSON.parse(localStorage.getItem('projectBacklogItemArray'));
     let htmlElements = "";
     for (let i = 0; i < array.length; i++) {
-        let taskName = array[i].taskName; //this is the name of the task from the new object
-        let priority = array[i].taskPriority; //Gets the priority for dynamic entering
-        let storyPoints = array[i].taskStoryPoint;
-       htmlElements += ' <div class = "mdl-cell mdl-cell--3-col graybox" style = "position: relative; top: 90%"' + 'id=' + '"' + i + '"' + '>' + "<p id = 'taskText'>" + taskName + '<br>' + "Priority: " + priority + '<br>' +"Story Points: " + storyPoints + "<br>" + "<\p>" + '</div>';
+        if (i !== null){
+            let taskName = array[i].taskName; //this is the name of the task from the new object
+            let priority = array[i].taskPriority; //Gets the priority for dynamic entering
+            let storyPoints = array[i].taskStoryPoint;
+            htmlElements += ' <div class = "mdl-cell mdl-cell--3-col graybox" style = "position: relative; top: 90%"' + 'id=' + '"' + i + '"' + '>' + "<p id = 'taskText'>" + taskName + '<br>' + "Priority: " + priority + '<br>' +"Story Points: " + storyPoints + "<br>" + "<\p>" + '</div>';
+        }
     }
     let taskPlacement = document.getElementById("taskPlacement");
     taskPlacement.innerHTML = htmlElements;
@@ -88,9 +90,23 @@ function onProjectBacklogLoad()
                 createDetailedView()
                 localStorage.setItem('currentTaskId',JSON.stringify(button.id))
             };
+            
+            let button2 = document.createElement('button');
+            button2.type = 'button';
+            button2.innerHTML = 'Delete';
+            button2.className = 'btn-styled_del';
+            button2.id = "" + j + "";
+            button2.onclick = function() {
+                deletePBI()
+                localStorage.setItem('currentTaskId',JSON.stringify(button2.id))
+            };
+
             let id = j.toString();
             let container = document.getElementById(id);
             container.appendChild(button);
+            container.appendChild(button2);
+
+
     }
 
 }
@@ -100,6 +116,21 @@ function addTaskOnClick()
     window.location.href = 'taskCreation.html'   
 }
 
+function deletePBI()
+{ 
+    
+    if (confirm("Are you sure you wanna delete the task ?")) {
+        array = JSON.parse(localStorage.getItem('projectBacklogItemArray'));
+        taskIDString = JSON.parse(localStorage.getItem('currentTaskId'));
+        elementNum = parseInt(taskIDString);
+        delete array[elementNum];
+        array = array.filter(n => n) 
+        localStorage.setItem('projectBacklogItemArray',JSON.stringify(array));
+        location.reload();  
+    }
+    
+    
+}
 function createDetailedView()
 {
     window.location.href = "taskDetailsEdit.html"
