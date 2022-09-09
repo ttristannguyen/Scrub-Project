@@ -1,12 +1,33 @@
-#addTaskButton{
-    position: fixed;
-    left: 55%;
-    width: 100%;
-    bottom: 5%
-    
 
+.body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+#addTaskButton{
+    position: absolute;
+    left: 45%;
+    width: 120px;
+    bottom: 5%;
     
 }
+
+
 .mdl-cell {
     background: #bdbdbd;
     padding: 120px 0;
@@ -17,10 +38,12 @@
     font-weight: bold, ridge;
     text-align: center;
     max-height: 100px;
-    max-width: 320px;
-    margin: 10px;
+    max-width: 20%;
     font-size: medium;
-    font-weight: bold;
+    font-weight:bold;
+    position: relative;
+    left: 80px
+    
     
     
     
@@ -29,12 +52,13 @@
 #taskText {
     font-size: medium;
     font-weight: bold;
-    position: absolute;
-    top: 30%;
-    /*text-align: center; */
-    left: 20%;
+    position: relative;
+    top: -60px
+    /* text-align: center; */
+
 }
-.btn-styled {
+
+.mdl-selectfield__select{
     position: absolute;
     top: 80%;
     text-align: center;
@@ -52,3 +76,27 @@
     /* left: 20%;*/
 }
 
+    left: 87%;
+    top: 8%;
+    width: 10%
+
+}
+#filterText {
+    position: absolute;
+    left: 87%;
+    top: 4%;
+    width: 10%;
+    font-weight: lighter;
+    font-size: medium;
+    
+}
+#deleteBtn {
+    position: relative;
+    right: 113px;
+    top: 160px;
+}
+#detailViewBtn {
+    position: relative;
+    bottom: 60px;
+    right: 4px;
+}

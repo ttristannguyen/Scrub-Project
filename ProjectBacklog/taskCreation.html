@@ -6,116 +6,178 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <script src="projectBacklog.js"></script>
 <title>CREATE YOUR TASK</title>
+<link rel="stylesheet" href="taskCreation.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">    
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
 
 <!-- CSS -->
 <style>
-.taskCreationForm {
-font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-font-size: 0.8em;
-width: 20em;
-padding: 1em;
-border: 1px solid #ccc;
-max-width: 500px;
-margin: auto;
-}
-
-.taskCreationForm * {
-box-sizing: border-box;
-}
-
-.taskCreationForm fieldset {
-border: none;
-padding: 0;
-}
-
-.taskCreationForm legend,
-.taskCreationForm label {
-padding: 0;
-font-weight: bold;
-}
-
-.taskCreationForm label.choice {
-font-size: 0.9em;
-font-weight: normal;
-}
-
-.taskCreationForm input[type="text"],
-.taskCreationForm input[type="tel"],
-.taskCreationForm input[type="email"],
-.taskCreationForm input[type="datetime-local"],
-.taskCreationForm select,
-.taskCreationForm textarea {
-display: block;
-width: 100%;
-border: 1px solid #ccc;
-font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-font-size: 0.9em;
-padding: 0.3em;
-}
-
-.taskCreationForm textarea {
-height: 100px;
-}
-
-.taskCreationForm button {
-padding: 1em;
-border-radius: 0.5em;
-background: #eee;
-border: none;
-font-weight: bold;
-margin-top: 1em;
-}
-
-.taskCreationForm button:hover {
-background: #ccc;
-cursor: pointer;
-}
+    .taskCreationForm {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 0.8em;
+    width: 25%;
+    padding: 1em;
+    border: 1px solid #ccc;
+    }
+    
+    .taskCreationForm * {
+    box-sizing: border-box;
+    }
+    
+    .taskCreationForm fieldset {
+    border: none;
+    padding: 0;
+    }
+    
+    .taskCreationForm legend,
+    .taskCreationForm label {
+    padding: 0;
+    font-weight: bold;
+    }
+    
+    .taskCreationForm label.choice {
+    font-size: 0.9em;
+    font-weight: normal;
+    }
+    
+    .taskCreationForm input[type="text"],
+    .taskCreationForm input[type="tel"],
+    .taskCreationForm input[type="email"],
+    .taskCreationForm input[type="datetime-local"],
+    .taskCreationForm select,
+    .taskCreationForm textarea {
+    display: block;
+    width: 100%;
+    border: 1px solid #ccc;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 0.9em;
+    padding: 0.3em;
+    }
+    
+    .taskCreationForm textarea {
+    height: 100px;
+    }
+    
+    .taskCreationForm button {
+    padding: 1em;
+    border-radius: 0.5em;
+    background: #eee;
+    border: none;
+    font-weight: bold;
+    margin-top: 1em;
+    }
+    
+    .taskCreationForm button:hover {
+    background: #ccc;
+    cursor: pointer;
+    }
+    .mdl-textfield__label{
+        text-align: center;
+        font-size: small;
+    }
+    .mdl-selectfield {
+        font-size: medium;
+    }
 </style>
 
 </head>
+
 <body onload="onTaskCreationLoad()">
 
-<form class="taskCreationForm" method="get" >
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+            mdl-layout--fixed-header"> <!-- Layout Starts Here-->
 
-<p>
-<label>Task name: 
-<input type="text" name="taskName" id = "taskName" required>
-</label> 
-</p>
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <div class="mdl-layout-spacer"></div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                  mdl-textfield--floating-label mdl-textfield--align-right">
+      </div>
+    </div> <!-- Layout Ends Here-->
+  </header>
 
-<p>
-<label>Task description: 
-<textarea  name="taskDescription" id = "taskDescription" maxlength = "500" required>
-</textarea> 
-</p>
+  <div class="mdl-layout__drawer"> <!-- Nav Bar Starts Here-->
+    <span class="mdl-layout-title"><b>Create a Task</b></span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="../ProjectBacklog/projectBacklog.html">Project Backlog</a>
+      <a class="mdl-navigation__link" href="../SprintList/sprintList.html">Sprint List</a>
+      <a class="mdl-navigation__link" href="../TeamMembers/teamMembers.html">Team Members</a>
+    </nav>
+  </div> <!-- Nav Bar Ends Here-->
+  <main class="mdl-layout__content">
 
-<p>
-<label>Task type 
-<input  type="text" name="taskType" id = "taskType" required>
-</label>
-</p>
+    <div class="page-content"> <!-- Page Content Starts Here-->
+        
+        <!-- <div class = "mdl-grid"> -->
+        <!-- <div class = "mdl-cell mdl-cell--4-col"></div> -->
+        <!-- <div class = "mdl-cell mdl-cell--4-col"> -->
+        <form class="taskCreationForm" method="get">  
+            
+        <p>
+        <label>Task name: 
+            <input type="text" name="taskName" id = "taskName" required>
+        </label> 
+        </p>
+        <p>
+            <label>Task description: 
+                <textarea  name="taskDescription" id = "taskDescription" maxlength = "500" required></textarea> 
+        </p>
+            
+        <p>
+            <label>Task type 
+                <div class="mdl-selectfield mdl-js-selectfield">
+                    <select class="mdl-selectfield__select" id="taskType" name="taskType">
+                      <option value="UI">Ui Based</option>
+                      <option value="Testing">Testing</option>
+                      <option value="Core">Core</option>
+                      
+                
+                    </select>
+                </div>
+            </label>
+        </p>
 
-<p>
-    <label>Story points for task (1-4):
-        <input type="range" min="0" max="4" value="0" step="1" id="taskStoryPoint">
-    </label>
-    </p>
+            
+        <p>
+            <label>Story points for task (1-4):
+                    <input type="range" min="1" max="4" value="0" step="1" id="taskStoryPoint">
+            </label>
+        </p>
+            
+        <fieldset>
+            <legend>Priority</legend>
 
-<fieldset>
-<legend>Priority</legend>
-<p><label class="choice"> <input id = "priority" type="radio" required value="High Priority"> High Priority </label></p>
-<p><label class="choice"> <input id = "priority" type="radio"  required value="Medium level priority"> Medium level priority </label></p>
-<p><label class="choice"> <input id = "priority" type="radio" required value="Low priority"> Low priority </label></p>
-</fieldset>
+                <p>
+                    <input id = "priority" type="radio" value="High Priority" name = "priority" >
+                        <label class="choice">High Priority</label><br>
+                </p> 
+                <p>
+                    <input id = "priority" type="radio" value="Medium Priority" name = "priority" >
+                        <label class="choice">Medium Priority</label><br>
+                </p>
+                <p>
+                    <input id = "priority" type="radio" value="Low Priority" name = "priority" >
+                        <label class="choice">Low Priority</label><br>
+                </p> 
+                
 
+        </fieldset>
+            
+        </form>
 
+        <p><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--blue-400" id="taskCreationDoneBtn" onClick="taskCreationOnClick()">Done</button></p>
+            
+        <p><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400" id="taskCreationBackBtn" onClick="taskCreationBackOnClick()">Back</button></p>
 
-</form>
+    </div> <!-- Page Content Ends Here-->
 
+  </main>
 
-<p><button id="taskCreationDoneBtn" onClick="taskCreationOnClick()">Done</button></p>
-
-<p><button id="taskCreationBackBtn" onClick="taskCreationBackOnClick()">Back</button></p>
+</div> <!-- Layout Ends Here-->
 
 </body>
+<script>
+</script>
 </html>

@@ -7,13 +7,13 @@ function addSprintOnClick()
 function onSprintCreationLoad()
 {
     if (localStorage.getItem('sprintBacklogArray') )
-{
-    console.log("TEST")
-}
-else
-{
-    localStorage.setItem('sprintBacklogArray',JSON.stringify([]));
-}
+    {
+        console.log("TEST")
+    }
+    else
+    {
+        localStorage.setItem('sprintBacklogArray',JSON.stringify([]));
+    }
 }
 
 let sprintObjectObj = class {
@@ -70,7 +70,7 @@ function onSprintListLoad()
             button.type = 'button';
             button.innerHTML = 'See/edit details';
             button.className = 'btn-styled';
-            button.id = "" + j + "";
+            button.id = j.toString();
             button.onclick = function() {
                 //I want to be able to click on the button, be taken to a 'detailed view' page, where i can possibly make a change to the task. 
                 //This will edit the task in local storage.
@@ -86,5 +86,5 @@ function onSprintListLoad()
 
 function manageSprintView()
 {
-    window.location.replace('manageMySprint.html');
+    window.location.replace('sprintManagement.html');
 }
