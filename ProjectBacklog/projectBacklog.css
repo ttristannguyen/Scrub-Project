@@ -31,12 +31,24 @@
     font-weight: bold;
     position: absolute;
     top: 30%;
-    /* text-align: center; */
+    /*text-align: center; */
     left: 20%;
 }
 .btn-styled {
     position: absolute;
-    top: 60%;
+    top: 80%;
     text-align: center;
     left: 30%;
 }
+
+#taskTextSprint { 
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    bottom: 50px; 
+
+    /* left: 20%;*/
+}
+

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="projectBacklog.css">
+    <link rel="stylesheet" href="../ProjectBacklog/projectBacklog.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">    
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -11,7 +11,7 @@
 </head>
 
 <body onload="onSprintListLoad()">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
             mdl-layout--fixed-header"> <!-- Layout Starts Here-->
 
   <header class="mdl-layout__header">
@@ -26,7 +26,7 @@
   <div class="mdl-layout__drawer"> <!-- Nav Bar Starts Here-->
     <span class="mdl-layout-title"><b>Sprint List</b></span>
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="projectBacklog.html">Project Backlog</a>
+      <a class="mdl-navigation__link" href="../ProjectBacklog/projectBacklog.html">Project Backlog</a>
       <a class="mdl-navigation__link" href="../SprintList/sprintList.html">Sprint List</a>
       <a class="mdl-navigation__link" href="../TeamMembers/teamMembers.html">Team Members</a>
     </nav>
@@ -36,7 +36,7 @@
     <div class="page-content"> <!-- Page Content Starts Here-->
 
         <!-- Add Task Button-->
-        <div style="text-align: center;" id = "addTaskButton" >
+        <div id = "addTaskButton" >
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
             <!-- onclick= "addSprintOnClick()" ->
                 Add Sprint
