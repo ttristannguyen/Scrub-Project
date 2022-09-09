@@ -63,8 +63,21 @@
     left: 87%;
     top: 8%;
     width: 10%
-
 }
+
+#taskTextSprint { 
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    bottom: 50px; 
+
+    /* left: 20%;*/
+}
+
+
+
 #filterText {
     position: absolute;
     left: 87%;
