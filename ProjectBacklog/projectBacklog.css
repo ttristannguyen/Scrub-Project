@@ -60,9 +60,9 @@
 
 .mdl-selectfield__select{
     position: absolute;
-    top: 80%;
-    text-align: center;
-    left: 30%;
+    left: 87%;
+    top: 8%;
+    width: 10%
 }
 
 #taskTextSprint { 
@@ -76,9 +76,7 @@
     /* left: 20%;*/
 }
 
-    left: 87%;
-    top: 8%;
-    width: 10%
+
 
 }
 #filterText {
