@@ -9,6 +9,7 @@ function onSprintCreationLoad()
     if (localStorage.getItem('sprintBacklogArray') )
     {
         console.log("TEST")
+        onSprintListLoad()
     }
     else
     {
