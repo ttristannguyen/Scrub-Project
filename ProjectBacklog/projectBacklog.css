@@ -97,3 +97,14 @@
     bottom: 60px;
     right: 4px;
 }
+
+.pbiBox {
+    border: 0;
+    border-radius: 15px;
+    background-color: #edeef6;
+    box-shadow: 0px 0px 10px;
+}
+
+.pbiBox:hover{
+    box-shadow: inset 0px 0px 10px;
+}
