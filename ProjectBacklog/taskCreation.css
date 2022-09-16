@@ -17,3 +17,9 @@ form {
     width:250px;
     top: 30px;
     }
+#errorMessage {
+    position: absolute;
+    color: red;
+    left: 38%;
+    bottom: 30px;
+}
