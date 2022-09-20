@@ -1,15 +1,18 @@
-#addTeamMembers{
-    position: fixed;
-    left: 55%;
-    width: 100%;
-    bottom: 5%
-  
+.page-content {
+    margin: 5%;
 }
+
+#addMemberButton {
+    position: fixed;
+    bottom: 5%;
+    left: 45%;
+    width: 300px;
+}
+
 .mdl-cell {
     background: #bdbdbd;
     padding: 60px 0;
     text-align: center;
     color: #424242;
     font-weight: bold;
-  }
-
+}

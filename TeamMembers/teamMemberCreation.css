@@ -1,0 +1,32 @@
+.page-content {
+    margin: 5%;
+}
+
+#teamMemberCreationDoneButton{
+    position: absolute;
+    left:46%;
+    top: 53%;
+
+    width: 120px;
+}
+
+#teamMemberCreationBackButton{
+    position: absolute;
+    left:46%;
+    top: 60%;
+    width: 120px;
+}
+
+form {  
+    position: relative;
+    margin: 0 auto; 
+    width:250px;
+    top: 30px;
+    }
+    
+#errorMessage {
+    position: absolute;
+    color: red;
+    left: 38%;
+    bottom: 30px;
+}

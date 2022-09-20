@@ -1,0 +1,25 @@
+#taskCreationDoneBtn{
+    position: absolute;
+    left:46%;
+    top: 73%;
+
+    width: 120px;
+}
+#taskCreationBackBtn{
+    position: absolute;
+    left:46%;
+    top: 80%;
+    width: 120px;
+}
+form { 
+    position: relative;
+    margin: 0 auto; 
+    width:250px;
+    top: 30px;
+    }
+#errorMessage {
+    position: absolute;
+    color: red;
+    left: 38%;
+    bottom: 30px;
+}

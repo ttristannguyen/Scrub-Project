@@ -4,14 +4,14 @@
 <head>
     <link rel="stylesheet" href="teamMembers.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">    
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-
+    <script src = "teamMembers.js"></script>
     <title></title>
 </head>
 
-<body onload="onTeamMembersLoad()">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
             mdl-layout--fixed-header"> <!-- Layout Starts Here-->
 
   <header class="mdl-layout__header">
@@ -19,14 +19,6 @@
       <div class="mdl-layout-spacer"></div>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                   mdl-textfield--floating-label mdl-textfield--align-right">
-        <!-- <label class="mdl-butt`on mdl-js-button mdl-button--icon"
-               for="fixed-header-drawer-exp">
-          <i class="material-icons">search</i>
-        </label>
-        <div class="mdl-textfield__expandable-holder">
-          <input class="mdl-textfield__input" type="text" name="sample"
-                 id="fixed-header-drawer-exp">
-        </div> -->
       </div>
     </div> <!-- Layout Ends Here-->
   </header>
@@ -43,21 +35,19 @@
 
     <div class="page-content"> <!-- Page Content Starts Here-->
 
-        <!-- Add Team Members-->
+        <!-- Add Team Members Button-->
 
-        <div id = "addTeamMember" >
+        <div style="text-align: left;" id = "addMemberButton" >
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-          <!-- onclick= "addTeamMemberOnClick()" ->
+          onclick= "addTeamMemberOnClick()">
               Add Team Member
           </button>
       </div>
 
       <div class = "mdl-grid" id = "memberPlacement">
-
        </div>
 
     </div> <!-- Page Content Ends Here-->
-
   </main>
 
 </div> <!-- Layout Ends Here-->

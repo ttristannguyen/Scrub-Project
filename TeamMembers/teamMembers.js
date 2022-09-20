@@ -1,139 +1,215 @@
-// This file aims at providing the functionality to add a team member in the Team Member page
-// This is done by the following steps: 
-// Step 1: User clicks on Add Team Member
-// Step 2: This takes the user to a new page called ...
-// Step 3: This page includes a form-style data input 
-// Step 4: User enters their details about the Team Member
-// Step 5: The user presses done when they have entered all the required fields 
-// Step 6: The details are then added to local storage object under the KEY ...
-// Step 7: The user is returned to the main Team Member page
-// Step 8: The project backlog item shows
-// Step 9: When the project backlog div item is created dynamically, a button is also dynamically created at the bottom right hand corner, this 
-//          button can allow a user to see the detailed view of the  task DONE
-// step 10: When viewing the detailed view of the task, the details are not editable, however, a user should be able to "edit task details" 
-// Step 11: This "edit task details" button takes a user to a pre-filled - editable - form, allowing them to edit any detail in the form that they want. 
 
-//let projectBacklogItemsArray = []; //This will store multiple instances of the PBI objects
-
-function onTmCreationLoad()
+function onTeamMemberCreationLoad()
 {
-    if (localStorage.getItem('teamMembersArray') )
+    // localStorage.setItem('currentTaskID',JSON.stringify(0))
+    if (localStorage.getItem('teamMemberArray') )
 {
     console.log("TEST")
 }
 else
 {
-    localStorage.setItem('teamMembersArray',JSON.stringify([]));
+    localStorage.setItem('teamMemberArray',JSON.stringify([]));
 }
 
 }
 
-let teamMembers = class {
-    constructor(first, last, email)
+let teamMember = class {
+    constructor(firstName, lastName, emailAddress)
     {
-        this.firstName = first;
-        this.lastName = last;
-        this.emailAddress = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.emailAddress = emailAddress;
     }
+
 }
 
-function tmCreationOnClick()
+function teamMemberCreationOnClick()
 {
-    first = document.getElementById("tmFirstName").value 
-    last = document.getElementById("tmLastName").value 
-    email = document.getElementById("tmEmail").value 
+    firstName = document.getElementById("firstName").value 
+    lastName = document.getElementById("lastName").value 
+    emailAddress= document.getElementById("emailAddress").value 
+    console.log(firstName)
+    console.log(lastName)
+    if (firstName == null || lastName == null || emailAddress == null){
+        errorMessageLocation = document.getElementById('errorMessage')
+        errorMessageLocation.innerHTML = "Please Fill Out the First Name, Last Name and Email Address"
+        return
+    }
 
-    let teamMembersObj = new teamMembers(first,last,email);
-    teamMembersParsed = JSON.parse(localStorage.getItem('teamMembersArray'))
-    teamMembersParsed.push(teamMembersObj)
-    localStorage.setItem('teamMembersArray',JSON.stringify(teamMembersParsed));
-
+    let teamMemberObj = new teamMember(firstName,lastName,emailAddress);
+    teamMembersParsed = JSON.parse(localStorage.getItem('teamMemberArray'))
+    teamMembersParsed.push(teamMemberObj)
+    localStorage.setItem('teamMemberArray',JSON.stringify(teamMembersParsed));
+    window.location = 'teamMembers.html'
 }
 
-function tmCreationBackOnClick()
+function teamMemberCreationBackOnClick()
 {
     window.location = 'teamMembers.html'
 }
 
 
-function onTeamMembersLoad()
+function onTeamMemberLoad()
 {
     //Run through entirety of local storage. Parse the elements back into objects 
-    //for each object, print the summarised info into a dynamically created div element 
-    array = JSON.parse(localStorage.getItem('teamMembersArray'));
+    //for each object, print the summarised info into a dynamically created div element
+    array = JSON.parse(localStorage.getItem('teamMemberArray'));
     let htmlElements = "";
     for (let i = 0; i < array.length; i++) {
-        let memberFirst = array[i].first; 
-        let memberLast= array[i].last; 
-       htmlElements += ' <div class = "mdl-cell mdl-cell--3-col graybox" style = "position: relative; top: 90%"' + 'id=' + '"' + i + '"' + '>' + "<p id = 'taskText'>" + memberFirst + '<br>' + "Priority: " + memberLast+ '<br>' + "<\p>" + '</div>';
+        let firstName = array[i].firstName; //this is the name of the task from the new object
+        let lastName = array[i].lastName; //Gets the priority for dynamic entering
+        console.log(lastName)
+        htmlElements += `<div class = 'mdl-cell mdl-cell--3-col graybox pbiBox' onclick = createDetailedView(${i}) style = 'position: relative; top: 90%' id="${i}"><p id = 'taskText'>${taskName}<br>Priority: ${priority}<br>Story Points:${storyPoints}<\p></div>` +
+        // "<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--green-400' + onclick = 'createDetailedView()' id = 'detailViewBtn'> See/Edit Details </button>" + 
+        `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = 'deletePBI(${i})' id = 'deleteBtn'> Delete </button>`;
+        
     }
     let memberPlacement = document.getElementById("memberPlacement");
     memberPlacement.innerHTML = htmlElements;
 
-    for (let j = 0; j<array.length; j++)
-    {
-            let button = document.createElement('button');
-            button.type = 'button';
-            button.innerHTML = 'See/edit details';
-            button.className = 'btn-styled';
-            button.id = "" + j + "";
-            button.onclick = function() {
-                //I want to be able to click on the button, be taken to a 'detailed view' page, where i can possibly make a change to the task. 
-                //This will edit the task in local storage.
-                teamMemberDetailedView()
-                localStorage.setItem('currentMemberId',JSON.stringify(button.id))
-            };
-            let id = j.toString();
-            let container = document.getElementById(id);
-            container.appendChild(button);
-    }
+    
+
+    // for (let j = 0; j<elements.length; j++)
+    // {
+        
+    //     let button = document.createElement('button');
+    //     button.type = 'button';
+    //     button.innerHTML = 'See/edit details';
+    //     button.className = 'btn-styled';
+    //     button.id = "" + j + "";
+    //     button.onclick = function() {
+    //         //I want to be able to click on the button, be taken to a 'detailed view' page, where i can possibly make a change to the task. 
+    //         //This will edit the task in local storage.
+    //         createDetailedView()
+    //         localStorage.setItem('currentTaskId',JSON.stringify(button.id))
+    //     };
+    //     console.log(button)
+            
+    //     let button2 = document.createElement('button');
+    //     button2.type = 'button';
+    //     button2.innerHTML = 'Delete';
+    //     button2.className = 'btn-styled_del';
+    //     button2.id = "" + j + ""
+    //     button2.onclick = function() {
+    //         deletePBI()
+    //         localStorage.setItem('currentTaskId',JSON.stringify(button2.id))
+    //     };
+
+    //     let id = j.toString();
+    //     let container = document.getElementById(id);
+    //     console.log(container)
+    //     container.appendChild(button);
+    //     container.appendChild(button2);
+
+
+    // }
 
 }
 
 function addTeamMemberOnClick()
 {
-    window.location.href = 'tmCreation.html'   
+    window.location.href = 'teamMemberCreation.html'
 }
 
-function teamMemberDetailedView()
-{
-    window.location.href = "teamMemberDetailedView.html"
-    //DO this page
+function deletePBI(index){
+    
+    if (confirm("Are you sure you wanna delete this Team Member ?")) {
+        array = JSON.parse(localStorage.getItem('teamMemberArray'));
+        // taskIDString = JSON.parse(localStorage.getItem('currentTaskId'));
+        
+        // elementNum = parseInt(taskIDString);
+        delete array[index];
+        array = array.filter(n => n) 
+        localStorage.setItem('teamMemberArray',JSON.stringify(array));
+        location.reload();  
+        console.log("A")
+    }
+ 
 }
 
-function teamMemberDetailedViewOnLoad()
+/*
+function createDetailedView(index)
 {
+    // console.log(index)
+    window.location.href = "taskDetailsEdit.html"
+    localStorage.setItem('currentTaskId',JSON.stringify(index))
+    
+
+}
+
+function detailedViewContent()
+{   
+
     //Get the local storage items 
     //Parse the local storage items
     //Get the item for the currently selected item (via button id?)
-    taskIDString = JSON.parse(localStorage.getItem('currentMemberId')); //Gets the ID of the current button (position within the local storage array)
-    array = JSON.parse(localStorage.getItem('teamMembersArray')); //Gets the entire array
+    taskIDString = JSON.parse(localStorage.getItem('currentTaskId')); //Gets the ID of the current button (position within the local storage array)
+    array = JSON.parse(localStorage.getItem('projectBacklogItemArray')); //Gets the entire array
     elementNum = parseInt(taskIDString);
-    currentMember = array[elementNum];
-    document.getElementById('teamMemberFirstName').setAttribute('value',currentMember.first);
-    document.getElementById('teamMemberLastName').setAttribute('value',currentMember.last);
-    document.getElementById('teamMemberEmail').setAttribute('value',currentMember.email);
+    
+    currentTask = array[elementNum];
+    console.log(currentTask)
+    document.getElementById('taskName').setAttribute('value',currentTask.taskName);
+    document.getElementById('taskDescription').value = currentTask.taskDescription
+    switch (currentTask.taskType){
+        case "Ui":
+            document.getElementById('taskType').value = "UI";
+            break;
+        case "Testing":
+            document.getElementById('taskType').value = "Testing";
+            break;
+        case "Core":
+            document.getElementById('taskType').value = "Core";
+            break;
+        default:
+            console.log("A")
+            break;
+    }
+    document.getElementById('taskStoryPoint').setAttribute('value',currentTask.taskStoryPoint);
+    let inputTag = document.getElementsByTagName('input')
+    for (var i = 0 ; i < inputTag.length ; i++) {
+        if (inputTag[i].type == 'radio' && inputTag[i].value == currentTask.taskPriority){
+            inputTag[i].checked = true
+        }
+    }
+    // editDetailPriority.checked = true;
+    
 
 }
 
 function saveEditedDetails()
 {
-    first = document.getElementById("firstName").value 
-    last = document.getElementById("lastName").value 
-    email = document.getElementById("email").value 
-    let teamMembersObj = new TeamMembers(first,last,email);
-    array = JSON.parse(localStorage.getItem('teamMembersArray'))
-    memberIDString = JSON.parse(localStorage.getItem('currentMemberId'));
-    elementNum = parseInt(memberIDString);    
-    array[elementNum] = teamMembersObj; //FIND AND REPLACE
+    taskName = document.getElementById("taskName").value 
+    taskDescription = document.getElementById("taskDescription").value 
+    taskType = document.getElementById("taskType").value 
+    taskStoryPoint = document.getElementById("taskStoryPoint").value 
+    taskPriorityTag = document.getElementsByTagName('input')
+    
+    if (taskName == "" || taskDescription == "" || taskType == ""){
+        console.log("taskName " + taskName )
+        console.log("taskdesc " + taskDescription )
+        console.log("tasktype " + taskType)
+        return 
+    }
+    for (var i = 0 ; i < taskPriorityTag.length ; i++) {
+        if (taskPriorityTag[i].type == 'radio' && taskPriorityTag[i].checked){ var taskPriority = taskPriorityTag[i].value}
+        
+    }
+    console.log(taskPriority)
+    let productBackLogItemObj = new projectBacklogItem(taskName,taskDescription,taskType,taskStoryPoint,taskPriority);
+    array = JSON.parse(localStorage.getItem('projectBacklogItemArray'))
+    taskIDString = JSON.parse(localStorage.getItem('currentTaskId'));
+    elementNum = parseInt(taskIDString);    
+    array[elementNum] = productBackLogItemObj; //FIND AND REPLACE
     //Need to re-set back into local storage
-    localStorage.setItem('teamMembersArray',JSON.stringify(array));
+    localStorage.setItem('projectBacklogItemArray',JSON.stringify(array));
     console.log("TEST 1")
+    window.location.replace('projectBacklog.html')
 
 }
 
 function editDetailBackOnClick()
 {
     console.log("TEST 2");
-    window.location.replace('teamMembers.html')
-}
+    window.location.replace('projectBacklog.html')
+}*/
