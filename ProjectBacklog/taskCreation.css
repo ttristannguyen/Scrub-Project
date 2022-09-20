@@ -1,14 +1,14 @@
 #taskCreationDoneBtn{
     position: absolute;
-    left:46%;
-    top: 73%;
+    left:66%;
+    top: 40%;
 
     width: 120px;
 }
 #taskCreationBackBtn{
     position: absolute;
-    left:46%;
-    top: 80%;
+    left:66%;
+    top: 47%;
     width: 120px;
 }
 form { 
@@ -20,6 +20,6 @@ form {
 #errorMessage {
     position: absolute;
     color: red;
-    left: 38%;
+    left: 36%;
     bottom: 30px;
 }
