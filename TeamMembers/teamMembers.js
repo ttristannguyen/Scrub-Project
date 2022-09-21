@@ -36,7 +36,7 @@ function addTeamMemberSaveOnClick()
     teamMemberLastName = document.getElementById("teamMemberLastName").value 
     teamMemberEmail = document.getElementById("teamMemberEmail").value
     teamMemberSprintInvolvement = "None" //Just for now
-    teamMemberAccumulatedHours = 0 //Just for now
+    teamMemberAccumulatedHours = [] //Just for now
 
     if (teamMemberFirstName == null || teamMemberLastName == null || teamMemberEmail == null){
         errorMessageLocation = document.getElementById('errorMessage')
@@ -129,7 +129,46 @@ function teamMemberDetailedView()
     currentTeamMember = array[elementNum];
     document.getElementById('teamMemberName').innerHTML = array[elementNum].teamMemberFirstName + array[elementNum].teamMemberLastName
     document.getElementById('teamMemberEmail').innerHTML = array[elementNum].teamMemberEmail
-    document.getElementById('currentSprintName').innerHTML = array[elementNum].teamMemberEmail
-    
+    document.getElementById('currentSprintName').innerHTML = array[elementNum].teamMemberSprintInvolvement
+    tmArray = JSON.parse(localStorage.getItem('teamMemberArray'))
+    accHours = 0
+    loggedHours = tmArray[elementNum].teamMemberAccumulatedHours
+    for (let i = 0; i < loggedHours.length; i++) 
+    {
+        accHours += parseInt(loggedHours[i][1]);
+    }
+    document.getElementById('accumulatedHours').innerHTML = accHours;
 
+
+}
+function checkOnClick()
+{
+    let startDateStr = (document.getElementById('dateStarted').value);
+    let startDate = new Date(startDateStr);
+    let endDateStr = (document.getElementById('dateEnded').value);
+    let endDate = new Date (endDateStr);
+    tmArray = JSON.parse(localStorage.getItem('teamMemberArray'));
+    elementNum = parseInt(teamMemberString);
+    tmHours = tmArray[elementNum].teamMemberAccumulatedHours
+    hoursAccumulatedInPeriod = 0
+    for (let i = 0; i < tmHours.length; i++) 
+    {
+        let dateStr = tmHours[i][0]
+        let dateObj = new Date(dateStr)
+        if (dateObj >= startDate)
+        {
+            if (dateObj <= endDate)
+            {
+                hoursAccumulatedInPeriod += parseInt(tmHours[i][1])
+            }
+            
+        }
+    }
+    var Difference_In_Time = endDate.getTime() - startDate.getTime(); 
+    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+    aveDaily = Math.ceil(hoursAccumulatedInPeriod/Difference_In_Days);
+   document.getElementById('averageWorkPerDay').innerText = aveDaily + 'hrs'; 
+
+
+    document.getElementById('hoursAccDateRange').innerText = hoursAccumulatedInPeriod + 'hrs';
 }

@@ -1,7 +1,16 @@
 body{
 	background-color: #eee;
 }
+.cardDiv
+{
+	padding: 10px;
+}
+.cardDiv2
+{
+	padding: 10px;
+}
 .card{
+
 	background-color: #fff;
 	width: 280px;
 	border-radius: 33px;
