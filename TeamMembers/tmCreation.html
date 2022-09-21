@@ -71,36 +71,34 @@ cursor: pointer;
 </style>
 
 </head>
-<body onload="onTmCreationLoad()">
+<body onload="onTeamMemberCreationLoad()">
 
 <form class="tmCreationForm" method="get" >
 
 <p>
 <label>Team Member First Name: 
-<input type="text" name="tmFirstName" id = "tmFirstName" required>
+<input type="text" name="teamMemberFirstName" id = "teamMemberFirstName" required>
 </label> 
 </p>
 
 <p>
     <label>Team Member Last Name: 
-    <input type="text" name="tmLastName" id = "tmLastName" required>
+    <input type="text" name="teamMemberLastName" id = "teamMemberLastName" required>
     </label> 
     </p>
 
 <p>
 <label>Team Member Email: 
-<textarea  name="tmEmail" id = "tmEmail" required>
+<textarea  name="teamMemberEmail" id = "teamMemberEmail" required>
 </textarea> 
 </p>
-
-
 
 </form>
 
 
-<p><button id="tmCreationDoneBtn" onClick="tmCreationOnClick()">Done</button></p>
+<p><button id="teamMemberCreationDoneBtn" onClick="addTeamMemberSaveOnClick()">Done</button></p>
 
-<p><button id="tmCreationBackBtn" onClick="tmCreationBackOnClick()">Back</button></p>
+<p><button id="teamMemberCreationBackBtn" onClick="addTeamMemberBackOnClick()">Back</button></p>
 
 </body>
 </html>
