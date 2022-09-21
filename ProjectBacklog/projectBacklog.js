@@ -37,7 +37,7 @@ let projectBacklogItem = class {
         this.taskType = taskType;
         this.taskStoryPoint = taskStoryPoint;
         this.taskPriority = taskPriority;
-        this.tastTeamMember = taskTeamMember;
+        this.memberAssigned = null;
     }
 
 }
