@@ -1,139 +1,135 @@
-// This file aims at providing the functionality to add a team member in the Team Member page
-// This is done by the following steps: 
-// Step 1: User clicks on Add Team Member
-// Step 2: This takes the user to a new page called ...
-// Step 3: This page includes a form-style data input 
-// Step 4: User enters their details about the Team Member
-// Step 5: The user presses done when they have entered all the required fields 
-// Step 6: The details are then added to local storage object under the KEY ...
-// Step 7: The user is returned to the main Team Member page
-// Step 8: The project backlog item shows
-// Step 9: When the project backlog div item is created dynamically, a button is also dynamically created at the bottom right hand corner, this 
-//          button can allow a user to see the detailed view of the  task DONE
-// step 10: When viewing the detailed view of the task, the details are not editable, however, a user should be able to "edit task details" 
-// Step 11: This "edit task details" button takes a user to a pre-filled - editable - form, allowing them to edit any detail in the form that they want. 
+//This aims at allowing the creation of team members, displaying team members details
+//Details includes name, email.
 
-//let projectBacklogItemsArray = []; //This will store multiple instances of the PBI objects
-
-function onTmCreationLoad()
+function onTeamMemberCreationLoad()
+//This function creates the team member array for local storage 
 {
-    if (localStorage.getItem('teamMembersArray') )
+    // localStorage.setItem('currentTaskID',JSON.stringify(0))
+    if (localStorage.getItem('teamMemberArray') )
 {
     console.log("TEST")
 }
 else
+//Adding in the team member array to local storage if not already there. 
 {
-    localStorage.setItem('teamMembersArray',JSON.stringify([]));
+    localStorage.setItem('teamMemberArray',JSON.stringify([]));
+}
 }
 
-}
-
-let teamMembers = class {
-    constructor(first, last, email)
+let teamMemberItem = class {
+    constructor(teamMemberFirstName, teamMemberLastName, teamMemberEmail,teamMemberAccumulatedHours, teamMemberSprintInvolvement)
     {
-        this.firstName = first;
-        this.lastName = last;
-        this.emailAddress = email;
+        this.teamMemberFirstName = teamMemberFirstName
+        this.teamMemberLastName = teamMemberLastName
+        this.teamMemberEmail = teamMemberEmail
+        this.teamMemberAccumulatedHours = teamMemberAccumulatedHours
+        this.teamMemberSprintInvolvement = teamMemberSprintInvolvement
     }
+
 }
 
-function tmCreationOnClick()
+
+function addTeamMemberSaveOnClick()
+//When the team member "add" button is clicked, this function is called
 {
-    first = document.getElementById("tmFirstName").value 
-    last = document.getElementById("tmLastName").value 
-    email = document.getElementById("tmEmail").value 
+    teamMemberFirstName = document.getElementById("teamMemberFirstName").value 
+    teamMemberLastName = document.getElementById("teamMemberLastName").value 
+    teamMemberEmail = document.getElementById("teamMemberEmail").value
+    teamMemberSprintInvolvement = "None" //Just for now
+    teamMemberAccumulatedHours = 0 //Just for now
 
-    let teamMembersObj = new teamMembers(first,last,email);
-    teamMembersParsed = JSON.parse(localStorage.getItem('teamMembersArray'))
-    teamMembersParsed.push(teamMembersObj)
-    localStorage.setItem('teamMembersArray',JSON.stringify(teamMembersParsed));
+    if (teamMemberFirstName == null || teamMemberLastName == null || teamMemberEmail == null){
+        errorMessageLocation = document.getElementById('errorMessage')
+        errorMessageLocation.innerHTML = "Please Fill Out the team member: First and Last name and their email"
+        return
+    }
 
+
+
+    let teamMemberItem1 = new teamMemberItem(teamMemberFirstName, teamMemberLastName, teamMemberEmail,teamMemberAccumulatedHours,teamMemberSprintInvolvement);
+    teamMemberParsed = JSON.parse(localStorage.getItem('teamMemberArray'))
+    teamMemberParsed.push(teamMemberItem1)
+    localStorage.setItem('teamMemberArray',JSON.stringify(teamMemberParsed));
+    window.location = 'teamMembers.html'
 }
 
-function tmCreationBackOnClick()
+function addTeamMemberBackOnClick()
+//After adding a team member, the user is sent back to the teamMembers page
 {
     window.location = 'teamMembers.html'
 }
 
-
 function onTeamMembersLoad()
 {
-    //Run through entirety of local storage. Parse the elements back into objects 
-    //for each object, print the summarised info into a dynamically created div element 
-    array = JSON.parse(localStorage.getItem('teamMembersArray'));
-    let htmlElements = "";
-    for (let i = 0; i < array.length; i++) {
-        let memberFirst = array[i].first; 
-        let memberLast= array[i].last; 
-       htmlElements += ' <div class = "mdl-cell mdl-cell--3-col graybox" style = "position: relative; top: 90%"' + 'id=' + '"' + i + '"' + '>' + "<p id = 'taskText'>" + memberFirst + '<br>' + "Priority: " + memberLast+ '<br>' + "<\p>" + '</div>';
-    }
-    let memberPlacement = document.getElementById("memberPlacement");
-    memberPlacement.innerHTML = htmlElements;
 
-    for (let j = 0; j<array.length; j++)
+    if (localStorage.getItem('teamMemberArray') )
     {
-            let button = document.createElement('button');
-            button.type = 'button';
-            button.innerHTML = 'See/edit details';
-            button.className = 'btn-styled';
-            button.id = "" + j + "";
-            button.onclick = function() {
-                //I want to be able to click on the button, be taken to a 'detailed view' page, where i can possibly make a change to the task. 
-                //This will edit the task in local storage.
-                teamMemberDetailedView()
-                localStorage.setItem('currentMemberId',JSON.stringify(button.id))
-            };
-            let id = j.toString();
-            let container = document.getElementById(id);
-            container.appendChild(button);
+        console.log("TEST")
     }
+    else
+    //Adding in the team member array to local storage if not already there. 
+    {
+        localStorage.setItem('teamMemberArray',JSON.stringify([]));
+    }
+    //Run through entirety of local storage. Parse the elements back into objects 
+    //for each object, print the summarised info into a dynamically created div element
+    array = JSON.parse(localStorage.getItem('teamMemberArray'));
+    let htmlElements = "";
+        for (let i = 0; i < array.length; i++) 
+        {
 
-}
+            let teamMemberFirstName = array[i].teamMemberFirstName; //this is the name of the task from the new object
+            let teamMemberLastName = array[i].teamMemberLastName; //Gets the priority for dynamic entering
+                htmlElements += `<div class = 'mdl-cell mdl-cell--3-col graybox pbiBox' onclick = createTeamMemberDetailedView(${i}) ><p id = 'teamMemberText'>${teamMemberFirstName}<br> ${teamMemberLastName}</p></div>` +
+                `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = 'deleteTeamMember(${i})' id = 'deleteTeamMember'> Delete </button>`;
+        }
+
+   
+    let teamMemberPlacement = document.getElementById("teamMemberPlacement");
+    teamMemberPlacement.innerHTML = htmlElements;
+
+    }
 
 function addTeamMemberOnClick()
 {
     window.location.href = 'tmCreation.html'   
 }
 
-function teamMemberDetailedView()
-{
-    window.location.href = "teamMemberDetailedView.html"
-    //DO this page
+function deleteTeamMember(index){
+    
+    if (confirm("Are you sure you want to delete the team member ?")) {
+        array = JSON.parse(localStorage.getItem('teamMemberArray'));
+       array.splice(index,1)
+        localStorage.setItem('teamMemberArray',JSON.stringify(array));
+        location.reload();  
+
+    }
+    
 }
 
-function teamMemberDetailedViewOnLoad()
+function createTeamMemberDetailedView(index)
 {
+    window.location.href = "teamMemberDetailed.html"
+    localStorage.setItem('currentTeamMember',JSON.stringify(index))
+    
+
+}
+
+function teamMemberDetailedView()
+{   
+
     //Get the local storage items 
     //Parse the local storage items
     //Get the item for the currently selected item (via button id?)
-    taskIDString = JSON.parse(localStorage.getItem('currentMemberId')); //Gets the ID of the current button (position within the local storage array)
-    array = JSON.parse(localStorage.getItem('teamMembersArray')); //Gets the entire array
-    elementNum = parseInt(taskIDString);
-    currentMember = array[elementNum];
-    document.getElementById('teamMemberFirstName').setAttribute('value',currentMember.first);
-    document.getElementById('teamMemberLastName').setAttribute('value',currentMember.last);
-    document.getElementById('teamMemberEmail').setAttribute('value',currentMember.email);
+    teamMemberString = JSON.parse(localStorage.getItem('currentTeamMember')); //Gets the ID of the current button (position within the local storage array)
+    array = JSON.parse(localStorage.getItem('teamMemberArray')); //Gets the entire array
+    elementNum = parseInt(teamMemberString);
+    sprintName = JSON.pas
 
-}
+    currentTeamMember = array[elementNum];
+    document.getElementById('teamMemberName').innerHTML = array[elementNum].teamMemberFirstName + array[elementNum].teamMemberLastName
+    document.getElementById('teamMemberEmail').innerHTML = array[elementNum].teamMemberEmail
+    document.getElementById('currentSprintName').innerHTML = array[elementNum].teamMemberEmail
+    
 
-function saveEditedDetails()
-{
-    first = document.getElementById("firstName").value 
-    last = document.getElementById("lastName").value 
-    email = document.getElementById("email").value 
-    let teamMembersObj = new TeamMembers(first,last,email);
-    array = JSON.parse(localStorage.getItem('teamMembersArray'))
-    memberIDString = JSON.parse(localStorage.getItem('currentMemberId'));
-    elementNum = parseInt(memberIDString);    
-    array[elementNum] = teamMembersObj; //FIND AND REPLACE
-    //Need to re-set back into local storage
-    localStorage.setItem('teamMembersArray',JSON.stringify(array));
-    console.log("TEST 1")
-
-}
-
-function editDetailBackOnClick()
-{
-    console.log("TEST 2");
-    window.location.replace('teamMembers.html')
 }
