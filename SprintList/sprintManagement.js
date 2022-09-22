@@ -12,26 +12,27 @@ function assignTasks() {
     let productBacklog = loadPB();
     let sprintBacklog = loadSB();
     let checkBoxes = document.getElementsByName("pBCheckbox");
-    // let memberSelected = document.getElementById("selectedMember").value;
-    // if (!memberSelected) return
+     let memberSelected = document.getElementById("selectedMember").value;
+     if (!memberSelected) return
 
 
     // Shifting PBIs
     let removedItems = [];
     for(i = 0; i < checkBoxes.length; i++) {
         if (checkBoxes[i].checked) {
-            // productBacklog[i].tm = memberSelected; // Assigning team member
+            productBacklog[i].taskTeamMember = memberSelected; // Assigning team member
             sprintBacklog.push(productBacklog[i]);
             removedItems.push(productBacklog[i].taskName);
         }
     }
     
-    let item;
+
     // Removing Items from pBList
     for(i = 0; i < productBacklog.length; i++) {
         if (removedItems.includes(productBacklog[i].taskName)) {
+           // productBacklog[i].taskTeamMember = "notAssigned"
             item = productBacklog.splice(i, 1);
-            // console.log(`Removed Item: ${item.taskName}`)
+            
             i--;
         }
     }
@@ -43,9 +44,17 @@ function assignTasks() {
     let sprintBacklogArray = JSON.parse(localStorage.getItem("sprintBacklogArray"));
     sprintBacklogArray[sprintID].sprintTaskList = sprintBacklog
     localStorage.setItem('sprintBacklogArray', JSON.stringify(sprintBacklogArray))
+    let currentSprintName = sprintBacklogArray[sprintID].sprintName
 
-
-    loadBacklogs()
+    tmArray = JSON.parse(localStorage.getItem('teamMemberArray'));
+    for(i = 0; i < tmArray.length; i++) {
+        if (tmArray[i].teamMemberFirstName == memberSelected)
+        {
+            tmArray[i].teamMemberSprintInvolvement = currentSprintName
+        }
+    }
+    localStorage.setItem('teamMemberArray',JSON.stringify(tmArray));
+    loadBacklogs();
 }
 
 function unassignTasks() {
@@ -63,7 +72,6 @@ function unassignTasks() {
         }
     }
 
-    let item;
     // Removing Items from pBList
     for(i = 0; i < sprintBacklog.length; i++) {
         if (removedItems.includes(sprintBacklog[i].taskName)) {
@@ -85,8 +93,19 @@ function unassignTasks() {
 }
 
 function loadBacklogs() {
+    let htmlElements = "";
+    let teamMemberArray = JSON.parse(localStorage.getItem('teamMemberArray'));
+    
     displayPB(loadPB())  
     displaySB(loadSB())
+
+    for (let i = 0; i<teamMemberArray.length; i++)
+    {
+       let tmName = teamMemberArray[i].teamMemberFirstName;
+       htmlElements +=  `<option value=${tmName}>${tmName}</option>`
+
+    }
+    document.getElementById('selectedMember').innerHTML = htmlElements;
 }
 
 function displayPB(productBacklog) {
@@ -118,7 +137,7 @@ function displaySB(sprintBacklog) {
         idString = `sBtask${i}`;
         output += `
             <tr>
-                <td class="mdl-data-table__cell--non-numeric" id = "${idString}" onclick="showDialog('${idString}')">${sprintBacklog[i].taskName}</td>
+                <td class="mdl-data-table__cell--non-numeric" id = "${idString}" onclick="showDialog('${idString}')">${sprintBacklog[i].taskName + ' (' + sprintBacklog[i].taskTeamMember + ')'}</td>
                 <td>
                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="sBList${i}">
                         <input type="checkbox" id="sBList${i}" class="mdl-checkbox__input" name="sBCheckbox">
@@ -156,7 +175,7 @@ function showDialog(taskID) {
         <p>${task.taskDescription}</p>
         <p class = "taskDescPriority" style="background-color: ${pColour};">${task.taskPriority}</p>
         <p>Type: ${task.taskType}</p>
-        <p>Assignee: ${null}</p>
+        <p>Assignee: ${task.taskTeamMember}</p>
         <p>Story Points: ${task.taskStoryPoint}</p>
     `;
     modal.showModal();
@@ -164,10 +183,14 @@ function showDialog(taskID) {
 
 function priorityColour(priority) {
     if(priority == "High Priority") {
-        return "red"
+        return "orange"
     }
     else if(priority == "Medium Priority") {
-        return "orange"
+        return "yellow"
+    }
+    else if(priority == "Critical Priority")
+    {
+        return "red"
     }
     else {
         return "green"
