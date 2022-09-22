@@ -18,13 +18,14 @@ function onSprintCreationLoad()
 }
 
 let sprintObjectObj = class {
-    constructor(sprintName, sprintStartDate, sprintEndDate, sprintInProgress, sprintTaskList)
+    constructor(sprintName, sprintStartDate, sprintEndDate, sprintInProgress, sprintTaskList,sprintAccumulatedHours)
     {
         this.sprintName = sprintName;
         this.sprintStartDate = sprintStartDate;
         this.sprintEndDate = sprintEndDate;
         this.sprintInProgress = sprintInProgress;
         this.sprintTaskList = sprintTaskList;
+        this.sprintAccumulatedHours = sprintAccumulatedHours;
     }
 
 }
@@ -36,8 +37,9 @@ function sprintCreationDoneBtnOnClick()
     sprintEndDate = document.getElementById("sprintEndDate").value 
     sprintInProgress = 0
     sprintTaskList = [];
+    sprintAccumulatedHours = [];//just for now
 
-    let sprintObject = new sprintObjectObj(sprintName,sprintStartDate,sprintEndDate,sprintInProgress,sprintTaskList);
+    let sprintObject = new sprintObjectObj(sprintName,sprintStartDate,sprintEndDate,sprintInProgress,sprintTaskList,sprintAccumulatedHours);
     sprintItemsParsed = JSON.parse(localStorage.getItem('sprintBacklogArray'));
     sprintItemsParsed.push(sprintObject)
     localStorage.setItem('sprintBacklogArray',JSON.stringify(sprintItemsParsed));

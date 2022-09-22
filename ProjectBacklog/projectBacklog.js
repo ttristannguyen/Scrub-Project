@@ -29,7 +29,7 @@ else
 }
 
 let projectBacklogItem = class {
-    constructor(taskName, taskDescription, taskTag,taskType, taskStoryPoint, taskPriority,taskTeamMember)
+    constructor(taskName, taskDescription, taskTag,taskType, taskStoryPoint, taskPriority,taskTeamMember,taskStatus)
     {
         this.taskName = taskName;
         this.taskDescription = taskDescription;
@@ -38,6 +38,7 @@ let projectBacklogItem = class {
         this.taskStoryPoint = taskStoryPoint;
         this.taskPriority = taskPriority;
         this.taskTeamMember = taskTeamMember;
+        this.taskStatus = taskStatus
     }
 
 }
@@ -51,6 +52,7 @@ function taskCreationOnClick()
     console.log(taskType)
     taskStoryPoint = document.getElementById("taskStoryPoint").value 
     var tagName = document.getElementsByTagName("input")
+    taskStatus = "to Do";
     for (var i = 0 ; i < tagName.length ; i++){
         if (tagName[i].type == 'radio' && tagName[i].checked){ var taskPriority = tagName[i].value}
     }
@@ -64,7 +66,7 @@ function taskCreationOnClick()
     taskTeamMember = "notAssigned"
 
 
-    let productBackLogItemObj = new projectBacklogItem(taskName,taskDescription,taskTag,taskType,taskStoryPoint,taskPriority,taskTeamMember);
+    let productBackLogItemObj = new projectBacklogItem(taskName,taskDescription,taskTag,taskType,taskStoryPoint,taskPriority,taskTeamMember,taskStatus);
     projectBacklogItemsParsed = JSON.parse(localStorage.getItem('projectBacklogItemArray'))
     projectBacklogItemsParsed.push(productBackLogItemObj)
     localStorage.setItem('projectBacklogItemArray',JSON.stringify(projectBacklogItemsParsed));
