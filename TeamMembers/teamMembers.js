@@ -104,7 +104,6 @@ function deleteTeamMember(index){
         location.reload();  
 
     }
-    
 }
 
 function createTeamMemberDetailedView(index)
@@ -196,6 +195,31 @@ function checkOnClick()
             data: yValues
           }]
         },
+        options: {
+            scales: {
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Hours'
+                    },
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }],
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Date'
+                    }
+                }]
+            },
+            title: {
+                display: true,
+                text: 'Hours spent on project per day'
+            }
+
+            
+        }
      
       });
 
