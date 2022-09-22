@@ -151,6 +151,7 @@ function checkOnClick()
     elementNum = parseInt(teamMemberString);
     tmHours = tmArray[elementNum].teamMemberAccumulatedHours
     hoursAccumulatedInPeriod = 0
+    dateHoursArray = []
     for (let i = 0; i < tmHours.length; i++) 
     {
         let dateStr = tmHours[i][0]
@@ -159,11 +160,14 @@ function checkOnClick()
         {
             if (dateObj <= endDate)
             {
-                hoursAccumulatedInPeriod += parseInt(tmHours[i][1])
+                hoursAccumulatedInPeriod += parseInt(tmHours[i][1]);
+                dateHoursArray.push({date: dateObj,hours: tmHours[i][1]});
             }
             
         }
+       
     }
+   let sortedDates =  dateHoursArray.sort((a, b) => b.date - a.date);
     var Difference_In_Time = endDate.getTime() - startDate.getTime(); 
     var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
     aveDaily = Math.ceil(hoursAccumulatedInPeriod/Difference_In_Days);
@@ -171,4 +175,29 @@ function checkOnClick()
 
 
     document.getElementById('hoursAccDateRange').innerText = hoursAccumulatedInPeriod + 'hrs';
+    var xValues = [];
+    var yValues = [];
+    for (let i = 0; i < sortedDates.length; i++) 
+    {
+        xValues.push(sortedDates[i].date.toLocaleDateString('en-US'));
+        yValues.push(parseInt(sortedDates[i].hours));
+    }
+    //Now building their analytics chart
+   
+    
+    var barColors = ["red", "green","blue","orange","brown"];
+
+    new Chart("myChart", {
+        type: "bar",
+        data: {
+          labels: xValues,
+          datasets: [{
+            backgroundColor: barColors,
+            data: yValues
+          }]
+        },
+     
+      });
+
+
 }

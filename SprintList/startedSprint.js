@@ -44,6 +44,7 @@ function logTime(i)
 function closeDialog() {
   
     TMarray = JSON.parse(localStorage.getItem('teamMemberArray'));
+    let sprintAcc = JSON.parse(localStorage.getItem('sprintBacklogArray'))
     for (let j = 0; j<TMarray.length; j++)
     {
         if(TMarray[j].teamMemberFirstName == teamMember)
@@ -51,8 +52,11 @@ function closeDialog() {
             TMarray[j].teamMemberAccumulatedHours.push([document.getElementById("datePicked").value, document.getElementById("hoursLogged").value ])
         }
     }
-    localStorage.setItem('teamMemberArray',JSON.stringify(TMarray)); //Putting back into TM with the hours
+    let currentSprint = JSON.parse(localStorage.getItem('currentSprintId'));
+    sprintAcc[currentSprint].sprintAccumulatedHours.push([document.getElementById("datePicked").value, document.getElementById("hoursLogged").value])
+    localStorage.setItem('teamMemberArray',JSON.stringify(TMarray));
+    localStorage.setItem('sprintBacklogArray',JSON.stringify(sprintAcc)); //Putting into sprint array.
     modal = document.getElementById("modal");
     console.log(teamMember);
-     modal.close();
+    modal.close();
 }
