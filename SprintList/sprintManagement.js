@@ -178,3 +178,20 @@ function closeDialog() {
     modal = document.getElementById("modal");
     modal.close();
 }
+
+function startSprint() {
+    //
+    // Function obtains currently viewed sprint, saves sprint and redirects to kanban view
+    //
+    // Parameters: None
+    // Returns: None
+    //
+    
+    // Retreiving Current Sprint ID
+    let currentSprintId = JSON.parse(localStorage.getItem("currentSprintId"));
+    let sprintList = JSON.parse(localStorage.getItem("sprintBacklogArray"));
+    let sprint = sprintList[currentSprintId];
+    
+    localStorage.setItem("activeSprint", JSON.stringify(sprint))
+    window.location.assign("../Kanban/kanban.html")
+}
