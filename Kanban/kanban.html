@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <script src = "sprintManagement.js"></script>
+    <script src = "kanban.js"></script>
     <title></title>
 </head>
 
@@ -43,7 +43,7 @@
 
       <div class="page-content"> <!-- Page Content Starts Here-->
 
-        <div class="selectionColumn"> <!-- List of PBIs -->
+        <div class="selectionColumn"> <!-- To Do Backlog Items -->
           <h3 style="text-align:center;">To Do</h3>
           <div style = "height: 50vh; overflow: auto;">
             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id = "pBTable">
@@ -66,7 +66,7 @@
           </div>
         </div>
 
-        <div class="selectionColumn"> <!-- List of PBIs -->
+        <div class="selectionColumn"> <!-- In Progress Backlog Items -->
           <h3 style="text-align:center;">In Progress</h3>
           <div style = "height: 50vh; overflow: auto;">
             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id = "pBTable">
@@ -81,7 +81,7 @@
           </div>
         </div>
 
-        <div class="selectionColumn">
+        <div class="selectionColumn"> <!--Done Backlog Items-->
           <h3 style="text-align:center;">Done</h3>
           <div style = "height: 50vh; overflow: auto;">
             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="sBTable">
