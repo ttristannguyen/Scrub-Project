@@ -88,6 +88,44 @@ function onTeamMembersLoad()
     let teamMemberPlacement = document.getElementById("teamMemberPlacement");
     teamMemberPlacement.innerHTML = htmlElements;
 
+        //Building the team member dashboard: 
+        //Includes: A graph with each team member being a new line in the graph. 
+        //A line showing their work for each day within a given period. 
+        //A line showing the average work for the team per day within a given period. 
+        let xValues = []
+        let yValues = []
+        let objArray = []
+        for (let i = 0; i < array.length; i++) 
+        {
+            for (let j = 0; j < array[i].teamMemberAccumulatedHours.length; j++) 
+            {
+                let dateStr = array[i].teamMemberAccumulatedHours[j][0]
+                let dateObj = new Date(dateStr)
+                objArray.push({date: dateObj,hours: parseInt(array[i].teamMemberAccumulatedHours[j][0]), teamMember: array[i].teamMemberFirstName});
+            }
+        }
+        let sortedDates =  objArray.sort((a, b) => b.date - a.date);
+        firstEntry = sortedDates[0].date;
+        lastEntry = sortedDates[sortedDates.length-1].date;
+        while (firstEntry <= lastEntry) { //To put all the dates within the start and end range into the graph
+            xValues.push( moment(firstEntry).format('YYYY-MM-DD') )
+            firstEntry = moment(firstEntry).add(1, 'days');
+        }
+        for (let i = 0; i<xValues.length; i++)
+        {
+            for(let j=0; j<objArray.length; j++)
+            {
+            if(objArray[j].date.toLocaleDateString('en-US')==xValues[i])
+             {
+                    yValues.push({hours: objArray[j].hours, teamMember: objArray[j].teamMember})
+                }
+            else
+            {
+                yValues.push({hours: 0, teamMember:"none"})
+            }
+            }
+        }
+        
     }
 
 function addTeamMemberOnClick()
