@@ -17,7 +17,8 @@ function loadBurndownChart() {
     var yValues = []
     yValues.push(totalStoryPoints)
 
-    toMinus = parseFloat((totalStoryPoints*1.0/datesBetween.length).toFixed(2));
+    toMinus = parseFloat((totalStoryPoints*1.0/(datesBetween.length-1)).toFixed(2));
+    console.log(toMinus)
     for (i = 0; i < datesBetween.length; i++){
         yValues.push((yValues[yValues.length-1] - toMinus).toFixed(2));
     }
