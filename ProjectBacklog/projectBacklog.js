@@ -14,6 +14,12 @@
 // Step 11: This "edit task details" button takes a user to a pre-filled - editable - form, allowing them to edit any detail in the form that they want. 
 
 //let projectBacklogItemsArray = []; //This will store multiple instances of the PBI objects
+const Progress = {
+    notStarted: "Not Started",
+    inProgress: "In Progress",
+    complete: "Complete"
+}
+
 function onTaskCreationLoad()
 {
     // localStorage.setItem('currentTaskID',JSON.stringify(0))
@@ -52,7 +58,7 @@ function taskCreationOnClick()
     console.log(taskType)
     taskStoryPoint = document.getElementById("taskStoryPoint").value 
     var tagName = document.getElementsByTagName("input")
-    taskStatus = "to Do";
+    taskStatus = Progress.complete;
     for (var i = 0 ; i < tagName.length ; i++){
         if (tagName[i].type == 'radio' && tagName[i].checked){ var taskPriority = tagName[i].value}
     }
