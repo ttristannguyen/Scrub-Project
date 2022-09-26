@@ -36,7 +36,7 @@ function loadKanban() {
         idString = `task${i}`
         // To Do Tasks
         if (task.taskStatus == 0) {
-            toDoHtml = `
+            toDoHtml += `
                 <tr>
                     <td id="${idString}" onclick = "showDialog('${idString}')" class = "mdl-data-table__cell--non-numeric">${task.taskName}</td>
                 </tr>
@@ -44,7 +44,7 @@ function loadKanban() {
         }
         // In Progress Tasks
         else if (task.taskStatus == 1) {
-            inProgHtml = `
+            inProgHtml += `
                 <tr>
                     <td id="${idString}" onclick = "showDialog('${idString}')" class = "mdl-data-table__cell--non-numeric">${task.taskName}</td>
                 </tr>
@@ -52,7 +52,7 @@ function loadKanban() {
         }
         // Done Tasks
         else if (task.taskStatus == 2) {
-            doneHtml = `
+            doneHtml += `
                 <tr>
                     <td id="${idString}" onclick = "showDialog('${idString}')" class = "mdl-data-table__cell--non-numeric">${task.taskName}</td>
                 </tr>
