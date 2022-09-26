@@ -37,13 +37,13 @@
 
 }
 
-.saveButton {
+.returnButton {
     position: absolute;
     bottom: 10%;
     left: 10%;
 }
 
-.startButton {
+.completeButton {
     position: absolute;
     bottom: 10%;
     right: 10%;

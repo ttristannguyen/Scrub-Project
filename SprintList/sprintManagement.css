@@ -43,7 +43,7 @@
     left: 10%;
 }
 
-.startButton {
+#startButton {
     position: absolute;
     bottom: 10%;
     right: 10%;

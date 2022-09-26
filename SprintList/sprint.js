@@ -67,6 +67,7 @@ function onSprintListLoad()
     let sprintPlacement = document.getElementById("sprintPlacement");
     sprintPlacement.innerHTML = htmlElements;
 
+    let activeSprintID = JSON.parse(localStorage.getItem("activeSprintID"))
     for (let j = 0; j<array.length; j++)
     {
             let button = document.createElement('button');
@@ -74,12 +75,23 @@ function onSprintListLoad()
             button.innerHTML = 'See/edit details';
             button.className = 'btn-styled';
             button.id = j.toString();
-            button.onclick = function() {
-                //I want to be able to click on the button, be taken to a 'detailed view' page, where i can possibly make a change to the task. 
-                //This will edit the task in local storage.
-                manageSprintView()  // @ Stefan this is where u come in
-                localStorage.setItem('currentSprintId',JSON.stringify(button.id))
-            };
+
+            if (j == activeSprintID) {
+                button.onclick = function() {
+                    //I want to be able to click on the button, be taken to a 'detailed view' page, where i can possibly make a change to the task. 
+                    //This will edit the task in local storage.
+                    window.location.assign("../Kanban/kanban.html")
+                    localStorage.setItem('currentSprintId',JSON.stringify(button.id))
+                };
+            }
+            else {
+                button.onclick = function() {
+                    //I want to be able to click on the button, be taken to a 'detailed view' page, where i can possibly make a change to the task. 
+                    //This will edit the task in local storage.
+                    manageSprintView()  // @ Stefan this is where u come in
+                    localStorage.setItem('currentSprintId',JSON.stringify(button.id))
+                };
+            }
             let id = j.toString();
             let container = document.getElementById(id);
             container.appendChild(button);
