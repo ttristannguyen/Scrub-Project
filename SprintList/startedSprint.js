@@ -60,6 +60,4 @@ function closeDialog() {
     console.log(teamMember);
     modal.close();
 }
-function burndownChartButton() {
-    window.location = "burndownChart.html";
-}
+

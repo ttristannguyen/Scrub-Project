@@ -106,11 +106,23 @@ function loadBacklogs() {
 
     }
     document.getElementById('selectedMember').innerHTML = htmlElements;
+
+    // Disabling saveButton if theres an active sprint
+    let activeSprint = JSON.parse(localStorage.getItem("activeSprint"))
+    let startButton = document.querySelector("#startButton button")
+    if (activeSprint) {
+        startButton.disabled = true;
+        startButton.classList.add('mdl-button--disabled')
+    }
+    else {
+        startButton.disabled = false
+        startButton.classList.remove('mdl-button--disabled')
+    }
 }
 
 function displayPB(productBacklog) {
     let output = '';
-
+    let idString;
     for (let i = 0; i < productBacklog.length; i++) {
         idString = `pBtask${i}`;
         output += `
@@ -202,7 +214,20 @@ function closeDialog() {
     modal.close();
 }
 
-function startSprintOnClick()
-{
-    window.location.replace('startedSprint.html')
+function startSprint() {
+    //
+    // Function obtains currently viewed sprint, saves sprint and redirects to kanban view
+    //
+    // Parameters: None
+    // Returns: None
+    //
+    
+    // Retreiving Current Sprint ID
+    let currentSprintId = JSON.parse(localStorage.getItem("currentSprintId"));
+    let sprintList = JSON.parse(localStorage.getItem("sprintBacklogArray"));
+    let sprint = sprintList[currentSprintId];
+    
+    localStorage.setItem("activeSprint", JSON.stringify(sprint));
+    localStorage.setItem("activeSprintID", JSON.stringify(currentSprintId));
+    window.location.assign("../Kanban/kanban.html");
 }

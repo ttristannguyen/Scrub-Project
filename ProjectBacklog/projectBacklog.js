@@ -58,7 +58,7 @@ function taskCreationOnClick()
     console.log(taskType)
     taskStoryPoint = document.getElementById("taskStoryPoint").value 
     var tagName = document.getElementsByTagName("input")
-    taskStatus = Progress.complete;
+    taskStatus = 0; // 0 = To Do, 1 = In Progress, 2 = Done
     for (var i = 0 ; i < tagName.length ; i++){
         if (tagName[i].type == 'radio' && tagName[i].checked){ var taskPriority = tagName[i].value}
     }

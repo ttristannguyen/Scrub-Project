@@ -79,7 +79,7 @@ function loadBurndownChart() {
       options: {
         legend: {display: true,},
         scales: {
-          yAxes: [{ticks: {min:-10, max:totalStoryPoints}}],
+          yAxes: [{ticks: {min:0, max:totalStoryPoints}}],
         }
       }
     });
