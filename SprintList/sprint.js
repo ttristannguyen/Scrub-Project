@@ -63,7 +63,9 @@ function onSprintListLoad()
         let sprintStartDate = array[i].sprintStartDate; //Gets the priority for dynamic entering
         let sprintEndDate = array[i].sprintEndDate;
         let sprintInProgress = array[i].sprintInProgress;
+    //    if (sprintInProgress < 2){
        htmlElements += ' <div class = "mdl-cell mdl-cell--3-col graybox" style = "position: relative; top: 90%"' + 'id=' + '"' + i + '"' + '>' + "<p id = 'taskTextSprint'>" + sprintName + '<br>' + "Sprint Start Date: " + sprintStartDate + '<br>' + "Sprint End Date: " + sprintEndDate + '<br>' + "Sprint Progression: " + sprintInProgress + "<br>" + "<\p>" + '</div>';
+    //    }
     }
     let sprintPlacement = document.getElementById("sprintPlacement");
     sprintPlacement.innerHTML = htmlElements;
