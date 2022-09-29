@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<script src="teamMembers.js"></script>
+<title>ADD YOUR TEAM MEMBER</title>
+
+<!-- CSS -->
+<style>
+.tmCreationForm {
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+font-size: 0.8em;
+width: 20em;
+padding: 1em;
+border: 1px solid #ccc;
+}
+
+.tmCreationForm * {
+box-sizing: border-box;
+}
+
+.tmCreationForm fieldset {
+border: none;
+padding: 0;
+}
+
+.tmCreationForm legend,
+.tmCreationForm label {
+padding: 0;
+font-weight: bold;
+}
+
+.tmCreationForm label.choice {
+font-size: 0.9em;
+font-weight: normal;
+}
+
+.tmCreationForm input[type="text"],
+.tmCreationForm input[type="tel"],
+.tmCreationForm input[type="email"],
+.tmCreationForm input[type="datetime-local"],
+.tmCreationForm select,
+.tmCreationForm textarea {
+display: block;
+width: 100%;
+border: 1px solid #ccc;
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+font-size: 0.9em;
+padding: 0.3em;
+}
+
+.tmCreationForm textarea {
+height: 100px;
+}
+
+.tmCreationForm button {
+padding: 1em;
+border-radius: 0.5em;
+background: #eee;
+border: none;
+font-weight: bold;
+margin-top: 1em;
+}
+
+.tmCreationForm button:hover {
+background: #ccc;
+cursor: pointer;
+}
+</style>
+
+</head>
+<body onload="onTeamMemberCreationLoad()">
+
+<form class="tmCreationForm" method="get" >
+
+<p>
+<label>Team Member First Name: 
+<input type="text" name="teamMemberFirstName" id = "teamMemberFirstName" required>
+</label> 
+</p>
+
+<p>
+    <label>Team Member Last Name: 
+    <input type="text" name="teamMemberLastName" id = "teamMemberLastName" required>
+    </label> 
+    </p>
+
+<p>
+<label>Team Member Email: 
+<textarea  name="teamMemberEmail" id = "teamMemberEmail" required>
+</textarea> 
+</p>
+
+</form>
+
+
+<p><button id="teamMemberCreationDoneBtn" onClick="addTeamMemberSaveOnClick()">Done</button></p>
+
+<p><button id="teamMemberCreationBackBtn" onClick="addTeamMemberBackOnClick()">Back</button></p>
+
+</body>
+</html>

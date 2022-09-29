@@ -2,14 +2,14 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="teamMembers.css">
+    <link rel="stylesheet" href="startedSprint.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">    
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <script src="teamMembers.js"></script>
-    <title></title>
+    <script src="startedSprint.js"></script>
+    <title>Started Spint</title>
 </head>
-<body onload="onTeamMembersLoad()">
+<body onload="onStartedSprintLoad()">
   <div class="btn-group my-5">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
             mdl-layout--fixed-header"> <!-- Layout Starts Here-->
@@ -25,7 +25,7 @@
   <div class="mdl-layout__drawer"> <!-- Nav Bar Starts Here-->
     <span class="mdl-layout-title"><b>Team Members</b></span>
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="../ProjectBacklog/projectBacklog.html">Project Backlog</a>
+      <a class="mdl-navigation__link" href=".../projectBackog/projectBacklog.html">Project Backlog</a>
       <a class="mdl-navigation__link" href="../SprintList/sprintList.html">Sprint List</a>
       <a class="mdl-navigation__link" href="../TeamMembers/teamMembers.html">Team Members</a>
     </nav>
@@ -33,19 +33,27 @@
   <main class="mdl-layout__content">
 
     <div class="page-content" > <!-- Page Content Starts Here-->
-
-    </div>
-
-        <!-- Add Task Button-->
-        <div style="text-align: left;" id = "addTaskButton" >
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-            onclick= "addTeamMemberOnClick()">
-                Add Team Member
-            </button>
+        <div id ="title" >
+            
         </div>
+        <div id="sded">
 
-        <div class = "mdl-grid" id = "teamMemberPlacement">
+        </div>
+    </div>
+        <div class = "mdl-grid" id = "tasks">
          </div>
+         <!-- The Modal -->
+         <dialog class="modal" id="modal">
+            <label>Select Date:</label>
+            <input type="date" id="datePicked" >
+            <label> Hours Worked: </labeL>
+              <input type="number" id="hoursLogged">      
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+            onclick = "closeDialog()">
+              Done
+            </button>
+          </dialog>
+
 
     </div> <!-- Page Content Ends Here-->
   </main>

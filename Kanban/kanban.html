@@ -2,15 +2,15 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="sprintManagement.css">
+    <link rel="stylesheet" href="kanban.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <script src = "sprintManagement.js"></script>
+    <script src = "kanban.js"></script>
     <title></title>
 </head>
 
-<body onload="loadBacklogs()">
+<body onload="loadKanban()">
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
           mdl-layout--fixed-header"> <!-- Layout Starts Here-->
 
@@ -43,71 +43,68 @@
 
       <div class="page-content"> <!-- Page Content Starts Here-->
 
-        <div class="selectionColumn"> <!-- List of PBIs -->
-          <h3 style="text-align:center;">Product Backlog</h3>
-          <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id = "pBTable">
-            <thead>
-              <tr>
-                <th class="mdl-data-table__cell--non-numeric">Task Name</th>
-              </tr>
-            </thead>
-            <tbody id = "productBacklogList">
-            </tbody>
-          </table>
-          
+        <div class="selectionColumn"> <!-- To Do Backlog Items -->
+          <h3 style="text-align:center;">To Do</h3>
+          <div style = "height: 50vh; overflow: auto;">
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id = "pBTable">
+              <thead>
+                <tr>
+                  <th class="mdl-data-table__cell--non-numeric">Task Name</th>
+                </tr>
+              </thead>
+              <tbody id = "sprintBacklog">           
+              </tbody>
+            </table>
+          </div>
+
           <!-- Save Button -->
           <div class = "returnButton">
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-            onclick = "window.location.assign('sprintList.html')">
+            onclick = "window.location.assign('../SprintList/sprintList.html')">
               Return
             </button>
           </div>
         </div>
 
-        <div class="selectionColumn"> <!-- Assignment Buttons -->
-          <!-- Assign Button -->
-          <div class = "assignButton">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
-            onclick = "assignTasks()">
-              Assign
-            </button>
+        <div class="selectionColumn"> <!-- In Progress Backlog Items -->
+          <h3 style="text-align:center;">In Progress</h3>
+          <div style = "height: 50vh; overflow: auto;">
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id = "pBTable">
+              <thead>
+                <tr>
+                  <th class="mdl-data-table__cell--non-numeric">Task Name</th>
+                </tr>
+              </thead>
+              <tbody id = "sprintInProgress">
+              </tbody>
+            </table>
           </div>
-
-          <!-- Choose Team Member -->
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="teamMembers">
-            <select class="mdl-textfield__input" id="selectedMember">
-              <option></option>
-      
-            </select>
-            <label class="mdl-textfield__label" for="teamMembers">Team Members</label>
-          </div>
-
-          <!-- Unassign Button -->
-          <div class = "unassignButton">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
-            onclick = "unassignTasks()">
-              Unassign
+          <div class = "burndownButton"> <!-- Button to navigate to burndown chart -->
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400"
+            onclick = "">
+              Burndown
             </button>
           </div>
         </div>
 
-        <div class="selectionColumn">
-          <h3 style="text-align:center;">Sprint Backlog</h3>
-          <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="sBTable">
-            <thead>
-              <tr>
-                <th class="mdl-data-table__cell--non-numeric">Task Name</th>
-              </tr>
-            </thead>
-            <tbody id = "sprintBacklogList">
-            </tbody>
-          </table>
-
+        <div class="selectionColumn"> <!--Done Backlog Items-->
+          <h3 style="text-align:center;">Done</h3>
+          <div style = "height: 50vh; overflow: auto;">
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="sBTable">
+              <thead>
+                <tr>
+                  <th class="mdl-data-table__cell--non-numeric">Task Name</th>
+                </tr>
+              </thead>
+              <tbody id = "sprintDone">
+              </tbody>
+            </table>
+          </div>
           <!-- Start Button -->
-          <div id = "startButton">
+          <div class = "completeButton">
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-            onclick = "startSprint()">
-              Start Sprint
+            onclick = "completeSprint()">
+              Complete Sprint
             </button>
           </div>
         </div>
@@ -119,12 +116,18 @@
   </div> <!-- Layout Ends Here-->
 
   <dialog class="modal" id="modal">
-    <h5>Task Information</p>
+    <h5>Task Information</h>
     <h1 id = "modalTaskName">Task Name</h1>
     <div id = "modalTaskDesc">ASD</div>
+    <div id = "timeLogs"></div>
+       
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-    onclick = "closeDialog()">  
-      Close
+    onclick = "closeDialog()">
+    Close
+    </button>
+
+    <!-- Progression -->
+    <button id="progressTask" class = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick = "">
     </button>
   </dialog>
 
