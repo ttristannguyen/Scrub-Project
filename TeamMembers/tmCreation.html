@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="sprintCreation.css">
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">    
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-        <script src="sprint.js"></script>
+        <script src="teamMembers.js"></script>
         <title>SPRINT LIST</title>
     </head>
     
@@ -38,7 +38,7 @@
 
     <!-- CSS -->
     <style>
-        .taskCreationForm {
+        .tmCreationForm {
             font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
             font-size: 0.8em;
             width: 20em;
@@ -50,32 +50,32 @@
             top: 130px;
         }
 
-        .taskCreationForm * {
+        .tmCreationForm * {
             box-sizing: border-box;
         }
 
-        .taskCreationForm fieldset {
+        .tmCreationForm fieldset {
             border: none;
             padding: 0;
         }
 
-        .taskCreationForm legend,
-        .taskCreationForm label {
+        .tmCreationForm legend,
+        .tmCreationForm label {
             padding: 0;
             font-weight: bold;
         }
 
-        .taskCreationForm label.choice {
+        .tmCreationForm label.choice {
             font-size: 0.9em;
             font-weight: normal;
         }
 
-        .taskCreationForm input[type="text"],
-        .taskCreationForm input[type="tel"],
-        .taskCreationForm input[type="email"],
-        .taskCreationForm input[type="datetime-local"],
-        .taskCreationForm select,
-        .taskCreationForm textarea {
+        .tmCreationForm input[type="text"],
+        .tmCreationForm input[type="tel"],
+        .tmCreationForm input[type="email"],
+        .tmCreationForm input[type="datetime-local"],
+        .tmCreationForm select,
+        .tmCreationForm textarea {
             display: block;
             width: 100%;
             border: 1px solid #ccc;
@@ -84,11 +84,11 @@
             padding: 0.3em;
         }
 
-        .taskCreationForm textarea {
+        .tmCreationForm textarea {
             height: 100px;
         }
 
-        .taskCreationForm button {
+        .tmCreationForm button {
             padding: 1em;
             border-radius: 0.5em;
             background: #eee;
@@ -97,7 +97,7 @@
             margin-top: 1em;
         }
 
-        .taskCreationForm button:hover {
+        .tmCreationForm button:hover {
             background: #ccc;
             cursor: pointer;
         }
@@ -144,39 +144,36 @@
 
 </head>
 
-<body onload="onSprintCreationLoad()">
+<body onload="onTeamMemberCreationLoad()">
 
-    <form class="taskCreationForm" method="get">
+    <form class="tmCreationForm" method="get">
 
         <p>
-            <label>Sprint name:
-                <input type="text" name="sprintName" id="sprintName" required>
+            <label>Team Member First Name:
+                <input type="text" name="teamMemberFirstName" id="teamMemberFirstName" required>
             </label>
         </p>
 
         <p>
-        <form action="/action_page.php">
-            <label for="birthday">Sprint Start Date:</label>
-            <input type="date" id="sprintStartDate" name="sprintStartDate">
-            
+            <label>Team Member Last Name:
+                <input type="text" name="teamMemberLastName" id="teamMemberLastName" required>
+            </label>
         </p>
 
         <p>
-        <form action="/action_page.php">
-            <label for="birthday">Sprint End Date:</label>
-            <input type="date" id="sprintEndDate" name="sprintEndDate">
-            
-        </p>
+            <label>Team Member Email:
+                <input type='text' name="teamMemberEmail" id="teamMemberEmail" required>
+            </label>        
+
+                </p>
 
 
 
-    
 
+        <p><button type='button' class="button-81" onClick="addTeamMemberSaveOnClick()">Done</button></p>
 
-    <p><button class="button-81" id="sprintCreationDoneBtn" onClick="sprintCreationDoneBtnOnClick()" type = "button">Done</button></p>
+        <p><button type='button' class="button-81" onClick="addTeamMemberBackOnClick()">Back</button></p>
 
-    <p><button class="button-81" id="sprintCreationBackBtn" onClick="sprintCreationBackOnClick()" type = "button">Back</button></p>
-    
     </form>
 </body>
 

@@ -15,4 +15,12 @@
     text-align: center;
     color: #424242;
     font-weight: bold;
+  }
+
+  #addTaskButton{
+    position: absolute;
+    left: 88%;
+    width: 190px;
+    bottom: 60%;
+    
 }

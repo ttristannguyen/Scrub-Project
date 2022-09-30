@@ -1,0 +1,27 @@
+
+#title
+{
+    font-size:50px;
+    font-weight: bold;
+    position: top;
+    top: -60px;
+    align-self: center;
+    padding: 4%;
+
+}
+
+#sded
+{
+    font-size:20px;
+    font-weight: bold;
+    position: top;
+    top: -60px;
+    align-self: center;
+    padding: 2%;
+}
+.burndownChartButton {
+    position: absolute;
+    top: 200px;
+    left: 42%;
+    font-size: small;
+}

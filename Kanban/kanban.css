@@ -43,7 +43,13 @@
     left: 10%;
 }
 
-#startButton {
+.burndownButton {
+    position: absolute;
+    bottom: 10%;
+    right: 47%
+}
+
+.completeButton {
     position: absolute;
     bottom: 10%;
     right: 10%;

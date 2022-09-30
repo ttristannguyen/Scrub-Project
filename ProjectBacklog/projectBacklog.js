@@ -14,6 +14,12 @@
 // Step 11: This "edit task details" button takes a user to a pre-filled - editable - form, allowing them to edit any detail in the form that they want. 
 
 //let projectBacklogItemsArray = []; //This will store multiple instances of the PBI objects
+const Progress = {
+    notStarted: "Not Started",
+    inProgress: "In Progress",
+    complete: "Complete"
+}
+
 function onTaskCreationLoad()
 {
     // localStorage.setItem('currentTaskID',JSON.stringify(0))
@@ -29,14 +35,16 @@ else
 }
 
 let projectBacklogItem = class {
-    constructor(taskName, taskDescription, taskType, taskStoryPoint, taskPriority)
+    constructor(taskName, taskDescription, taskTag,taskType, taskStoryPoint, taskPriority,taskTeamMember,taskStatus)
     {
         this.taskName = taskName;
         this.taskDescription = taskDescription;
+        this.taskTag = taskTag;
         this.taskType = taskType;
         this.taskStoryPoint = taskStoryPoint;
         this.taskPriority = taskPriority;
-        this.memberAssigned = null;
+        this.taskTeamMember = taskTeamMember;
+        this.taskStatus = taskStatus
     }
 
 }
@@ -45,24 +53,28 @@ function taskCreationOnClick()
 {
     taskName = document.getElementById("taskName").value 
     taskDescription = document.getElementById("taskDescription").value 
+    taskTag = document.getElementById("taskTag").value
     taskType = document.getElementById("taskType").value 
+    console.log(taskType)
     taskStoryPoint = document.getElementById("taskStoryPoint").value 
     var tagName = document.getElementsByTagName("input")
+    taskStatus = 0; // 0 = To Do, 1 = In Progress, 2 = Done
     for (var i = 0 ; i < tagName.length ; i++){
         if (tagName[i].type == 'radio' && tagName[i].checked){ var taskPriority = tagName[i].value}
     }
     console.log(taskName)
     console.log(taskDescription)
-    if (taskName == null || taskDescription == null || taskPriority == null){
+    if (taskName == null || taskDescription == null || taskPriority == null || taskStoryPoint == "" || taskStoryPoint <= 0){
         errorMessageLocation = document.getElementById('errorMessage')
-        errorMessageLocation.innerHTML = "Please Fill Out the Task Name , Description and Priority"
+        errorMessageLocation.innerHTML = "Please Fill Out the Task Name ,Story Points, Description and Priority"
         return
     }
+    taskTeamMember = "notAssigned"
 
 
-
-    let productBackLogItemObj = new projectBacklogItem(taskName,taskDescription,taskType,taskStoryPoint,taskPriority);
+    let productBackLogItemObj = new projectBacklogItem(taskName,taskDescription,taskTag,taskType,taskStoryPoint,taskPriority,taskTeamMember,taskStatus);
     projectBacklogItemsParsed = JSON.parse(localStorage.getItem('projectBacklogItemArray'))
+    console.log(productBackLogItemObj)
     projectBacklogItemsParsed.push(productBackLogItemObj)
     localStorage.setItem('projectBacklogItemArray',JSON.stringify(projectBacklogItemsParsed));
     window.location = 'projectBacklog.html'
@@ -86,17 +98,32 @@ function onProjectBacklogLoad()
     for (let i = 0; i < array.length; i++) {
         let taskName = array[i].taskName; //this is the name of the task from the new object
         let priority = array[i].taskPriority; //Gets the priority for dynamic entering
+        let taskTag = array[i].taskTag
+        switch(taskTag){
+            case("UI"):
+            grad = "background-image: linear-gradient(to right, white, rgba(0, 255, 175, 0.5));"
+            break
+            case("Core"):
+            grad = "background-image: linear-gradient(to right, white, #89CFF0);"
+            break
+            case("Testing"):
+            grad = "background-image: linear-gradient(to right, white, pink);"
+            break
+        }
+
+
         console.log(priority)
         let storyPoints = array[i].taskStoryPoint;
-        if (array[i].taskType == filterBy){
+        if (array[i].taskTag == filterBy){
             elements += 1
-            htmlElements += `<div class = 'mdl-cell mdl-cell--3-col graybox pbiBox' onclick = createDetailedView(${i}) style = 'position: relative; top: 90%' id="${i}"><p id = 'taskText'>${taskName}<br>Priority: ${priority}<br>Story Points:${storyPoints}<\p></div>` +
+            //style = ' ${grad} position: relative; top: 90%' id="${i}" 
+            htmlElements += `<div class = 'mdl-cell mdl-cell--3-col graybox pbiBox' onclick = createDetailedView(${i}) style = ' ${grad} position: relative; top: 90%' id="${i}"><p id = 'taskText'>${taskName}<br>Priority: ${priority}<br>Story Points:${storyPoints} Task Tag: ${taskTag}</p></div>` +
             // "<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--green-400' + onclick = 'createDetailedView()' id = 'detailViewBtn'> See/Edit Details </button>" + 
             `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = 'deletePBI(${i})' id = 'deleteBtn'> Delete </button>`;
         }
         if (filterBy == "All"){
             elements = array.length
-            htmlElements += `<div class = 'mdl-cell mdl-cell--3-col graybox pbiBox' onclick = createDetailedView(${i}) style = 'position: relative; top: 90%' id="${i}"><p id = 'taskText'>${taskName}<br>Priority: ${priority}<br>Story Points:${storyPoints}<\p></div>` +
+            htmlElements += `<div class = 'mdl-cell mdl-cell--3-col graybox pbiBox' onclick = createDetailedView(${i}) style = ' ${grad} position: relative; top: 90%' id="${i}"><p id = 'taskText'>${taskName}<br>Priority: ${priority}<br>Story Points:${storyPoints}<br> Task Tag: ${taskTag}</p></div>` +
             // "<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--green-400' + onclick = 'createDetailedView()' id = 'detailViewBtn'> See/Edit Details </button>" + 
             `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = deletePBI(${i}) id = 'deleteBtn'> Delete </button>`;
         }
@@ -105,41 +132,7 @@ function onProjectBacklogLoad()
     taskPlacement.innerHTML = htmlElements;
 
     
-
-    // for (let j = 0; j<elements.length; j++)
-    // {
-        
-    //     let button = document.createElement('button');
-    //     button.type = 'button';
-    //     button.innerHTML = 'See/edit details';
-    //     button.className = 'btn-styled';
-    //     button.id = "" + j + "";
-    //     button.onclick = function() {
-    //         //I want to be able to click on the button, be taken to a 'detailed view' page, where i can possibly make a change to the task. 
-    //         //This will edit the task in local storage.
-    //         createDetailedView()
-    //         localStorage.setItem('currentTaskId',JSON.stringify(button.id))
-    //     };
-    //     console.log(button)
-            
-    //     let button2 = document.createElement('button');
-    //     button2.type = 'button';
-    //     button2.innerHTML = 'Delete';
-    //     button2.className = 'btn-styled_del';
-    //     button2.id = "" + j + ""
-    //     button2.onclick = function() {
-    //         deletePBI()
-    //         localStorage.setItem('currentTaskId',JSON.stringify(button2.id))
-    //     };
-
-    //     let id = j.toString();
-    //     let container = document.getElementById(id);
-    //     console.log(container)
-    //     container.appendChild(button);
-    //     container.appendChild(button2);
-
-
-    // }
+//Change test
 
 }
 
@@ -150,7 +143,7 @@ function addTaskOnClick()
 
 function deletePBI(index){
     
-    if (confirm("Are you sure you wanna delete the task ?")) {
+    if (confirm("Are you sure you want to delete the task ?")) {
         array = JSON.parse(localStorage.getItem('projectBacklogItemArray'));
         // taskIDString = JSON.parse(localStorage.getItem('currentTaskId'));
         
@@ -187,20 +180,33 @@ function detailedViewContent()
     console.log(currentTask)
     document.getElementById('taskName').setAttribute('value',currentTask.taskName);
     document.getElementById('taskDescription').value = currentTask.taskDescription
-    switch (currentTask.taskType){
+    switch (currentTask.taskTag){
         case "Ui":
-            document.getElementById('taskType').value = "UI";
+            document.getElementById('taskTag').value = "UI";
             break;
         case "Testing":
-            document.getElementById('taskType').value = "Testing";
+            document.getElementById('taskTag').value = "Testing";
             break;
         case "Core":
-            document.getElementById('taskType').value = "Core";
+            document.getElementById('taskTag').value = "Core";
             break;
         default:
             console.log("A")
             break;
     }
+
+    switch (currentTask.taskType){
+        case "Story":
+            document.getElementById('taskType').value = "Story";
+            break;
+        case "Bug":
+            document.getElementById('taskType').value = "Bug";
+            break;
+        default:
+            console.log("A")
+            break;
+    }
+
     document.getElementById('taskStoryPoint').setAttribute('value',currentTask.taskStoryPoint);
     let inputTag = document.getElementsByTagName('input')
     for (var i = 0 ; i < inputTag.length ; i++) {
@@ -217,14 +223,17 @@ function saveEditedDetails()
 {
     taskName = document.getElementById("taskName").value 
     taskDescription = document.getElementById("taskDescription").value 
+    taskTag = document.getElementById("taskTag").value 
     taskType = document.getElementById("taskType").value 
     taskStoryPoint = document.getElementById("taskStoryPoint").value 
     taskPriorityTag = document.getElementsByTagName('input')
+    taskTeamMember = "notAssigned"
     
-    if (taskName == "" || taskDescription == "" || taskType == ""){
+    if (taskName == "" || taskDescription == "" || taskTag == "" || taskStoryPoint == "" || taskStoryPoint <= 0){
         console.log("taskName " + taskName )
         console.log("taskdesc " + taskDescription )
-        console.log("tasktype " + taskType)
+        console.log("taskTag " + taskTag)
+        console.log("taskStoryPoint " + taskStoryPoint)
         return 
     }
     for (var i = 0 ; i < taskPriorityTag.length ; i++) {
@@ -232,7 +241,7 @@ function saveEditedDetails()
         
     }
     console.log(taskPriority)
-    let productBackLogItemObj = new projectBacklogItem(taskName,taskDescription,taskType,taskStoryPoint,taskPriority);
+    let productBackLogItemObj = new projectBacklogItem(taskName,taskDescription,taskTag,taskType,taskStoryPoint,taskPriority);
     array = JSON.parse(localStorage.getItem('projectBacklogItemArray'))
     taskIDString = JSON.parse(localStorage.getItem('currentTaskId'));
     elementNum = parseInt(taskIDString);    
