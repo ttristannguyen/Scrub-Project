@@ -74,6 +74,7 @@ function taskCreationOnClick()
 
     let productBackLogItemObj = new projectBacklogItem(taskName,taskDescription,taskTag,taskType,taskStoryPoint,taskPriority,taskTeamMember,taskStatus);
     projectBacklogItemsParsed = JSON.parse(localStorage.getItem('projectBacklogItemArray'))
+    console.log(productBackLogItemObj)
     projectBacklogItemsParsed.push(productBackLogItemObj)
     localStorage.setItem('projectBacklogItemArray',JSON.stringify(projectBacklogItemsParsed));
     window.location = 'projectBacklog.html'

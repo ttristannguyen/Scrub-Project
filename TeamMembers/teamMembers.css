@@ -13,3 +13,10 @@
     font-weight: bold;
   }
 
+  #addTaskButton{
+    position: absolute;
+    left: 88%;
+    width: 190px;
+    bottom: 60%;
+    
+}
