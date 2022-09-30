@@ -63,7 +63,9 @@ function onSprintListLoad()
         let sprintStartDate = array[i].sprintStartDate; //Gets the priority for dynamic entering
         let sprintEndDate = array[i].sprintEndDate;
         let sprintInProgress = array[i].sprintInProgress;
-       htmlElements += ' <div class = "mdl-cell mdl-cell--3-col graybox" style = "position: relative; top: 90%"' + 'id=' + '"' + i + '"' + '>' + "<p id = 'taskTextSprint'>" + sprintName + '<br>' + "Sprint Start Date: " + sprintStartDate + '<br>' + "Sprint End Date: " + sprintEndDate + '<br>' + "Sprint Progression: " + sprintInProgress + "<br>" + "<\p>" + '</div>';
+       htmlElements += ' <div class = "mdl-cell mdl-cell--3-col graybox" style = "position: relative; top: 90%"' + 'id=' + '"' + i + '"' + '>' + "<p id = 'taskTextSprint'>" + sprintName + '<br>' + "Sprint Start Date: " + sprintStartDate + '<br>' + "Sprint End Date: " + sprintEndDate + '<br>' + "Sprint Progression: " + sprintInProgress + "<br>" + "<\p>" + '</div>' +
+       `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = 'deleteSprint(${i})' id = 'deleteSprint'> Delete </button>`;
+    
     }
     let sprintPlacement = document.getElementById("sprintPlacement");
     sprintPlacement.innerHTML = htmlElements;
@@ -74,7 +76,7 @@ function onSprintListLoad()
             let button = document.createElement('button');
             button.type = 'button';
             button.innerHTML = 'See/edit details';
-            button.className = 'btn-styled';
+            button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent seeDetailsBtn" 
             button.id = j.toString();
 
             if (j == activeSprintID) {
@@ -99,6 +101,38 @@ function onSprintListLoad()
     }
 
 }
+
+function deleteSprint(index){
+    
+    if (confirm("Are you sure you want to delete the task ?")) {
+        let activeSprintID = JSON.parse(localStorage.getItem("activeSprintID"));
+        array = JSON.parse(localStorage.getItem('sprintBacklogArray'));
+        // taskIDString = JSON.parse(localStorage.getItem('currentTaskId'));
+
+        if (array[activeSprintID] == array[index]) {
+            alert("You kant delete an active sprint");
+            return;
+        }
+        
+        // elementNum = parseInt(taskIDString);
+        delete array[index];
+        array = array.filter(n => n) 
+        localStorage.setItem('sprintBacklogArray',JSON.stringify(array));
+        location.reload();  
+        console.log("A")
+    }
+}
+
+function createDetailedView(index)
+{
+    // console.log(index)
+    window.location.href = "../Kanban/kanban.html"
+    localStorage.setItem('currentSprintId',JSON.stringify(index))
+    
+
+}
+
+
 
 function manageSprintView()
 {

@@ -1,4 +1,6 @@
 function loadBurndownChart() {
+  // Function: Pulls all the sprint data from local storage and creates the 3 burndown charts,
+  // expected vel, ideal vel and accum effort
 
     sprintID = JSON.parse(localStorage.getItem('currentSprintId'));
     sprintArray = JSON.parse(localStorage.getItem('sprintBacklogArray'));
@@ -86,6 +88,11 @@ function loadBurndownChart() {
     
 }
 function getDatesinRange(startDate,endDate){
+  /*
+  Function: returns a list of dates between the startDate and endDate
+  Parameters: startDate - Date() that you want to start from
+              endDate - Date() that you want to end at
+  */
     const date = new Date(startDate.getTime());
 
     const dates = [];
@@ -100,6 +107,13 @@ function getDatesinRange(startDate,endDate){
     return dates;
 }
 function fromStartDatetoNow(startDate,endDate,array,value){
+    /*
+  Function: Fills the "array" list with "value" based on the number of dates between startDate and endDate
+  Parameters: startDate - Date() that you want to start from
+              endDate - Date() that you want to end at
+              array - List that you want to fill
+              value - Value you are filling the list with
+  */
     const date = new Date(startDate.getTime());
 
     // const dates = [];
