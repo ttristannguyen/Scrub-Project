@@ -64,7 +64,7 @@ function onSprintListLoad()
         let sprintEndDate = array[i].sprintEndDate;
         let sprintInProgress = array[i].sprintInProgress;
        htmlElements += ' <div class = "mdl-cell mdl-cell--3-col graybox" style = "position: relative; top: 90%"' + 'id=' + '"' + i + '"' + '>' + "<p id = 'taskTextSprint'>" + sprintName + '<br>' + "Sprint Start Date: " + sprintStartDate + '<br>' + "Sprint End Date: " + sprintEndDate + '<br>' + "Sprint Progression: " + sprintInProgress + "<br>" + "<\p>" + '</div>' +
-       `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = 'deleteSprint(${i})' id = 'deleteSprint'> Delete </button>`;
+       `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400 deleteSprint' + onclick = 'deleteSprint(${i})'> Delete </button>`;
     
     }
     let sprintPlacement = document.getElementById("sprintPlacement");
