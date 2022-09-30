@@ -62,7 +62,9 @@ function onSprintListLoad()
         let sprintStartDate = array[i].sprintStartDate; //Gets the priority for dynamic entering
         let sprintEndDate = array[i].sprintEndDate;
         let sprintInProgress = array[i].sprintInProgress;
-       htmlElements += ' <div class = "mdl-cell mdl-cell--3-col graybox" style = "position: relative; top: 90%"' + 'id=' + '"' + i + '"' + '>' + "<p id = 'taskTextSprint'>" + sprintName + '<br>' + "Sprint Start Date: " + sprintStartDate + '<br>' + "Sprint End Date: " + sprintEndDate + '<br>' + "Sprint Progression: " + sprintInProgress + "<br>" + "<\p>" + '</div>';
+       htmlElements += ' <div class = "mdl-cell mdl-cell--3-col graybox" style = "position: relative; top: 90%"' + 'id=' + '"' + i + '"' + '>' + "<p id = 'taskTextSprint'>" + sprintName + '<br>' + "Sprint Start Date: " + sprintStartDate + '<br>' + "Sprint End Date: " + sprintEndDate + '<br>' + "Sprint Progression: " + sprintInProgress + "<br>" + "<\p>" + '</div>' +
+       `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = 'deleteSprint(${i})' id = 'deleteSprint'> Delete </button>`;
+    
     }
     let sprintPlacement = document.getElementById("sprintPlacement");
     sprintPlacement.innerHTML = htmlElements;
@@ -99,7 +101,34 @@ function onSprintListLoad()
 
 }
 
+function deleteSprint(index){
+    
+    if (confirm("Are you sure you want to delete the task ?")) {
+        array = JSON.parse(localStorage.getItem('sprintBacklogArray'));
+        // taskIDString = JSON.parse(localStorage.getItem('currentTaskId'));
+        
+        // elementNum = parseInt(taskIDString);
+        delete array[index];
+        array = array.filter(n => n) 
+        localStorage.setItem('sprintBacklogArray',JSON.stringify(array));
+        location.reload();  
+        console.log("A")
+    }
+}
+
+function createDetailedView(index)
+{
+    // console.log(index)
+    window.location.href = "../Kanban/kanban.html"
+    localStorage.setItem('currentSprintId',JSON.stringify(index))
+    
+
+}
+
+
+
 function manageSprintView()
 {
     window.location.replace('sprintManagement.html');
 }
+
