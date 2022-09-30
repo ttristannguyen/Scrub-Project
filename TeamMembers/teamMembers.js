@@ -89,7 +89,30 @@ function onTeamMembersLoad()
     let teamMemberPlacement = document.getElementById("teamMemberPlacement");
     teamMemberPlacement.innerHTML = htmlElements;
 
-          }
+        //Building the team member dashboard: 
+        //Includes: A graph with each team member being a new line in the graph. 
+        //A line showing their work for each day within a given period. 
+        //A line showing the average work for the team per day within a given period. 
+        let xValues = []
+        let yValues = []
+        let hours = 0
+        let objArray = []
+        for (let i = 0; i < array.length; i++) 
+        {
+            for (let j = 0; j < array[i].teamMemberAccumulatedHours.length; j++) 
+            {
+                let dateStr = array[i].teamMemberAccumulatedHours[j][0]
+                let dateObj = new Date(dateStr)
+                objArray.push({date: dateObj,hours: parseInt(array[i].teamMemberAccumulatedHours[j][1]), teamMember: array[i].teamMemberFirstName});
+                hours = hours + parseInt(array[i].teamMemberAccumulatedHours[j][1])
+            }
+        }
+        let sortedDates =  objArray.sort((a, b) => b.date - a.date);
+        firstEntry = sortedDates[0].date;
+        lastEntry = sortedDates[sortedDates.length-1].date;
+        document.getElementById("teamAnalytics").innerHTML +=  "Total accrued team hours: " + hours
+        
+    }
 
 function addTeamMemberOnClick()
 {
