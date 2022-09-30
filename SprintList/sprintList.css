@@ -115,3 +115,11 @@
     right: 80px;
     width: 100px;
 }
+
+.deleteSprint {
+    position: relative;
+    top: 205px;
+    right: 50px;
+    width: 100px;
+    height: 35px;
+}
