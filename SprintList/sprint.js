@@ -76,7 +76,7 @@ function onSprintListLoad()
             let button = document.createElement('button');
             button.type = 'button';
             button.innerHTML = 'See/edit details';
-            button.className = 'btn-styled';
+            button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent seeDetailsBtn" 
             button.id = j.toString();
 
             if (j == activeSprintID) {
@@ -105,8 +105,14 @@ function onSprintListLoad()
 function deleteSprint(index){
     
     if (confirm("Are you sure you want to delete the task ?")) {
+        let activeSprintID = JSON.parse(localStorage.getItem("activeSprintID"));
         array = JSON.parse(localStorage.getItem('sprintBacklogArray'));
         // taskIDString = JSON.parse(localStorage.getItem('currentTaskId'));
+
+        if (array[activeSprintID] == array[index]) {
+            alert("You kant delete an active sprint");
+            return;
+        }
         
         // elementNum = parseInt(taskIDString);
         delete array[index];

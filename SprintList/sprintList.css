@@ -108,3 +108,10 @@
 .pbiBox:hover{
     box-shadow: inset 0px 0px 10px;
 }
+
+.seeDetailsBtn {
+    position: relative;
+    bottom: 40px;
+    right: 80px;
+    width: 100px;
+}
