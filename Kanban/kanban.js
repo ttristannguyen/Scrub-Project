@@ -183,6 +183,8 @@ function finishTask(taskNumber) {
     closeDialog();    
 }
 function completeSprint() {
+    // Function: Sets Sprint and it's tasks to a complete status and sends the user back to sprint list
+    
 
     sprintID = JSON.parse(localStorage.getItem("currentSprintId"))
     sprintArray = JSON.parse(localStorage.getItem("sprintBacklogArray"))
