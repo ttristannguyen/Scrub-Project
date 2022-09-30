@@ -60,3 +60,4 @@ function closeDialog() {
     console.log(teamMember);
     modal.close();
 }
+

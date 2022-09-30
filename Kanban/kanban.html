@@ -79,10 +79,23 @@
               </tbody>
             </table>
           </div>
+  <!-- The Modal -->
+  <dialog class="modal" id="modal1">
+    <label>Select Date:</label>
+    <input type="date" id="datePicked" >
+    <label> Hours Worked: </labeL>
+      <input type="number" id="hoursLogged">      
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+    onclick = "closeDialog1()">
+    
+      Done
+    </button>
+  </dialog>
+
           <div class = "burndownButton"> <!-- Button to navigate to burndown chart -->
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400"
-            onclick = "">
-              Burndown
+            onclick = "burndownChartButton()">
+              Burndown Chart
             </button>
           </div>
         </div>

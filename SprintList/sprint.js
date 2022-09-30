@@ -26,6 +26,7 @@ let sprintObjectObj = class {
         this.sprintInProgress = sprintInProgress;
         this.sprintTaskList = sprintTaskList;
         this.sprintAccumulatedHours = sprintAccumulatedHours;
+
     }
 
 }
@@ -131,4 +132,17 @@ function manageSprintView()
 {
     window.location.replace('sprintManagement.html');
 }
+function getDatesinRange(startDate,endDate){
+    const date = new Date(startDate.getTime());
 
+    const dates = [];
+
+    while (date <= endDate) {
+        newDate = new Date(date)
+        days = newDate.getDate()
+        months = newDate.getMonth()
+        dates.push(0);
+        date.setDate(date.getDate() + 1);
+    }
+    return dates;
+}

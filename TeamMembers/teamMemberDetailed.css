@@ -1,5 +1,6 @@
 body{
 	background-color: #eee;
+	padding: 14px;
 }
 .cardDiv
 {
@@ -20,6 +21,7 @@ body{
 .top-container{
 	display: flex;
 	align-items: center;
+	padding: 10px;
 }
 .profile-image{
 	border-radius: 10px;

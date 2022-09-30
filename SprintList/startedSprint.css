@@ -19,3 +19,9 @@
     align-self: center;
     padding: 2%;
 }
+.burndownChartButton {
+    position: absolute;
+    top: 200px;
+    left: 42%;
+    font-size: small;
+}
