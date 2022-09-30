@@ -46,7 +46,14 @@ function loadKanban() {
         else if (task.taskStatus == 1) {
             inProgHtml += `
                 <tr>
-                    <td id="${idString}" onclick = "showDialog('${idString}')" class = "mdl-data-table__cell--non-numeric">${task.taskName}</td>
+                    <td id="${idString}" onclick = "showDialog('${idString}')" class = "mdl-data-table__cell--non-numeric">${task.taskName}`
+                     
+                    +
+                    `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--orange-400' + onclick = 'logTime(${i})' id = 'logTime'> logTime </button>
+                    
+                    
+                   
+                    </td>
                 </tr>
             `
         }
@@ -54,7 +61,13 @@ function loadKanban() {
         else if (task.taskStatus == 2) {
             doneHtml += `
                 <tr>
-                    <td id="${idString}" onclick = "showDialog('${idString}')" class = "mdl-data-table__cell--non-numeric">${task.taskName}</td>
+                    <td id="${idString}" onclick = "showDialog('${idString}')" class = "mdl-data-table__cell--non-numeric">${task.taskName}
+                    
+                   
+                    </td>
+
+
+                 
                 </tr>
             `
         }
@@ -216,3 +229,44 @@ function burndownChartButton() {
     // Function: Moves the window to burndownChart.html
     window.location = "burndownChart.html";
 }
+
+//Shan added 30/09 
+
+let teamMember = "";
+function logTime(i)
+{
+
+    let currentSprintNum = JSON.parse(localStorage.getItem('currentSprintId'));
+    array = JSON.parse(localStorage.getItem('sprintBacklogArray'));
+    array = array[currentSprintNum]
+    let arrayTaskList = array.sprintTaskList   
+    let modal1 = document.getElementById("modal1");
+    modal1.showModal();
+    teamMember = arrayTaskList[i].taskTeamMember;
+   
+}    
+
+function closeDialog1() {
+    if (document.getElementById("datePicked").value == "" || document.getElementById("hoursLogged").value == "")
+    {
+        window.alert("Please enter a date and elapsed hours worked on the selected task");
+        return
+    }
+    TMarray = JSON.parse(localStorage.getItem('teamMemberArray'));
+    let sprintAcc = JSON.parse(localStorage.getItem('sprintBacklogArray'))
+    for (let j = 0; j<TMarray.length; j++)
+    {
+        if(TMarray[j].teamMemberFirstName == teamMember)
+        {
+            TMarray[j].teamMemberAccumulatedHours.push([document.getElementById("datePicked").value, document.getElementById("hoursLogged").value ])
+        }
+    }
+    let currentSprint = JSON.parse(localStorage.getItem('currentSprintId'));
+    sprintAcc[currentSprint].sprintAccumulatedHours.push([document.getElementById("datePicked").value, document.getElementById("hoursLogged").value])
+    localStorage.setItem('teamMemberArray',JSON.stringify(TMarray));
+    localStorage.setItem('sprintBacklogArray',JSON.stringify(sprintAcc)); //Putting into sprint array.
+    modal1 = document.getElementById("modal1");
+    console.log(teamMember);
+    modal1.close();
+}
+
