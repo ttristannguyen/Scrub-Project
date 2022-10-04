@@ -210,7 +210,7 @@ function completeSprint() {
             for (task in currSprint.sprintTaskList) {
                 task.taskStatus = 2;
                 localStorage.setItem("activeSprint", null)
-                localStorage.setItem("activeSprintID", parseInt(sprintArray.length + 1))
+                localStorage.setItem("activeSprintID", '-1')
                 localStorage.setItem("sprintBacklogArray", JSON.stringify(sprintArray))
                 window.location = "../SprintList/sprintList.html"
             }
