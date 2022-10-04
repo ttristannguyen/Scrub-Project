@@ -92,12 +92,13 @@ function onTeamMembersLoad()
 
         //Team member dashboard! 
         let start = (JSON.parse(localStorage.getItem("firstDate")));
-        let end =  (JSON.parse(localStorage.getItem("endDate")));
+        let end =  (JSON.parse(localStorage.getItem("lastDate")));
         function dateRange(startDate, endDate, steps = 1) {
             const dateArray = [];
             let currentDate = new Date(startDate);
+            let endD = new Date(endDate);
           
-            while (currentDate <= new Date(endDate)) {
+            while (currentDate <= endD) {
               dateArray.push(new Date(currentDate));
               // Use UTC date to prevent problems with time zones and DST
               currentDate.setUTCDate(currentDate.getUTCDate() + steps);
@@ -106,8 +107,48 @@ function onTeamMembersLoad()
             return dateArray;
           }
           
-          const dates = dateRange(start, end);
-          console.log(dates)
+          let dates = dateRange(start, end);
+          yValues = []
+          for (let i = 0; i<dates.length;i++)
+          {
+            yValues.push(0); //Space filler
+          }
+          let sprintHoursOld = JSON.parse(localStorage.getItem("sprintBacklogArray"));
+          let sprintHours = []
+          for (let i = 0; i<sprintHoursOld.length;i++)
+          {
+            for (let j = 0; j<sprintHoursOld[i].sprintAccumulatedHours.length;j++)
+          {
+            sprintHours.push(sprintHoursOld[i].sprintAccumulatedHours[j]);
+          }
+          
+           
+          }
+        
+          for (let i = 0; i < sprintHours.length; i++) 
+          {
+            let sprintDate = new Date(sprintHours[i][0]);
+            for (let j = 0; j < dates.length; j++)
+            {
+                if(sprintDate == dates[j])
+                {
+                    yValues[j] += sprintHours[i][1]
+                }
+            }
+          }
+          
+          new Chart("myChart1", {
+            type: "line",
+            data: {
+              labels: dates,
+              datasets: [{
+                backgroundColor: "rgba(0,0,0,1.0)",
+                borderColor: "rgba(0,0,0,0.1)",
+                data: yValues
+              }]
+            },
+         
+          });
           
     }
 
