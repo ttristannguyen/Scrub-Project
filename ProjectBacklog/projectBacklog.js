@@ -74,6 +74,7 @@ function taskCreationOnClick()
 
     let productBackLogItemObj = new projectBacklogItem(taskName,taskDescription,taskTag,taskType,taskStoryPoint,taskPriority,taskTeamMember,taskStatus);
     projectBacklogItemsParsed = JSON.parse(localStorage.getItem('projectBacklogItemArray'))
+    console.log(productBackLogItemObj)
     projectBacklogItemsParsed.push(productBackLogItemObj)
     localStorage.setItem('projectBacklogItemArray',JSON.stringify(projectBacklogItemsParsed));
     window.location = 'projectBacklog.html'
@@ -235,6 +236,7 @@ function saveEditedDetails()
         console.log("taskStoryPoint " + taskStoryPoint)
         return 
     }
+    //Test
     for (var i = 0 ; i < taskPriorityTag.length ; i++) {
         if (taskPriorityTag[i].type == 'radio' && taskPriorityTag[i].checked){ var taskPriority = taskPriorityTag[i].value}
         
