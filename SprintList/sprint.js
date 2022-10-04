@@ -39,9 +39,15 @@ function sprintCreationDoneBtnOnClick()
     sprintInProgress = 0
     sprintTaskList = [];
     sprintAccumulatedHours = [];//just for now
+    //Checking if this is the first sprint!
 
     let sprintObject = new sprintObjectObj(sprintName,sprintStartDate,sprintEndDate,sprintInProgress,sprintTaskList,sprintAccumulatedHours);
     sprintItemsParsed = JSON.parse(localStorage.getItem('sprintBacklogArray'));
+    if (sprintItemsParsed.length == 0)
+    {
+        localStorage.setItem("firstDate",JSON.stringify(sprintStartDate))
+    }
+    localStorage.setItem("lastDate",JSON.stringify(sprintEndDate));
     sprintItemsParsed.push(sprintObject)
     localStorage.setItem('sprintBacklogArray',JSON.stringify(sprintItemsParsed));
     window.location = 'sprintList.html'
@@ -119,7 +125,7 @@ function deleteSprint(index){
         array = array.filter(n => n) 
         localStorage.setItem('sprintBacklogArray',JSON.stringify(array));
         location.reload();  
-        console.log("A")
+
     }
 }
 

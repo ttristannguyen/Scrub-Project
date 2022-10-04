@@ -91,8 +91,24 @@ function onTeamMembersLoad()
     teamMemberPlacement.innerHTML = htmlElements;
 
         //Team member dashboard! 
-        
-        
+        let start = (JSON.parse(localStorage.getItem("firstDate")));
+        let end =  (JSON.parse(localStorage.getItem("endDate")));
+        function dateRange(startDate, endDate, steps = 1) {
+            const dateArray = [];
+            let currentDate = new Date(startDate);
+          
+            while (currentDate <= new Date(endDate)) {
+              dateArray.push(new Date(currentDate));
+              // Use UTC date to prevent problems with time zones and DST
+              currentDate.setUTCDate(currentDate.getUTCDate() + steps);
+            }
+          
+            return dateArray;
+          }
+          
+          const dates = dateRange(start, end);
+          console.log(dates)
+          
     }
 
 function addTeamMemberOnClick()
