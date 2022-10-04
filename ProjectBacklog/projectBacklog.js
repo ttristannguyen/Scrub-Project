@@ -236,6 +236,7 @@ function saveEditedDetails()
         console.log("taskStoryPoint " + taskStoryPoint)
         return 
     }
+    //Test
     for (var i = 0 ; i < taskPriorityTag.length ; i++) {
         if (taskPriorityTag[i].type == 'radio' && taskPriorityTag[i].checked){ var taskPriority = taskPriorityTag[i].value}
         
