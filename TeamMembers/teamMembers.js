@@ -95,6 +95,7 @@ function onTeamMembersLoad()
         //A line showing the average work for the team per day within a given period. 
         let xValues = []
         let yValues = []
+        let hours = 0
         let objArray = []
         for (let i = 0; i < array.length; i++) 
         {
@@ -103,74 +104,14 @@ function onTeamMembersLoad()
                 let dateStr = array[i].teamMemberAccumulatedHours[j][0]
                 let dateObj = new Date(dateStr)
                 objArray.push({date: dateObj,hours: parseInt(array[i].teamMemberAccumulatedHours[j][1]), teamMember: array[i].teamMemberFirstName});
+                hours = hours + parseInt(array[i].teamMemberAccumulatedHours[j][1])
             }
         }
         let sortedDates =  objArray.sort((a, b) => b.date - a.date);
         firstEntry = sortedDates[0].date;
         lastEntry = sortedDates[sortedDates.length-1].date;
-        while (firstEntry >= lastEntry) { //To put all the dates within the start and end range into the graph
-            xValues.push( moment(firstEntry).format('YYYY-MM-DD') )
-            firstEntry = moment(firstEntry).add(1, 'days');
-        }
-         
-        for (let i = 0; i<xValues.length; i++)
-        {
-            yValues.push(0)
-        }
-        for (let i = 0; i<xValues.length; i++)
-        {
-            for(let j=0; j<objArray.length; j++)
-            {
-            if(objArray[j].date.toLocaleDateString('en-US')==xValues[i])
-             {
-                    yValues[i] += objArray[j].hours;
-                }
-            else
-            {
-                yValues[i] += 0;
-            }
-            }
-        }
-          
-    var barColors = ["red", "green","blue","orange","brown"];
-
+        document.getElementById("teamAnalytics").innerHTML +=  "Total accrued team hours: " + hours
         
-        new Chart("myChart1", {
-            type: "bar",
-            data: {
-              labels: xValues,
-              datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-              }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Hours'
-                        },
-                        ticks: {
-                            beginAtZero:true
-                        }
-                    }],
-                    xAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Date'
-                        }
-                    }]
-                },
-                title: {
-                    display: true,
-                    text: 'Hours spent on project per day'
-                }
-    
-                
-            }
-         
-          });
     }
 
 function addTeamMemberOnClick()
