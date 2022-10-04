@@ -44,7 +44,7 @@ function sprintCreationDoneBtnOnClick()
     sprintItemsParsed = JSON.parse(localStorage.getItem('sprintBacklogArray'));
     sprintItemsParsed.push(sprintObject)
     localStorage.setItem('sprintBacklogArray',JSON.stringify(sprintItemsParsed));
-
+    window.location = 'sprintList.html'
 }
 
 function sprintCreationBackOnClick()
