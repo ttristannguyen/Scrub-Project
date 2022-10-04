@@ -6,3 +6,128 @@
 {
     color: #111; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 72px; text-align: center; font-style: italic;
 }
+
+.body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+#addTaskButton{
+    position: absolute;
+    left: 88%;
+    width: 120px;
+    bottom: 60%;
+    
+}
+
+
+.mdl-cell {
+    background: #bdbdbd;
+    padding: 120px 0;
+
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 4px;
+    font-weight: bold, ridge;
+    text-align: center;
+    max-height: 100px;
+    max-width: 20%;
+    font-size: medium;
+    font-weight:bold;
+    position: relative;
+    left: 80px
+    
+    
+    
+    
+
+  }
+#taskText {
+    font-size: medium;
+    font-weight: bold;
+    position: relative;
+    top: -60px
+    /* text-align: center; */
+
+}
+
+.mdl-selectfield__select{
+    position: absolute;
+    left: 87%;
+    top: 8%;
+    width: 10%
+}
+
+#taskTextSprint { 
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    bottom: 50px; 
+
+    /* left: 20%;*/
+}
+
+
+
+#filterText {
+    position: absolute;
+    left: 87%;
+    top: 4%;
+    width: 10%;
+    font-weight: lighter;
+    font-size: medium;
+    
+}
+#deleteBtn {
+    position: relative;
+    right: 113px;
+    top: 170px;
+}
+#detailViewBtn {
+    position: relative;
+    bottom: 60px;
+    right: 4px;
+}
+
+.pbiBox {
+    border: 0;
+    border-radius: 15px;
+    background-color: #edeef6;
+    box-shadow: 0px 0px 10px;
+}
+
+.pbiBox:hover{
+    box-shadow: inset 0px 0px 10px;
+}
+
+.seeDetailsBtn {
+    position: relative;
+    bottom: 40px;
+    right: 80px;
+    width: 100px;
+}
+
+.deleteSprint {
+    position: relative;
+    top: 205px;
+    right: 50px;
+    width: 100px;
+    height: 35px;
+}

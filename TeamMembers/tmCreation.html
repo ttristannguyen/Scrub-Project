@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,9 +71,154 @@ background: #ccc;
 cursor: pointer;
 }
 </style>
+=======
+
+    <head>
+        <link rel="stylesheet" href="../ProjectBacklog/projectBacklog.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="sprintCreation.css">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">    
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <script src="teamMembers.js"></script>
+        <title>SPRINT LIST</title>
+    </head>
+    
+    <body onload="onSprintListLoad()">
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+                mdl-layout--fixed-header"> <!-- Layout Starts Here-->
+    
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                      mdl-textfield--floating-label mdl-textfield--align-right">
+          </div>
+        </div> <!-- Layout Ends Here-->
+      </header>
+    
+      <div class="mdl-layout__drawer"> <!-- Nav Bar Starts Here-->
+        <span class="mdl-layout-title"><b>Sprint List</b></span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="../ProjectBacklog/projectBacklog.html">Project Backlog</a>
+          <a class="mdl-navigation__link" href="../SprintList/sprintList.html">Sprint List</a>
+          <a class="mdl-navigation__link" href="../TeamMembers/teamMembers.html">Team Members</a>
+        </nav>
+      </div> <!-- Nav Bar Ends Here-->
+      <main class="mdl-layout__content">
+    
+        <div class="page-content"> <!-- Page Content Starts Here-->
+
+    <!-- CSS -->
+    <style>
+        .tmCreationForm {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+            font-size: 0.8em;
+            width: 20em;
+            padding: 1em;
+            border: 1px solid #ccc;
+            max-width: 500px;
+            margin: auto;
+            position: relative;
+            top: 130px;
+        }
+
+        .tmCreationForm * {
+            box-sizing: border-box;
+        }
+
+        .tmCreationForm fieldset {
+            border: none;
+            padding: 0;
+        }
+
+        .tmCreationForm legend,
+        .tmCreationForm label {
+            padding: 0;
+            font-weight: bold;
+        }
+
+        .tmCreationForm label.choice {
+            font-size: 0.9em;
+            font-weight: normal;
+        }
+
+        .tmCreationForm input[type="text"],
+        .tmCreationForm input[type="tel"],
+        .tmCreationForm input[type="email"],
+        .tmCreationForm input[type="datetime-local"],
+        .tmCreationForm select,
+        .tmCreationForm textarea {
+            display: block;
+            width: 100%;
+            border: 1px solid #ccc;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+            font-size: 0.9em;
+            padding: 0.3em;
+        }
+
+        .tmCreationForm textarea {
+            height: 100px;
+        }
+
+        .tmCreationForm button {
+            padding: 1em;
+            border-radius: 0.5em;
+            background: #eee;
+            border: none;
+            font-weight: bold;
+            margin-top: 1em;
+        }
+
+        .tmCreationForm button:hover {
+            background: #ccc;
+            cursor: pointer;
+        }
+
+
+        /* CSS */
+        .button-81 {
+            background-color: #fff;
+            border: 0 solid #000000;
+            border-radius: 1.5rem;
+            box-sizing: border-box;
+            color: #0d172a;
+            cursor: pointer;
+            display: inline-block;
+            font-family: "Basier circle", -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1;
+            padding: 1rem 1.6rem;
+            text-align: center;
+            text-decoration: none #0d172a solid;
+            text-decoration-thickness: auto;
+            transition: all .1s cubic-bezier(.4, 0, .2, 1);
+            box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            position: relative;
+            left: 80px;
+        }
+
+        .button-81:hover {
+            background-color: #1e293b;
+            color: #fff;
+        }
+
+        @media (min-width: 768px) {
+            .button-81 {
+                font-size: 1.125rem;
+                padding: 1rem 2rem;
+            }
+        }
+    </style>
+>>>>>>> master
 
 </head>
+
 <body onload="onTeamMemberCreationLoad()">
+<<<<<<< HEAD
     <div class = "pageTitle"> 
         ADD TEAM MEMBER
        </div>
@@ -80,31 +226,38 @@ cursor: pointer;
        Use this page to add the details of a team member
        </div>
 <form class="tmCreationForm" method="get" >
+=======
 
-<p>
-<label>Team Member First Name: 
-<input type="text" name="teamMemberFirstName" id = "teamMemberFirstName" required>
-</label> 
-</p>
+    <form class="tmCreationForm" method="get">
 
-<p>
-    <label>Team Member Last Name: 
-    <input type="text" name="teamMemberLastName" id = "teamMemberLastName" required>
-    </label> 
-    </p>
+        <p>
+            <label>Team Member First Name:
+                <input type="text" name="teamMemberFirstName" id="teamMemberFirstName" required>
+            </label>
+        </p>
+>>>>>>> master
 
-<p>
-<label>Team Member Email: 
-<textarea  name="teamMemberEmail" id = "teamMemberEmail" required>
-</textarea> 
-</p>
+        <p>
+            <label>Team Member Last Name:
+                <input type="text" name="teamMemberLastName" id="teamMemberLastName" required>
+            </label>
+        </p>
 
-</form>
+        <p>
+            <label>Team Member Email:
+                <input type='text' name="teamMemberEmail" id="teamMemberEmail" required>
+            </label>        
+
+                </p>
 
 
-<p><button id="teamMemberCreationDoneBtn" onClick="addTeamMemberSaveOnClick()">Done</button></p>
 
-<p><button id="teamMemberCreationBackBtn" onClick="addTeamMemberBackOnClick()">Back</button></p>
 
+        <p><button type='button' class="button-81" onClick="addTeamMemberSaveOnClick()">Done</button></p>
+
+        <p><button type='button' class="button-81" onClick="addTeamMemberBackOnClick()">Back</button></p>
+
+    </form>
 </body>
+
 </html>

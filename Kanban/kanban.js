@@ -195,6 +195,35 @@ function finishTask(taskNumber) {
     loadKanban();
     closeDialog();    
 }
+function completeSprint() {
+    // Function: Sets Sprint and it's tasks to a complete status and sends the user back to sprint list
+    
+
+    sprintID = JSON.parse(localStorage.getItem("currentSprintId"))
+    sprintArray = JSON.parse(localStorage.getItem("sprintBacklogArray"))
+    currSprint = sprintArray[sprintID]
+
+    if (new Date() > new Date(currSprint.sprintEndDate)){
+        if (window.confirm("Are you sure you want to complete the sprint?")) {
+
+            currSprint.sprintInProgress = 2;
+            for (task in currSprint.sprintTaskList) {
+                task.taskStatus = 2;
+                localStorage.setItem("activeSprint", null)
+                localStorage.setItem("activeSprintID", parseInt(sprintArray.length + 1))
+                localStorage.setItem("sprintBacklogArray", JSON.stringify(sprintArray))
+                window.location = "../SprintList/sprintList.html"
+            }
+        }
+    }
+    else {
+        alert("You still have time in your sprint")
+    }
+    
+
+
+    
+}   
 
 function burndownChartButton() {
     // Function: Moves the window to burndownChart.html
