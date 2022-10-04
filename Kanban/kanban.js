@@ -210,15 +210,19 @@ function completeSprint() {
             for (task in currSprint.sprintTaskList) {
                 task.taskStatus = 2;
                 localStorage.setItem("activeSprint", null)
-                localStorage.setItem("activeSprintID", parseInt(sprintArray.length + 1))
+                localStorage.setItem("activeSprintID", "-1")
+                console.log("TEST")
                 localStorage.setItem("sprintBacklogArray", JSON.stringify(sprintArray))
                 window.location = "../SprintList/sprintList.html"
             }
-        }
+            window.location = "../SprintList/sprintList.html"
+        }   
     }
     else {
         alert("You still have time in your sprint")
     }
+    
+
     
 
 
