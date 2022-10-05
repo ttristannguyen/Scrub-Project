@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">    
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="teamMembers.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
     <title>Team Member Details</title>
 </head>
 
 <body onload="teamMemberDetailedView()">
-  <form class="taskCreationForm" method="get">
+  <div class="taskCreationForm">
   <div class="btn-group my-5">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
             mdl-layout--fixed-header"> <!-- Layout Starts Here-->
@@ -75,20 +78,23 @@
       <input type="date" id="dateStarted" >
       <label>Date Ended:</label>
       <input type="date" id="dateEnded" >
-      <button id="doneDateSelector" onclick="checkOnClick()">CHECK</button><br>
-      <span>Total accumulated hrs = </span>
-      <span id="hoursAccDateRange"></span><br>
-      <span>Average work per day= </span>
-      <span id="averageWorkPerDay"></span>
+      <button onclick="checkOnClick()" id="seeAnalytics">SEE ANALYTICS</button>
+      <br>
+     <div id="teamAnalytics"></div> 
     </div>
-    <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-    </div> <!-- Page Content Ends Here-->
+    <div class="chartWrapper">
+      <div class="chartContainer">
+          <canvas id="myChart2"></canvas>
+      </div>
+  </div>
+  </div>
+     </div> <!-- Page Content Ends Here-->
   </main>
 
     <!-- CSS -->
 
 </div> <!-- Layout Ends Here-->
-</form>
+</div>
 </body>
 <script>
 </script>
