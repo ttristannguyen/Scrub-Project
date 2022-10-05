@@ -17,6 +17,7 @@ body{
 	border-radius: 33px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	padding: 2rem !important;
+
 }
 .top-container{
 	display: flex;
@@ -158,5 +159,9 @@ div.chartContainer {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: 20%;
+  width: 10%;
+}
+.pageDescription
+{
+    color: #111; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 22px; text-align: center;
 }
