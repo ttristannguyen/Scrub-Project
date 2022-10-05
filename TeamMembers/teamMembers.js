@@ -158,8 +158,8 @@ function onTeamMembersLoad()
             {
                 if(sprintDate.getTime() == dates[j].getTime())
                 {
-                    yValues[j] += sprintHours[i][1]
-                    totalAccHours += sprintHours[i][1];
+                    yValues[j] += parseInt(sprintHours[i][1])
+                    totalAccHours += parseInt(sprintHours[i][1]);
                 }
             }
           }
@@ -242,7 +242,7 @@ function onTeamMembersLoad()
           fitChart();
 
           let averageHours = Math.ceil(totalAccHours/totalNumDays);
-          document.getElementById('teamAnalytics').innerHTML += averageHours + 'hr/s' + `<br> <br>` + 'TOTAL TEAM HOURS: ' + totalAccHours + 'hrs';
+          document.getElementById('teamAnalytics').innerHTML += averageHours + 'hr/s per day' + `<br> <br>` + 'TOTAL TEAM HOURS: ' + totalAccHours + 'hrs';
           
           
     }
