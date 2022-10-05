@@ -108,39 +108,75 @@ function onTeamMembersLoad()
           }
           
           let dates = dateRange(start, end);
+          totalNumDays = dates.length;
+          totalAccHours = 0;
           yValues = []
+          let sprintSdEd = []
           for (let i = 0; i<dates.length;i++)
           {
             yValues.push(0); //Space filler
+            sprintSdEd.push(0);
           }
           let sprintHoursOld = JSON.parse(localStorage.getItem("sprintBacklogArray"));
           let sprintHours = []
+         
           for (let i = 0; i<sprintHoursOld.length;i++)
           {
+
+    
             for (let j = 0; j<sprintHoursOld[i].sprintAccumulatedHours.length;j++)
           {
+           
             sprintHours.push(sprintHoursOld[i].sprintAccumulatedHours[j]);
           }
-          
+     
            
           }
+          for (let i = 0; i<sprintHoursOld.length;i++)
+          {
+            let sd = new Date(sprintHoursOld[i].sprintStartDate)
+            let ed = new Date(sprintHoursOld[i].sprintEndDate)
+            for (let j = 0; j < dates.length; j++)
+            {
+                if(sd.getTime() == dates[j].getTime())
+                {
+                    sprintSdEd[j] += i+1
+                }
+                
+                if(ed.getTime() == dates[j].getTime())
+                {
+                    sprintSdEd[j] += i+1
+                }
+            }
+          }
+
         
           for (let i = 0; i < sprintHours.length; i++) 
           {
             let sprintDate = new Date(sprintHours[i][0]);
             for (let j = 0; j < dates.length; j++)
             {
-                if(sprintDate == dates[j])
+                if(sprintDate.getTime() == dates[j].getTime())
                 {
                     yValues[j] += sprintHours[i][1]
+                    totalAccHours += sprintHours[i][1];
                 }
             }
           }
+          datesUpdate = []
+          for(let i = 0; i<dates.length; i++)
+          {
+            datesUpdate.push(dates[i].toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+              }),)
+          }
           
-          new Chart("myChart1", {
+        /*  new Chart("myChart1", {
             type: "line",
             data: {
-              labels: dates,
+              labels: datesUpdate,
               datasets: [{
                 backgroundColor: "rgba(0,0,0,1.0)",
                 borderColor: "rgba(0,0,0,0.1)",
@@ -148,7 +184,66 @@ function onTeamMembersLoad()
               }]
             },
          
+          });*/
+          //For every new sprint, set all the dates of the sprint to 1, all other dates not in the sprint get set to 0 
+          //Each new sprint is +1 so that the date is cascading.
+
+
+          var xAxisLabelMinWidth = 15; // Replace this with whatever value you like
+          var myChart = new Chart(document.getElementById('myChart1').getContext('2d'), {
+              type: 'line',
+              data: { labels: datesUpdate,
+                datasets: [{
+                  label: "Hours", 
+                  backgroundColor: "rgba(0,0,0,1.0)",
+                  borderColor: "rgba(0,0,0,0.1)",
+                  data: yValues},
+                  {
+                    label: "Sprint number",
+                    fillColor: 'rgb(255,0,0)',
+                    backgroundColor: 'rgb(255,0,0)',
+                    pointColor: 'rgb(255,0,0)',
+                    showLine: false,
+                    data: sprintSdEd,
+                    pointStyle: 'triangle',
+                    radius: 6,
+                },
+
+                ]},
+              options: {
+                  responsive: true,
+                  maintainAspectRatio: false,
+            
+                    title: {
+                        display: true,
+                        text: 'Team logged hours'
+                    },
+                    scales: {
+                        yAxes: [{
+                          scaleLabel: {
+                            display: true,
+                            labelString: 'Hours / Sprint Number',
+                            size:20,
+                          }
+                        }]
+                      }     
+                
+              }
           });
+          
+          function fitChart(){
+              var chartCanvas = document.getElementById('myChart1');
+              var maxWidth = chartCanvas.parentElement.parentElement.clientWidth;
+              var width = Math.max(myChart.data.labels.length * xAxisLabelMinWidth, maxWidth);
+          
+              chartCanvas.parentElement.style.width = width +'px';
+          }
+          myChart
+          fitChart();
+
+          let averageHours = Math.ceil(totalAccHours/totalNumDays);
+          document.getElementById('teamAnalytics').innerHTML += averageHours + 'hr/s' + `<br> <br>` + 'TOTAL TEAM HOURS: ' + totalAccHours + 'hrs';
+          
           
     }
 

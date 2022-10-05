@@ -1,6 +1,6 @@
 #addTeamMembers{
     position: fixed;
-    left: 55%;
+    
     width: 100%;
     bottom: 5%
   
@@ -19,7 +19,7 @@
   }
   .pageDescription
   {
-      color: #111; font-family: 'Open Sans', sans-serif; font-size: 17px; font-weight: 300; line-height: 32px; margin: 0 0 72px; text-align: center; font-style: italic;
+      color: #111; font-family: 'Open Sans', sans-serif; font-size: 17px; font-weight: 300; line-height: 32px; margin: 0 0 22px; text-align: center; font-style: italic;
   }
   
   #addTaskButton{
@@ -30,3 +30,18 @@
     
 }
 
+div.chartWrapper {
+    position: relative;
+    overflow: auto;
+    width: 95%;
+}
+
+div.chartContainer {
+    position: relative;
+    height: 300px;
+
+}
+#teamAnalytics
+{
+    color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 16px; font-weight:lighter; letter-spacing: -1px; line-height: 1; text-align: left;
+}
