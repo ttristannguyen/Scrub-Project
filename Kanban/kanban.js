@@ -48,10 +48,7 @@ function loadKanban() {
                 <tr>
                     <td id="${idString}" onclick = "showDialog('${idString}')" class = "mdl-data-table__cell--non-numeric">${task.taskName}`
                      
-                    +
-                    `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--orange-400' + onclick = 'logTime(${i})' id = 'logTime'> logTime </button>
-                    
-                    
+                    +`
                    
                     </td>
                 </tr>
@@ -83,7 +80,7 @@ function loadKanban() {
     let doneList = document.getElementById("sprintDone")
     doneList.innerHTML = doneHtml
 }
-
+let taskNumber = 0;
 function showDialog(taskID) {
     //
     // Function used to generate and show individual task detail
@@ -111,6 +108,7 @@ function showDialog(taskID) {
         <p>Type: ${task.taskType}</p>
         <p>Assignee: ${task.taskTeamMember}</p>
         <p>Story Points: ${task.taskStoryPoint}</p>
+
     `;
 
     // Modifying Progression based on task status
@@ -123,6 +121,7 @@ function showDialog(taskID) {
         let beginButton = document.getElementById("progressTask")
         beginButton.innerHTML = `Finish Task`
         beginButton.onclick = function() {finishTask(taskNumber);};
+
     }
     modal.showModal();
 }
