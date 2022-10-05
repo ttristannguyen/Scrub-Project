@@ -6,7 +6,9 @@ function loadBurndownChart() {
     sprintArray = JSON.parse(localStorage.getItem('sprintBacklogArray'));
     currSprint = sprintArray[sprintID]
     // accumulatedHours = currSprint.dateDifferences;
-
+    title = currSprint.sprintName;
+    sprintNameDisplay = document.getElementById("sprintNameDisplay");
+    sprintNameDisplay.innerHTML = title;
     currDate = new Date();
     startDate = new Date(currSprint.sprintStartDate);
     endDate =  new Date(currSprint.sprintEndDate)
