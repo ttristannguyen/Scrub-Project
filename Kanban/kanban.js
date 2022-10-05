@@ -20,8 +20,32 @@ function loadKanban() {
     // Returns: None
     //
 
-    // Retrieving active sprint obj
-    let sprint = loadSprint();
+    // Determines whether kanban is of completed or active sprint
+    let sprint;
+    if (JSON.parse(localStorage.getItem("currentSprintId")) == JSON.parse(localStorage.getItem("activeSprintID"))) {
+        // Retrieving active sprint obj
+        sprint = loadSprint();
+
+        // Enabling Completion Button
+        let button = document.querySelector(".completeButton button")
+        button.disabled = false;
+        button.classList.remove('mdl-button--disabled');
+
+    }
+    else {
+        // Retrieving specified sprint obj
+        sprint = JSON.parse(localStorage.getItem("sprintBacklogArray"))[0]
+
+        // Disabling Completion Button
+        let button = document.querySelector(".completeButton button")
+        button.disabled = true;
+        button.classList.add('mdl-button--disabled');
+    }
+
+    // Changing Title of Webpage
+    let title = document.getElementsByClassName("pageTitle")
+    title[0].innerHTML = String(sprint.sprintName).toUpperCase()
+
     let taskList = sprint.sprintTaskList
 
     // Inner HTML variable initialisation
@@ -80,6 +104,7 @@ function loadKanban() {
     let doneList = document.getElementById("sprintDone")
     doneList.innerHTML = doneHtml
 }
+
 let taskNumber = 0;
 function showDialog(taskID) {
     //
@@ -194,6 +219,7 @@ function finishTask(taskNumber) {
     loadKanban();
     closeDialog();    
 }
+
 function completeSprint() {
     // Function: Sets Sprint and it's tasks to a complete status and sends the user back to sprint list
     
