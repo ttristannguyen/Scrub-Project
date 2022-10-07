@@ -4,9 +4,10 @@
 
 #addMemberButton {
     position: fixed;
-    bottom: 5%;
-    left: 45%;
-    width: 300px;
+    
+    width: 100%;
+    bottom: 5%
+  
 }
 
 .mdl-cell {
@@ -15,4 +16,37 @@
     text-align: center;
     color: #424242;
     font-weight: bold;
+  }
+
+  .pageTitle
+  {
+      color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 45px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+  }
+  .pageDescription
+  {
+      color: #111; font-family: 'Open Sans', sans-serif; font-size: 17px; font-weight: 300; line-height: 32px; margin: 0 0 22px; text-align: center; font-style: italic;
+  }
+  
+  #addTaskButton{
+    position: absolute;
+    left: 88%;
+    width: 190px;
+    bottom: 80%;
+    
+}
+
+div.chartWrapper {
+    position: relative;
+    overflow: auto;
+    width: 95%;
+}
+
+div.chartContainer {
+    position: relative;
+    height: 300px;
+
+}
+#teamAnalytics
+{
+    color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 16px; font-weight:lighter; letter-spacing: -1px; line-height: 1; text-align: left;
 }

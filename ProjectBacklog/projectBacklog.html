@@ -7,18 +7,20 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">    
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="projectBacklog.js"></script>
-    <title></title>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <title>Project Backlog </title>
 </head>
 <body onload="onProjectBacklogLoad()">
   <div class="btn-group my-5">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
             mdl-layout--fixed-header"> <!-- Layout Starts Here-->
+         
 
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <div class="mdl-layout-spacer"></div>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                  mdl-textfield--floating-label mdl-textfield--align-right">
+                  mdl-textfield--floating-label ">  
       </div>
     </div> <!-- Layout Ends Here-->
   </header>
@@ -31,8 +33,16 @@
     </nav>
   </div> <!-- Nav Bar Ends Here-->
   <main class="mdl-layout__content">
-
+    
     <div class="page-content" > <!-- Page Content Starts Here-->
+
+     <div class = "pageTitle"> 
+      PROJECT BACKLOG
+     </div>
+     <div class = "pageDescription">
+      Use this page to create tasks to be added to your sprints later. Click the “add task” button to get started
+     </div>
+     <hr style=height:2px;border-width:10px;border-color:black>
       <label id = "filterText">Filter By</label> 
       <div class="mdl-selectfield mdl-js-selectfield">
         <select class="mdl-selectfield__select" id="filterBy" name="filterBy" onchange="onProjectBacklogLoad()">
@@ -51,7 +61,7 @@
             onclick= "addTaskOnClick()">
                 Add Task
             </button>
-        </div>
+        </div>  
 
         <div class = "mdl-grid" id = "taskPlacement">
          </div>

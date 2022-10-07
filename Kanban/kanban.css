@@ -1,5 +1,5 @@
 .page-content {
-    margin: 5%;
+    margin: 1%;
 }
 
 .selectionColumn {
@@ -43,7 +43,13 @@
     left: 10%;
 }
 
-#startButton {
+.burndownButton {
+    position: absolute;
+    bottom: 10%;
+    right: 47%
+}
+
+.completeButton {
     position: absolute;
     bottom: 10%;
     right: 10%;
@@ -78,7 +84,6 @@
     color: white;
     margin: 10px auto;
 }
-
 .pageTitle
 {
     color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 75px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
@@ -86,4 +91,15 @@
 .pageDescription
 {
     color: #111; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 72px; text-align: center; font-style: italic;
+}
+#logTime
+{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 20px 20px ;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
 }

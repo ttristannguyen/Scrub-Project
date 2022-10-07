@@ -34,6 +34,7 @@ padding: 0;
 .taskViewForm label {
 padding: 0;
 font-weight: bold;
+font-size: small;
 }
 
 .taskViewForm label.choice {
@@ -72,6 +73,10 @@ margin-top: 1em;
 background: #ccc;
 cursor: pointer;
 }
+.mdl-selectfield {
+        font-size: medium;
+        height:4%;
+    }
 </style>
 
 </head>
@@ -115,10 +120,18 @@ mdl-layout--fixed-header"> <!-- Layout Starts Here-->
         <label>Task type 
             <div class="mdl-selectfield mdl-js-selectfield">
                 <select class="mdl-selectfield__select" id="taskType" name="taskType">
+                    <option value="Story">Story</option>
+                    <option value="Bug">Bug</option>
+                </select>
+            </div>
+        </label>
+
+        <label>Task tag 
+            <div class="mdl-selectfield mdl-js-selectfield">
+                <select class="mdl-selectfield__select" id="taskTag" name="taskTag">
                   <option value="UI">Ui Based</option>
                   <option value="Testing">Testing</option>
                   <option value="Core">Core</option>
-                  
             
                 </select>
             </div>
@@ -126,13 +139,15 @@ mdl-layout--fixed-header"> <!-- Layout Starts Here-->
         </p>
 
         <p>
-            <label>Story points for task (1-4):
-                <input type="range" min="1" max="4" value="0" step="1" id="taskStoryPoint">
+            <label>Story points 1:4 Ratio > 0:
+                <input type = "number" id="taskStoryPoint">
             </label>
             </p>
 
         <fieldset>
         <legend>Priority</legend>
+        <p><input id = "priority" type="radio" value="Critical Priority" name = "priority">
+            <label class="choice">Critical Priority</label><br></p>
         <p><input id = "priority" type="radio" value="High Priority" name = "priority">
             <label class="choice">High Priority</label><br></p>
         <p><input id = "priority" type="radio" value="Medium Priority" name = "priority" >

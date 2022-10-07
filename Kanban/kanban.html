@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="kanban.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src = "kanban.js"></script>
+    <title></title>
+</head>
+
+<body onload="loadKanban()">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+          mdl-layout--fixed-header"> <!-- Layout Starts Here-->
+
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <div class="mdl-layout-spacer"></div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                    mdl-textfield--floating-label mdl-textfield--align-right">
+          <!-- <label class="mdl-button mdl-js-button mdl-button--icon"
+                for="fixed-header-drawer-exp">
+            <i class="material-icons">search</i>
+          </label>
+          <div class="mdl-textfield__expandable-holder">
+            <input class="mdl-textfield__input" type="text" name="sample"
+                  id="fixed-header-drawer-exp">
+          </div> -->
+        </div>
+      </div> <!-- Layout Ends Here-->
+    </header>
+
+    <div class="mdl-layout__drawer"> <!-- Nav Bar Starts Here-->
+      <span class="mdl-layout-title"><b>Sprint Backlog</b></span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="../ProjectBacklog/projectBacklog.html">Project Backlog</a>
+        <a class="mdl-navigation__link" href="../SprintList/sprintList.html">Sprint List</a>
+        <a class="mdl-navigation__link" href="../TeamMembers/teamMembers.html">Team Members</a>
+      </nav>
+    </div> <!-- Nav Bar Ends Here-->
+    <main class="mdl-layout__content">
+
+      <div class="page-content"> <!-- Page Content Starts Here-->
+
+        <div class = "pageTitle"> 
+          CURRENT SPRINT
+        </div>
+        <div class = "pageDescription">
+          Use this page to progress the tasks you are currently working on in your sprint. You can use this page to log the time that team members spend on their tasks
+        </div>
+        <div class="selectionColumn"> <!-- To Do Backlog Items -->
+          <h3 style="text-align:center;">To Do</h3>
+          <div style = "height: 50vh; overflow: auto;">
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id = "pBTable">
+              <thead>
+                <tr>
+                  <th class="mdl-data-table__cell--non-numeric">Task Name</th>
+                </tr>
+              </thead>
+              <tbody id = "sprintBacklog">           
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Save Button -->
+          <div class = "returnButton">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+            onclick = "window.location.assign('../SprintList/sprintList.html')">
+              Return
+            </button>
+          </div>
+        </div>
+
+        <div class="selectionColumn"> <!-- In Progress Backlog Items -->
+          <h3 style="text-align:center;">In Progress</h3>
+          <div style = "height: 50vh; overflow: auto;">
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id = "pBTable">
+              <thead>
+                <tr>
+                  <th class="mdl-data-table__cell--non-numeric">Task Name</th>
+                </tr>
+              </thead>
+              <tbody id = "sprintInProgress">
+              </tbody>
+            </table>
+          </div>
+  <!-- The Modal -->
+  <dialog class="modal" id="modal1">
+    <label>Select Date:</label>
+    <input type="date" id="datePicked" >
+    <label> Hours Worked: </labeL>
+      <input type="number" id="hoursLogged">      
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+    onclick = "closeDialog1()">
+    
+      Done
+    </button>
+  </dialog>
+
+          <div class = "burndownButton"> <!-- Button to navigate to burndown chart -->
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400"
+            onclick = "burndownChartButton()">
+              Burndown Chart
+            </button>
+          </div>
+        </div>
+
+        <div class="selectionColumn"> <!--Done Backlog Items-->
+          <h3 style="text-align:center;">Done</h3>
+          <div style = "height: 50vh; overflow: auto;">
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="sBTable">
+              <thead>
+                <tr>
+                  <th class="mdl-data-table__cell--non-numeric">Task Name</th>
+                </tr>
+              </thead>
+              <tbody id = "sprintDone">
+              </tbody>
+            </table>
+          </div>
+          <!-- Start Button -->
+          <div class = "completeButton">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+            onclick = "completeSprint()">
+              Complete Sprint
+            </button>
+          </div>
+        </div>
+
+      </div> <!-- Page Content Ends Here-->
+
+    </main>
+
+  </div> <!-- Layout Ends Here-->
+
+  <dialog class="modal" id="modal">
+    <h5>Task Information</h>
+    <h1 id = "modalTaskName">Task Name</h1>
+    <div id = "modalTaskDesc">ASD</div>
+    <div id = "timeLogs"></div>
+     <div>  <button id="logTime" onclick = logTime(taskNumber)>Log Time</button></div><br>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+    onclick = "closeDialog()">
+    Close
+    </button>
+
+    <!-- Progression -->
+    <button id="progressTask" class = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick = "">
+    </button>
+  </dialog>
+
+</body>
+<script>
+</script>
+</html>

@@ -3,7 +3,7 @@
 	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
-	height: 100vh;
+	height: 10vh;
 }
 
 @keyframes gradient {
@@ -61,7 +61,7 @@
 .mdl-selectfield__select{
     position: absolute;
     left: 87%;
-    top: 8%;
+    top: 22%;
     width: 10%
 }
 
@@ -81,7 +81,7 @@
 #filterText {
     position: absolute;
     left: 87%;
-    top: 4%;
+    top: 19%;
     width: 10%;
     font-weight: lighter;
     font-size: medium;
@@ -89,8 +89,8 @@
 }
 #deleteBtn {
     position: relative;
-    right: 113px;
-    top: 160px;
+    right: 8%;
+    top: 170px;
 }
 #detailViewBtn {
     position: relative;
@@ -107,4 +107,16 @@
 
 .pbiBox:hover{
     box-shadow: inset 0px 0px 10px;
+}
+#mdl-layout-spacer
+{
+    font-size: larger;
+}
+.pageTitle
+{
+    color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 75px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+}
+.pageDescription
+{
+    color: #111; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 20px; text-align: center; font-style: italic;
 }

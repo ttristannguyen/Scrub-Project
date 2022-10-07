@@ -42,7 +42,12 @@
     <main class="mdl-layout__content">
 
       <div class="page-content"> <!-- Page Content Starts Here-->
-
+        <div class = "pageTitle"> 
+          SPRINT MANAGEMENT
+         </div>
+         <div class = "pageDescription">
+          Use this page to assign project backlog items to the sprint and specific team members via the “assign” button
+         </div>
         <div class="selectionColumn"> <!-- List of PBIs -->
           <h3 style="text-align:center;">Product Backlog</h3>
           <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id = "pBTable">
@@ -56,10 +61,10 @@
           </table>
           
           <!-- Save Button -->
-          <div class = "saveButton">
+          <div class = "returnButton">
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-            onclick = "saveSprint()">
-              Save Sprint
+            onclick = "window.location.assign('sprintList.html')">
+              Return
             </button>
           </div>
         </div>
@@ -77,11 +82,7 @@
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="teamMembers">
             <select class="mdl-textfield__input" id="selectedMember">
               <option></option>
-              <option value="member1">Shrey</option>
-              <option value="member2">Reece</option>
-              <option value="member3">Sam</option>
-              <option value="member4">Philip</option>
-              <option value="member5">Riley</option>
+      
             </select>
             <label class="mdl-textfield__label" for="teamMembers">Team Members</label>
           </div>
@@ -108,7 +109,7 @@
           </table>
 
           <!-- Start Button -->
-          <div class = "startButton">
+          <div id = "startButton">
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
             onclick = "startSprint()">
               Start Sprint
@@ -127,7 +128,7 @@
     <h1 id = "modalTaskName">Task Name</h1>
     <div id = "modalTaskDesc">ASD</div>
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-    onclick = "closeDialog()">
+    onclick = "closeDialog()">  
       Close
     </button>
   </dialog>

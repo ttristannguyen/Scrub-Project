@@ -79,6 +79,7 @@
     }
     .mdl-selectfield {
         font-size: medium;
+        height:4%;
     }
 </style>
 
@@ -109,6 +110,8 @@
   <main class="mdl-layout__content">
 
     <div class="page-content"> <!-- Page Content Starts Here-->
+        <div class = "pageTitle">TASK CREATION </div>
+        <div class = "pageDescription">Use this page to add the details of a task for your project backlog </div>
         
         <!-- <div class = "mdl-grid"> -->
         <!-- <div class = "mdl-cell mdl-cell--4-col"></div> -->
@@ -124,11 +127,25 @@
             <label>Task description: 
                 <textarea  name="taskDescription" id = "taskDescription" maxlength = "500" required></textarea> 
         </p>
-            
+
         <p>
-            <label>Task type 
+            <label>Task Type 
                 <div class="mdl-selectfield mdl-js-selectfield">
                     <select class="mdl-selectfield__select" id="taskType" name="taskType">
+                      <option value="Story">Story</option>
+                      <option value="Bug">Bug</option>
+
+                      
+                
+                    </select>
+                </div>
+            </label>
+        </p>
+        
+        <p>
+            <label>Task Tag 
+                <div class="mdl-selectfield mdl-js-selectfield">
+                    <select class="mdl-selectfield__select" id="taskTag" name="taskTag">
                       <option value="UI">Ui Based</option>
                       <option value="Testing">Testing</option>
                       <option value="Core">Core</option>
@@ -141,14 +158,18 @@
 
             
         <p>
-            <label>Story points for task (1-4):
-                    <input type="range" min="1" max="4" value="0" step="1" id="taskStoryPoint">
+            <label>Story points 1:4 ratio > 0:
+                    <input type = "number" id="taskStoryPoint"></input>
             </label>
         </p>
             
         <fieldset>
             <legend>Priority</legend>
 
+                <p>
+                    <input id = "priority" type="radio" value="Critical Priority" name = "priority" >
+                        <label class="choice">Critical Priority</label><br>
+                </p> 
                 <p>
                     <input id = "priority" type="radio" value="High Priority" name = "priority" >
                         <label class="choice">High Priority</label><br>
