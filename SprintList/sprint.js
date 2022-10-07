@@ -41,10 +41,16 @@ function sprintCreationDoneBtnOnClick()
     sprintAccumulatedHours = [];//just for now
     //Checking if this is the first sprint!
 
+    if (document.getElementById('sprintCreationDoneBtn').clicked == true)
+    {
+    alert("button was clicked");
+    }
+
     if (sprintStartDate > sprintEndDate) {
         alert('The start date needs to be before the end date')
         return
     }   
+
 
     let sprintObject = new sprintObjectObj(sprintName,sprintStartDate,sprintEndDate,sprintInProgress,sprintTaskList,sprintAccumulatedHours);
     sprintItemsParsed = JSON.parse(localStorage.getItem('sprintBacklogArray'));
@@ -57,11 +63,6 @@ function sprintCreationDoneBtnOnClick()
     localStorage.setItem('sprintBacklogArray',JSON.stringify(sprintItemsParsed));
     window.location = 'sprintList.html'
     
-
-    if(document. getElementById('sprintCreationDoneBtn'). clicked == true)
-    {
-    alert("button was clicked");
-    }
 }
 
 function sprintCreationBackOnClick()
