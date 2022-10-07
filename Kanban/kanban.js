@@ -20,8 +20,32 @@ function loadKanban() {
     // Returns: None
     //
 
-    // Retrieving active sprint obj
-    let sprint = loadSprint();
+    // Determines whether kanban is of completed or active sprint
+    let sprint;
+    if (JSON.parse(localStorage.getItem("currentSprintId")) == JSON.parse(localStorage.getItem("activeSprintID"))) {
+        // Retrieving active sprint obj
+        sprint = loadSprint();
+
+        // Enabling Completion Button
+        let button = document.querySelector(".completeButton button")
+        button.disabled = false;
+        button.classList.remove('mdl-button--disabled');
+
+    }
+    else {
+        // Retrieving specified sprint obj
+        sprint = JSON.parse(localStorage.getItem("sprintBacklogArray"))[0]
+
+        // Disabling Completion Button
+        let button = document.querySelector(".completeButton button")
+        button.disabled = true;
+        button.classList.add('mdl-button--disabled');
+    }
+
+    // Changing Title of Webpage
+    let title = document.getElementsByClassName("pageTitle")
+    title[0].innerHTML = String(sprint.sprintName).toUpperCase()
+
     let taskList = sprint.sprintTaskList
 
     // Inner HTML variable initialisation
@@ -48,10 +72,7 @@ function loadKanban() {
                 <tr>
                     <td id="${idString}" onclick = "showDialog('${idString}')" class = "mdl-data-table__cell--non-numeric">${task.taskName}`
                      
-                    +
-                    `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--orange-400' + onclick = 'logTime(${i})' id = 'logTime'> logTime </button>
-                    
-                    
+                    +`
                    
                     </td>
                 </tr>
@@ -84,6 +105,7 @@ function loadKanban() {
     doneList.innerHTML = doneHtml
 }
 
+let taskNumber = 0;
 function showDialog(taskID) {
     //
     // Function used to generate and show individual task detail
@@ -111,6 +133,7 @@ function showDialog(taskID) {
         <p>Type: ${task.taskType}</p>
         <p>Assignee: ${task.taskTeamMember}</p>
         <p>Story Points: ${task.taskStoryPoint}</p>
+
     `;
 
     // Modifying Progression based on task status
@@ -123,6 +146,7 @@ function showDialog(taskID) {
         let beginButton = document.getElementById("progressTask")
         beginButton.innerHTML = `Finish Task`
         beginButton.onclick = function() {finishTask(taskNumber);};
+
     }
     modal.showModal();
 }
@@ -195,6 +219,7 @@ function finishTask(taskNumber) {
     loadKanban();
     closeDialog();    
 }
+
 function completeSprint() {
     // Function: Sets Sprint and it's tasks to a complete status and sends the user back to sprint list
     

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="projectBacklog.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">    
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="projectBacklog.js"></script>
+    <title></title>
+</head>
+<body onload="onProjectBacklogLoad()">
+
+ <div>
+    <ul>
+    <li><a href="../ProjectBacklog/">Project Backlog</a></li>
+    <li><a href="sprintList.html">Sprint List</a></li>
+    <li><a href="teamMembers.html">Team Members</a></li>
+  </ul>
+  </div>
+    <div class = "pageDisplay">
+     <div class = "pageTitle"> 
+      PROJECT BACKLOG
+     </div>
+     <div class = "pageDescription">
+      Use this page to create tasks to be added to your sprints later. Click the “add task” button to get started
+     </div>
+    </div>
+      <label id = "filterText">Filter By</label> 
+      <div class="mdl-selectfield mdl-js-selectfield">
+        <select class="mdl-selectfield__select" id="filterBy" name="filterBy" onchange="onProjectBacklogLoad()">
+          <option value="All">All</option>
+          <option value="UI">Ui Based</option>
+          <option value="Testing">Testing</option>
+          <option value="Core">Core</option>
+          
+    
+        </select>
+    </div>
+
+        <!-- Add Task Button-->
+        <div style="text-align: left;" id = "addTaskButton" >
+            <button class="addTaskButtonClass"
+            onclick= "addTaskOnClick()">
+                Add Task
+            </button>
+        </div>  
+
+        <div class = "mdl-grid" id = "taskPlacement">
+         </div>
+
+</body>
+<script>
+</script>
+</html>
