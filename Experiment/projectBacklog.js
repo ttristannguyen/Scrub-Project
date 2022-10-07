@@ -101,13 +101,13 @@ function onProjectBacklogLoad()
         let taskTag = array[i].taskTag
         switch(taskTag){
             case("UI"):
-            grad = "background-color: #00008B;"
+            grad = "background-color: #87CEEB;"
             break
             case("Core"):
-            grad = "background-color: #483D8B;"
+            grad = "background-color: #3CB371;"
             break
             case("Testing"):
-            grad = "background-color: #BA55D3;"
+            grad = "background-color: #FFC0CB;"
             break
         }
 
