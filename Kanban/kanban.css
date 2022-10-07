@@ -1,5 +1,6 @@
 .page-content {
     margin: 1%;
+    height: 120%;
 }
 
 .selectionColumn {
@@ -39,19 +40,19 @@
 
 .returnButton {
     position: absolute;
-    bottom: 10%;
+    bottom: -20%;
     left: 10%;
 }
 
 .burndownButton {
     position: absolute;
-    bottom: 10%;
+    bottom: -20%;
     right: 47%
 }
 
 .completeButton {
     position: absolute;
-    bottom: 10%;
+    bottom: -20%;
     right: 10%;
 }
 
