@@ -58,7 +58,7 @@ function sprintCreationDoneBtnOnClick()
     window.location = 'sprintList.html'
     
 
-    if(document. getElementById('button'). clicked == true)
+    if(document. getElementById('sprintCreationDoneBtn'). clicked == true)
     {
     alert("button was clicked");
     }
