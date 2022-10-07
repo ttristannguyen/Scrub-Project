@@ -61,7 +61,7 @@
 .mdl-selectfield__select{
     position: absolute;
     left: 87%;
-    top: 8%;
+    top: 22%;
     width: 10%
 }
 
@@ -81,7 +81,7 @@
 #filterText {
     position: absolute;
     left: 87%;
-    top: 4%;
+    top: 19%;
     width: 10%;
     font-weight: lighter;
     font-size: medium;
@@ -118,5 +118,5 @@
 }
 .pageDescription
 {
-    color: #111; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 72px; text-align: center; font-style: italic;
+    color: #111; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 20px; text-align: center; font-style: italic;
 }

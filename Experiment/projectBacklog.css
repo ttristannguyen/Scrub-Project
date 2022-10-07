@@ -104,7 +104,7 @@ html,body {
 }
 
 .pbiBox:hover{
-    box-shadow: inset 0px 0px 10px;
+    box-shadow: inset 0px 0px 10px red;
 }
 #mdl-layout-spacer
 {
@@ -157,4 +157,15 @@ ul {
     color:#FFF8DC;
     border-color: #FFF8DC;  
     max-width: fit-content;
+  }
+  .dot {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    position: fixed;
+    /* padding: 2em; */
+    /* left: 5%; */
+    /* top: 5%;  */
+    transform: translateX(-50%)
   }

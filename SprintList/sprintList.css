@@ -4,7 +4,7 @@
 }
 .pageDescription
 {
-    color: #111; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 72px; text-align: center; font-style: italic;
+    color: #111; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 22px; text-align: center; font-style: italic;
 }
 
 .body {
@@ -79,11 +79,22 @@
     text-align: center;
     margin: auto;
     position: relative;
-    bottom: 50px; 
+    bottom: 70px; 
 
     /* left: 20%;*/
 }
+#taskName
+{    
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+    color: rgb(91, 23, 185);
+    margin: auto;
+    border: #23a6d5;
+    position: relative;
+    bottom:100px; 
 
+}
 
 
 #filterText {
@@ -120,14 +131,14 @@
 .seeDetailsBtn {
     position: relative;
     bottom: 40px;
-    right: 80px;
+    right: -10px;
     width: 100px;
 }
 
 .deleteSprint {
     position: relative;
-    top: 205px;
-    right: 50px;
+    left: 0px;
     width: 100px;
     height: 35px;
+    bottom: 39px;
 }
