@@ -1,0 +1,182 @@
+
+html,body {
+	background-color: #121212;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+#addTaskButton{
+    position: absolute;
+    top: 50%;
+    left: 88%;
+    width: 120px;
+    bottom: 60%;
+    height: 45px;
+    background-color: white;
+    
+}
+.addTaskButtonClass{
+    position: relative;
+    /* text-align: center; */
+    left: 60px;
+    background-color: white;
+    
+}
+
+
+.mdl-cell {
+    background: #bdbdbd;
+    padding: 120px 0;
+
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 4px;
+    font-weight: bold, ridge;
+    text-align: center;
+    max-height: 100px;
+    max-width: 20%;
+    font-size: medium;
+    font-weight:bold;
+    position: relative;
+    left: 80px
+    
+    
+    
+    
+
+  }
+#taskText {
+    font-size: medium;
+    font-weight: bold;
+    position: relative;
+    top: -100px;
+    margin:auto;
+
+}
+
+.mdl-selectfield__select{
+    position: absolute;
+    left: 87%;
+    top: 44%;
+    width: 10%
+}
+
+#taskTextSprint { 
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    bottom: 50px; 
+
+    /* left: 20%;*/
+}
+
+
+
+#filterText {
+    color: #FFFFF0;
+    position: absolute;
+    left: 87%;
+    top: 40%;
+    width: 10%;
+    font-weight: lighter;
+    font-size: medium;
+    
+}
+#deleteBtn {
+    position: relative;
+    right: 8%;
+    top: 170px;
+}
+#detailViewBtn {
+    position: relative;
+    bottom: 60px;
+    right: 4px;
+}
+
+.pbiBox {
+    position: relative;
+    border: 0;
+    border-radius: 15px;
+    background-color: #FAF0E6;
+    box-shadow: 0px 0px 10px white;
+}
+
+.pbiBox:hover{
+    box-shadow: inset 0px 0px 10px red;
+}
+#mdl-layout-spacer
+{
+    font-size: larger;
+}
+.pageTitle
+{
+    position: relative;
+    margin:auto;
+    padding: 10px;
+    top: 45px;
+    color: #FFF8DC; font-family: 'Helvetica Neue', sans-serif; font-size: 75px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+}
+.pageDescription
+{
+    position: relative;
+    margin:auto;
+    padding: 10px;
+    top: 45px;
+    color: #FFF8DC; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 72px; text-align: center; font-style: italic;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0px;    overflow: hidden;
+    background-color: #121212;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    /* padding-left: 10%; */
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    background-color: #111;
+  }
+  .pageDisplay {
+    margin:auto;
+    border-radius: 25px;
+    border-style: solid;
+    color:#FFF8DC;
+    border-color: #FFF8DC;  
+    max-width: fit-content;
+  }
+  .dot {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    /* padding: 2em; */
+    right: 42%;
+    top: -110px; 
+    /* transform: translateX(-50%) */
+  }

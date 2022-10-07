@@ -34,3 +34,19 @@
     bottom: 80%;
     
 }
+
+div.chartWrapper {
+    position: relative;
+    overflow: auto;
+    width: 95%;
+}
+
+div.chartContainer {
+    position: relative;
+    height: 300px;
+
+}
+#teamAnalytics
+{
+    color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 16px; font-weight:lighter; letter-spacing: -1px; line-height: 1; text-align: left;
+}
