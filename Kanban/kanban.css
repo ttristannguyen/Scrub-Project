@@ -1,5 +1,6 @@
 .page-content {
     margin: 1%;
+    height: 120%;
 }
 
 .selectionColumn {
@@ -39,19 +40,19 @@
 
 .returnButton {
     position: absolute;
-    bottom: 10%;
+    bottom: -20%;
     left: 10%;
 }
 
 .burndownButton {
     position: absolute;
-    bottom: 10%;
+    bottom: -20%;
     right: 47%
 }
 
 .completeButton {
     position: absolute;
-    bottom: 10%;
+    bottom: -20%;
     right: 10%;
 }
 
@@ -91,4 +92,15 @@
 .pageDescription
 {
     color: #111; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 72px; text-align: center; font-style: italic;
+}
+#logTime
+{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 20px 20px ;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
 }

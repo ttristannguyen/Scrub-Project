@@ -39,9 +39,15 @@ function sprintCreationDoneBtnOnClick()
     sprintInProgress = 0
     sprintTaskList = [];
     sprintAccumulatedHours = [];//just for now
+    //Checking if this is the first sprint!
 
     let sprintObject = new sprintObjectObj(sprintName,sprintStartDate,sprintEndDate,sprintInProgress,sprintTaskList,sprintAccumulatedHours);
     sprintItemsParsed = JSON.parse(localStorage.getItem('sprintBacklogArray'));
+    if (sprintItemsParsed.length == 0)
+    {
+        localStorage.setItem("firstDate",JSON.stringify(sprintStartDate))
+    }
+    localStorage.setItem("lastDate",JSON.stringify(sprintEndDate));
     sprintItemsParsed.push(sprintObject)
     localStorage.setItem('sprintBacklogArray',JSON.stringify(sprintItemsParsed));
     window.location = 'sprintList.html'
@@ -79,7 +85,7 @@ function onSprintListLoad()
             button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent seeDetailsBtn" 
             button.id = j.toString();
 
-            if (j == activeSprintID) {
+            if (j == activeSprintID || array[j].sprintInProgress == 2) {
                 button.onclick = function() {
                     //I want to be able to click on the button, be taken to a 'detailed view' page, where i can possibly make a change to the task. 
                     //This will edit the task in local storage.
@@ -119,7 +125,7 @@ function deleteSprint(index){
         array = array.filter(n => n) 
         localStorage.setItem('sprintBacklogArray',JSON.stringify(array));
         location.reload();  
-        console.log("A")
+
     }
 }
 
