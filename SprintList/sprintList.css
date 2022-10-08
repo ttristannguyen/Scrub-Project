@@ -83,7 +83,7 @@
 }
 
 #taskTextSprint { 
-    font-size: medium;
+    font-size: 19px;
     font-weight: bold;
     text-align: center;
     margin: auto;
@@ -94,14 +94,14 @@
 }
 #taskName
 {    
-    font-size: xx-large;
+    font-size: 45px;
     font-weight: bold;
     text-align: center;
     color: rgb(91, 23, 185);
     margin: auto;
     border: #23a6d5;
     position: relative;
-    bottom:100px; 
+    bottom: 80px; 
 
 }
 
@@ -128,15 +128,25 @@
 
 .seeDetailsBtn {
     position: relative;
-    bottom: 40px;
-    right: -10px;
+    bottom: 70px;
+    right: 70px;
     width: 100px;
 }
 
 .deleteSprint {
     position: relative;
-    left: 0px;
+    right: 50px;
     width: 100px;
-    height: 35px;
-    bottom: 39px;
+    height: 45px;
+    top: 197.5px;
+}
+
+
+
+.resize {
+    position: relative;
+    width: 500px;
+    height: auto;
+    right: 170px;
+    top: 80px;
 }
