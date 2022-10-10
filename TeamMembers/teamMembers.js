@@ -84,7 +84,7 @@ function onTeamMembersLoad()
                 htmlElements += `<div class = 'teamMemberBox' id="teamMemberBox" onclick = createTeamMemberDetailedView(${i}) ><p id = 'teamMemberText'>${teamMemberFirstName}<br> ${teamMemberLastName}</p></div>` +
                 `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = 'deleteTeamMember(${i})' id = 'deleteTeamMember'> Delete </button>`;
         }
-        htmlElements += `<hr>`
+        
 
    
     let teamMemberPlacement = document.getElementById("teamMemberPlacement");

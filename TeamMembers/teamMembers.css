@@ -128,5 +128,16 @@ div.chartContainer {
     display: grid;
     gap: var(--size-3);
   }
-  
-  
+
+  .media-scroller {
+    width: 900px;
+    height: 100px;
+    overflow-y: scroll;
+    scrollbar-width: auto;
+  }
+  .mdl-button {
+    position: relative;
+    bottom: -60px;
+    right: 65px;
+    width: 100px;
+  }
