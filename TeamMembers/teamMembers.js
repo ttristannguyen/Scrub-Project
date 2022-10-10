@@ -81,8 +81,8 @@ function onTeamMembersLoad()
 
             let teamMemberFirstName = array[i].teamMemberFirstName; //this is the name of the task from the new object
             let teamMemberLastName = array[i].teamMemberLastName; //Gets the priority for dynamic entering
-                 htmlElements += `<div class = 'mdl-cell mdl-cell--3-col graybox pbiBox' onclick = createTeamMemberDetailedView(${i}) ><p id = 'teamMemberText'>${teamMemberFirstName}<br> ${teamMemberLastName}</p></div>` +
-                   `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = 'deleteTeamMember(${i})' id = 'deleteTeamMember'> Delete </button>`;
+                htmlElements += `<div class = 'teamMemberBox' id="teamMemberBox" onclick = createTeamMemberDetailedView(${i}) ><p id = 'teamMemberText'>${teamMemberFirstName}<br> ${teamMemberLastName}</p></div>` +
+                `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = 'deleteTeamMember(${i})' id = 'deleteTeamMember'> Delete </button>`;
         }
         htmlElements += `<hr>`
 
