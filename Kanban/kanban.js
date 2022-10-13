@@ -34,8 +34,7 @@ function loadKanban() {
     }
     else {
         // Retrieving specified sprint obj
-        let currentSprintID = JSON.parse(localStorage.getItem("currentSprintId"));
-        sprint = JSON.parse(localStorage.getItem("sprintBacklogArray"))[currentSprintID];
+        sprint = JSON.parse(localStorage.getItem("sprintBacklogArray"))[0]
 
         // Disabling Completion Button
         let button = document.querySelector(".completeButton button")
@@ -105,7 +104,8 @@ function loadKanban() {
     let doneList = document.getElementById("sprintDone")
     doneList.innerHTML = doneHtml
 }
-let taskNumber = 10;
+
+let taskNumber = 0;
 function showDialog(taskID) {
     //
     // Function used to generate and show individual task detail
@@ -114,25 +114,14 @@ function showDialog(taskID) {
     // Parameters: taskID - ID of the task selected
     // Returns: None
     //
-    let sprint;
-    if (JSON.parse(localStorage.getItem("currentSprintId")) == JSON.parse(localStorage.getItem("activeSprintID"))) {
-        // Retrieving active sprint obj
-        sprint = loadSprint();
-    }
-    else {
-        // Retrieving specified sprint obj
-        let currentSprintID = JSON.parse(localStorage.getItem("currentSprintId"));
-        sprint = JSON.parse(localStorage.getItem("sprintBacklogArray"))[currentSprintID]
-    }
+    
 
-
-    let sprintList = sprint.sprintTaskList;
-    taskNumber = taskID.slice(4, taskID.length) // Gets task number
+    let sprintList = loadSprint().sprintTaskList;
+    let taskNumber = taskID.slice(4, taskID.length) // Gets task number
     let task = sprintList[taskNumber]
     let modal = document.getElementById("modal");
     let taskName = document.getElementById("modalTaskName");
     let taskDesc = document.getElementById("modalTaskDesc");
-    console.log(task)
     let pColour = priorityColour(task.taskPriority)
 
     // Generating HTML
