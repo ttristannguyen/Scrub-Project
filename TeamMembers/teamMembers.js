@@ -250,7 +250,7 @@ function onTeamMembersLoad()
 
 function addTeamMemberOnClick()
 {
-    window.location.href = 'teamMemberCreation.html'
+    window.location.href = 'tmCreation.html'   
 }
 
 function deleteTeamMember(index){
@@ -281,7 +281,6 @@ function teamMemberDetailedView()
     teamMemberString = JSON.parse(localStorage.getItem('currentTeamMember')); //Gets the ID of the current button (position within the local storage array)
     array = JSON.parse(localStorage.getItem('teamMemberArray')); //Gets the entire array
     elementNum = parseInt(teamMemberString);
-    sprintName = JSON.pas
 
     currentTeamMember = array[elementNum];
     document.getElementById('teamMemberName').innerHTML = array[elementNum].teamMemberFirstName + array[elementNum].teamMemberLastName
@@ -300,10 +299,7 @@ function teamMemberDetailedView()
 }
 function checkOnClick()
 {
-<<<<<<< HEAD
     //checkOnClick.preventDefault();
-=======
->>>>>>> 7ac8b52ca08be911ecbf87c48f9198751c6fe487
     let startDateStr = (document.getElementById('dateStarted').value);
     console.log(startDateStr);
     let startDate = new Date(startDateStr);
