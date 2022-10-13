@@ -18,6 +18,7 @@ font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 font-size: 0.8em;
 width: 25%;
 padding: 1em;
+color: #FFF8DC;
 border: 1px solid #ccc;
 }
 
@@ -60,14 +61,14 @@ padding: 0.3em;
 height: 100px;
 }
 
-.taskViewForm button {
+/* .taskViewForm button {
 padding: 1em;
 border-radius: 0.5em;
 background: #eee;
 border: none;
 font-weight: bold;
 margin-top: 1em;
-}
+} */
 
 .taskViewForm button:hover {
 background: #ccc;
@@ -80,32 +81,20 @@ cursor: pointer;
 </style>
 
 </head>
-
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
-mdl-layout--fixed-header"> <!-- Layout Starts Here-->
-
-<header class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <div class="mdl-layout-spacer"></div>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                  mdl-textfield--floating-label mdl-textfield--align-right">
-      </div>
-    </div> <!-- Layout Ends Here-->
-</header>
-
-<div class="mdl-layout__drawer"> <!-- Nav Bar Starts Here-->
-    <span class="mdl-layout-title"><b>Edit Task Details</b></span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="../ProjectBacklog/projectBacklog.html">Project Backlog</a>
-      <a class="mdl-navigation__link" href="../SprintList/sprintList.html">Sprint List</a>
-      <a class="mdl-navigation__link" href="../TeamMembers/teamMembers.html">Team Members</a>
-    </nav>
-</div> <!-- Nav Bar Ends Here-->
-<main class="mdl-layout__content">
-    <div class="page-content"> <!-- Page Content Starts Here-->
-        <form class="taskViewForm" method="get">
         <body onload="detailedViewContent()">
-
+        
+            <div>
+                <ul>
+                <li><a href="projectBacklog.html">Project Backlog</a></li>
+                <li><a href="../SprintList/sprintList.html">Sprint List</a></li>
+                <li><a href="../TeamMembers/teamMembers.html">Team Members</a></li>
+              </ul>
+            </div>
+              <div class = "pageDisplay">
+                <div class = "pageTitle">EDIT TASK </div>
+                <div class = "pageDescription">Use this page to edit the details of a task for your project backlog </div>
+              </div>
+        <form class="taskViewForm" method="get">
         <p>
         <label>Task name: 
         <input type="text" name="taskName" id = "taskName" required>
@@ -159,9 +148,13 @@ mdl-layout--fixed-header"> <!-- Layout Starts Here-->
 
 
     </div> <!-- Page Content Ends Here-->
-    <p><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--blue-400" id="taskViewSaveBtn" onClick="saveEditedDetails()">Save edits</button></p>
+    <div id = "saveContainer">
+        <button type = "button" class="saveButton" id="taskViewSaveBtn" onClick="saveEditedDetails()">Save edits</button>
+    </div>
 
-    <p><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400" id="taskViewBackBtn" onClick="taskCreationBackOnClick()">Back</button></p>
+    <div id = "backContainer">
+        <button type = "button" class="backButton" id="taskViewBackBtn" onClick="taskCreationBackOnClick()">Back</button>
+    </div>
     </main>
 
 </div> <!-- Layout Ends Here-->
