@@ -1,8 +1,43 @@
-.page-content {
-    margin: 5%;
+.teamMemberBox {
+    background-color: #fff;
+    border: 0 solid #000000;
+    border-radius: 1.5rem;
+    box-sizing: border-box;
+    color: #0d172a;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Basier circle", -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1;
+    padding: 1rem 1.6rem;
+    text-align: center;
+    text-decoration: none #0d172a solid;
+    text-decoration-thickness: auto;
+    transition: all .1s cubic-bezier(.4, 0, .2, 1);
+    box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    position: relative;
+    left: 80px;
 }
 
-#addMemberButton {
+.teamMemberBox:hover {
+    background-color: #1e293b;
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    .teamMemberBox {
+        font-size: 1.125rem;
+        padding: 1rem 2rem;
+    }
+}
+
+
+
+#addTeamMembers{
     position: fixed;
     
     width: 100%;
@@ -50,3 +85,60 @@ div.chartContainer {
 {
     color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 16px; font-weight:lighter; letter-spacing: -1px; line-height: 1; text-align: left;
 }
+
+.media-scroller {
+    --_spacer: var(--size-3);
+    display: grid;
+    gap: var(--_spacer);
+    grid-auto-flow: column;
+    grid-auto-columns: 21%;
+  
+    padding: 0 var(--_spacer) var(--_spacer);
+  
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+  }
+  
+  .media-scroller--with-groups {
+    grid-auto-columns: 80%;
+  }
+  
+  .media-group {
+    display: grid;
+    gap: var(--_spacer);
+    grid-auto-flow: column;
+  }
+  
+  .snaps-inline {
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: var(--_spacer, 1rem);
+  }
+  
+  .snaps-inline > * {
+    scroll-snap-align: start;
+  }
+  
+  /* general styling */
+  
+  .container {
+    inline-size: min(100% - 4rem, 70rem);
+    margin-inline: auto;
+  }
+  
+  .flow {
+    display: grid;
+    gap: var(--size-3);
+  }
+
+  .media-scroller {
+    width: 900px;
+    height: 100px;
+    overflow-y: scroll;
+    scrollbar-width: auto;
+  }
+  .mdl-button {
+    position: relative;
+    bottom: -60px;
+    right: 65px;
+    width: 100px;
+  }
