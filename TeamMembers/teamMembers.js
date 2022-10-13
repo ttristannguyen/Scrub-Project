@@ -90,163 +90,71 @@ function onTeamMembersLoad()
     let teamMemberPlacement = document.getElementById("teamMemberPlacement");
     teamMemberPlacement.innerHTML = htmlElements;
 
-        //Team member dashboard! 
-        let start = (JSON.parse(localStorage.getItem("firstDate")));
-        let end =  (JSON.parse(localStorage.getItem("lastDate")));
-        function dateRange(startDate, endDate, steps = 1) {
-            const dateArray = [];
-            let currentDate = new Date(startDate);
-            let endD = new Date(endDate);
-          
-            while (currentDate <= endD) {
-              dateArray.push(new Date(currentDate));
-              // Use UTC date to prevent problems with time zones and DST
-              currentDate.setUTCDate(currentDate.getUTCDate() + steps);
-            }
-          
-            return dateArray;
-          }
-          
-          let dates = dateRange(start, end);
-          totalNumDays = dates.length;
-          totalAccHours = 0;
-          yValues = []
-          let sprintSdEd = []
-          for (let i = 0; i<dates.length;i++)
-          {
-            yValues.push(0); //Space filler
-            sprintSdEd.push(0);
-          }
-          let sprintHoursOld = JSON.parse(localStorage.getItem("sprintBacklogArray"));
-          let sprintHours = []
-         
-          for (let i = 0; i<sprintHoursOld.length;i++)
-          {
+        //Team member dashboard! ''
 
+
+
+
+        //TM dashboard NEW
     
-            for (let j = 0; j<sprintHoursOld[i].sprintAccumulatedHours.length;j++)
-          {
-           
-            sprintHours.push(sprintHoursOld[i].sprintAccumulatedHours[j]);
-          }
-     
-           
-          }
-          for (let i = 0; i<sprintHoursOld.length;i++)
-          {
-            let sd = new Date(sprintHoursOld[i].sprintStartDate)
-            let ed = new Date(sprintHoursOld[i].sprintEndDate)
-            for (let j = 0; j < dates.length; j++)
-            {
-                if(sd.getTime() == dates[j].getTime())
-                {
-                    sprintSdEd[j] += i+1
-                }
-                
-                if(ed.getTime() == dates[j].getTime())
-                {
-                    sprintSdEd[j] += i+1
-                }
-            }
-          }
-
-        
-          for (let i = 0; i < sprintHours.length; i++) 
-          {
-            let sprintDate = new Date(sprintHours[i][0]);
-            for (let j = 0; j < dates.length; j++)
-            {
-                if(sprintDate.getTime() == dates[j].getTime())
-                {
-                    yValues[j] += parseInt(sprintHours[i][1])
-                    totalAccHours += parseInt(sprintHours[i][1]);
-                }
-            }
-          }
-          datesUpdate = []
-          for(let i = 0; i<dates.length; i++)
-          {
-            datesUpdate.push(dates[i].toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-              }),)
-          }
-          
-        /*  new Chart("myChart1", {
-            type: "line",
-            data: {
-              labels: datesUpdate,
-              datasets: [{
-                backgroundColor: "rgba(0,0,0,1.0)",
-                borderColor: "rgba(0,0,0,0.1)",
-                data: yValues
-              }]
-            },
-         
-          });*/
-          //For every new sprint, set all the dates of the sprint to 1, all other dates not in the sprint get set to 0 
-          //Each new sprint is +1 so that the date is cascading.
-
-
-          var xAxisLabelMinWidth = 15; // Replace this with whatever value you like
-          var myChart = new Chart(document.getElementById('myChart1').getContext('2d'), {
-              type: 'line',
-              data: { labels: datesUpdate,
-                datasets: [{
-                  label: "Hours", 
-                  backgroundColor: "rgba(0,0,0,1.0)",
-                  borderColor: "rgba(0,0,0,0.1)",
-                  data: yValues},
-                  {
-                    label: "Sprint number",
-                    fillColor: 'rgb(255,0,0)',
-                    backgroundColor: 'rgb(255,0,0)',
-                    pointColor: 'rgb(255,0,0)',
-                    showLine: false,
-                    data: sprintSdEd,
-                    pointStyle: 'triangle',
-                    radius: 6,
-                },
-
-                ]},
-              options: {
-                  responsive: true,
-                  maintainAspectRatio: false,
-            
-                    title: {
-                        display: true,
-                        text: 'Team logged hours'
-                    },
-                    scales: {
-                        yAxes: [{
-                          scaleLabel: {
-                            display: true,
-                            labelString: 'Hours / Sprint Number',
-                            size:20,
-                          }
-                        }]
-                      }     
-                
-              }
-          });
-          
-          function fitChart(){
-              var chartCanvas = document.getElementById('myChart1');
-              var maxWidth = chartCanvas.parentElement.parentElement.clientWidth;
-              var width = Math.max(myChart.data.labels.length * xAxisLabelMinWidth, maxWidth);
-          
-              chartCanvas.parentElement.style.width = width +'px';
-          }
-          myChart
-          fitChart();
-
-          let averageHours = Math.ceil(totalAccHours/totalNumDays);
-          
-          document.getElementById('teamAnalytics').innerHTML += averageHours + 'hr/s per day' + `<br> <br>` + 'TOTAL TEAM HOURS: ' + totalAccHours + 'hrs';
-          
-          
     }
+
+
+
+
+function checkOnClick2() //THis is for when a user clicks on the SD and ED in the team.html page. 
+{
+  
+  let startDateStr = (document.getElementById('dateStarted').value); //Fromt the user inputted SD 
+        
+  let startDate = new Date(startDateStr); //As a date 
+  let endDateStr = (document.getElementById('dateEnded').value); //From the user inputted ED
+  let endDate = new Date (endDateStr); //Date Datatype
+
+  function dateRange(startDate, endDate, steps = 1) { //Work out the number of days between SD and ED
+      const dateArray = [];
+      let currentDate = new Date(startDate);
+      let endD = new Date(endDate);
+    
+      while (currentDate <= endD) {
+        dateArray.push(new Date(currentDate));
+        // Use UTC date to prevent problems with time zones and DST
+        currentDate.setUTCDate(currentDate.getUTCDate() + steps);
+      }
+    
+      return dateArray;
+    }
+
+    let dates = dateRange(startDate, endDate);
+    totalNumDays = dates.length;
+
+
+    //for loop 
+    let allTeamMember = JSON.parse(localStorage.getItem('teamMemberArray'));
+    let htmlElements2 = "";
+    let hoursaccumulated = 0;
+        for (let i = 0; i < allTeamMember.length; i++) 
+        {
+  
+            let teamMemberFirstName = array[i].teamMemberFirstName; //this is the name of the task from the new object
+            let teamMemberLastName = array[i].teamMemberLastName; //Gets the priority for dynamic entering
+            for (let j = 0; j<allTeamMember[i].teamMemberAccumulatedHours.length; j++)
+            {
+              //If the date in the array from local storage is >= SD AND <= ED, then add the number of hours (second sub element) to HOURSACCUMULATED variable 
+                 let arrayDate = new Date(allTeamMember[i].teamMemberAccumulatedHours[j][0]);
+                 if(arrayDate >= startDate & arrayDate<= endDate)
+                 {
+                  hoursaccumulated = hoursaccumulated + allTeamMember[i].teamMemberAccumulatedHours[j][1] //Accumulating the hours. 
+                 }
+             }
+            //THIS HTML needs to be changed
+                htmlElements2 += `<div>${teamMemberFirstName}<br> ${teamMemberLastName}` 
+                +` ${hoursaccumulated}  </div>`;
+        }
+
+        let hoursAveragePlacement = document.getElementById("placement");
+    hoursAveragePlacement.innerHTML = htmlElements2;
+}    
 
 function addTeamMemberOnClick()
 {
