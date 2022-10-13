@@ -135,7 +135,7 @@ function checkOnClick2() //THis is for when a user clicks on the SD and ED in th
     let hoursaccumulated = 0;
         for (let i = 0; i < allTeamMember.length; i++) 
         {
-  
+          hoursaccumulated = 0;
             let teamMemberFirstName = array[i].teamMemberFirstName; //this is the name of the task from the new object
             let teamMemberLastName = array[i].teamMemberLastName; //Gets the priority for dynamic entering
             for (let j = 0; j<allTeamMember[i].teamMemberAccumulatedHours.length; j++)
@@ -144,11 +144,11 @@ function checkOnClick2() //THis is for when a user clicks on the SD and ED in th
                  let arrayDate = new Date(allTeamMember[i].teamMemberAccumulatedHours[j][0]);
                  if(arrayDate >= startDate & arrayDate<= endDate)
                  {
-                  hoursaccumulated = hoursaccumulated + allTeamMember[i].teamMemberAccumulatedHours[j][1] //Accumulating the hours. 
+                  hoursaccumulated = hoursaccumulated + Number(allTeamMember[i].teamMemberAccumulatedHours[j][1]) //Accumulating the hours. 
                  }
              }
             //THIS HTML needs to be changed
-                htmlElements2 += `<div>${teamMemberFirstName}<br> ${teamMemberLastName}` 
+                htmlElements2 += `<div>${teamMemberFirstName} ${teamMemberLastName}` 
                 +` ${hoursaccumulated}  </div>`;
         }
 
