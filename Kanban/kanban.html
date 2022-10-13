@@ -51,7 +51,7 @@
         </div>
         <div class="selectionColumn"> <!-- To Do Backlog Items -->
           <h3 style="text-align:center;">To Do</h3>
-          <div style = "height: 60vh; overflow: auto;">
+          <div style = "height: 50vh; overflow: auto;">
             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id = "pBTable">
               <thead>
                 <tr>
@@ -74,7 +74,7 @@
 
         <div class="selectionColumn"> <!-- In Progress Backlog Items -->
           <h3 style="text-align:center;">In Progress</h3>
-          <div style = "height: 60vh; overflow: auto;">
+          <div style = "height: 50vh; overflow: auto;">
             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id = "pBTable">
               <thead>
                 <tr>
@@ -92,7 +92,7 @@
     <label> Hours Worked: </labeL>
       <input type="number" id="hoursLogged">      
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-    onclick = "closeDialog()">
+    onclick = "closeDialog1()">
     
       Done
     </button>
@@ -108,7 +108,7 @@
 
         <div class="selectionColumn"> <!--Done Backlog Items-->
           <h3 style="text-align:center;">Done</h3>
-          <div style = "height: 60vh; overflow: auto;">
+          <div style = "height: 50vh; overflow: auto;">
             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="sBTable">
               <thead>
                 <tr>
@@ -139,9 +139,7 @@
     <h1 id = "modalTaskName">Task Name</h1>
     <div id = "modalTaskDesc">ASD</div>
     <div id = "timeLogs"></div>
-     <div>  
-      <button id="logTime" onclick = logTime(taskNumber)>Log Time</button>
-    </div><br>
+     <div>  <button id="logTime" onclick = logTime(taskNumber)>Log Time</button></div><br>
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
     onclick = "closeDialog()">
     Close
