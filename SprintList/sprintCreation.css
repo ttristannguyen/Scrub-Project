@@ -7,3 +7,23 @@
     max-width: fit-content;
     padding: 15px;
   }
+.pageTitle
+{
+    position: relative;
+    margin:auto;
+    padding: 10px;
+    top: 45px;
+    color: #FFF8DC; font-family: 'Helvetica Neue', sans-serif; font-size: 75px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+}
+.pageDescription
+{
+    position: relative;
+    margin:auto;
+    padding: 10px;
+    top: 45px;
+    color: #FFF8DC; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 72px; text-align: center; font-style: italic;
+}
+html,body {
+	background-color: #121212;
+    height: 120%;
+}
