@@ -1,15 +1,9 @@
-
-
-
-
-
-/* #sprintCreationDoneBtn{
-    position: absolute;
-    left:25%;
-    top: 60%;
-
-    width: 120px;
-}
-*/ 
-
-
+.pageDisplay {
+    margin:auto;
+    border-radius: 25px;
+    border-style: solid;
+    color:#FFF8DC;
+    border-color: #FFF8DC;  
+    max-width: fit-content;
+    padding: 15px;
+  }

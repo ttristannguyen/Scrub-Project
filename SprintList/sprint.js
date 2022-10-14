@@ -82,7 +82,7 @@ function onSprintListLoad()
             let button = document.createElement('button');
             button.type = 'button';
             button.innerHTML = 'See/edit details';
-            button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent seeDetailsBtn" 
+            button.className = "seeDetailsBtn" 
             button.id = j.toString();
 
             if (j == activeSprintID || array[j].sprintInProgress == 2) {

@@ -11,44 +11,30 @@
 </head>
 
 <body onload="onSprintCreationLoad()">
-  <div class="btn-group my-5">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
-            mdl-layout--fixed-header"> <!-- Layout Starts Here-->
+  <div>
+    <ul>
+      <li><a href="../ProjectBacklog/projectBacklog.html">Project Backlog</a></li>
+      <li><a href="sprintList.html">Sprint List</a></li>
+      <li><a href="../TeamMembers/teamMembers.html">Team Members</a></li>
+    </ul>
+  </div>
 
-  <header class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <div class="mdl-layout-spacer"></div>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                  mdl-textfield--floating-label mdl-textfield--align-right">
-      </div>
-    </div> <!-- Layout Ends Here-->
-  </header>
-
-  <div class="mdl-layout__drawer"> <!-- Nav Bar Starts Here-->
-    <span class="mdl-layout-title"><b>Sprint List</b></span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="../ProjectBacklog/projectBacklog.html">Project Backlog</a>
-      <a class="mdl-navigation__link" href="../SprintList/sprintList.html">Sprint List</a>
-      <a class="mdl-navigation__link" href="../TeamMembers/teamMembers.html">Team Members</a>
-    </nav>
-  </div> <!-- Nav Bar Ends Here-->
-  <main class="mdl-layout__content">
-
-    <div class="page-content"> <!-- Page Content Starts Here-->
+  <div class = "pageDisplay">
       <div class = "pageTitle"> 
       SPRINTS
        </div>
        <div class = "pageDescription">
         This shows all the sprints you have planned/have in progress. Click the “add sprint” button to get started
        </div>
-       <hr>
+  </div>     
+
         <!-- Add Task Button-->
-        <div style="text-align: left;" id = "addTaskButton" >
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-          onclick= "addSprintOnClick()">
-              Add Sprint
-          </button>
-      </div>  
+  <div style="text-align: left;" id = "addSprintButtonContainer" >
+    <button class="addSprintButton"
+      onclick= "addSprintOnClick()">
+      Add Sprint
+    </button>
+  </div>  
 
         <div class = "mdl-grid" id = "sprintPlacement">
 
