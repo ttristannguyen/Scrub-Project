@@ -1,20 +1,9 @@
-.pageTitle
-{
-    color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 75px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
-}
-.pageDescription
-{
-    color: #111; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 72px; text-align: center; font-style: italic;
-}
-
-
-/* #sprintCreationDoneBtn{
-    position: absolute;
-    left:25%;
-    top: 60%;
-
-    width: 120px;
-}
-*/ 
-
-
+.pageDisplay {
+    margin:auto;
+    border-radius: 25px;
+    border-style: solid;
+    color:#FFF8DC;
+    border-color: #FFF8DC;  
+    max-width: fit-content;
+    padding: 15px;
+  }

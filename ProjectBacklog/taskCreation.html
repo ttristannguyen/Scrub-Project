@@ -19,7 +19,9 @@
     font-size: 0.8em;
     width: 25%;
     padding: 1em;
-    border: 1px solid #ccc;
+    border: 4px solid #ccc;
+    color: #FFF8DC;
+    border-radius: 25px;
     }
     
     .taskCreationForm * {
@@ -86,36 +88,17 @@
 </head>
 
 <body onload="onTaskCreationLoad()">
-
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
-            mdl-layout--fixed-header"> <!-- Layout Starts Here-->
-
-  <header class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <div class="mdl-layout-spacer"></div>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                  mdl-textfield--floating-label mdl-textfield--align-right">
+    <div>
+        <ul>
+        <li><a href="projectBacklog.html">Project Backlog</a></li>
+        <li><a href="../SprintList/sprintList.html">Sprint List</a></li>
+        <li><a href="../TeamMembers/teamMembers.html">Team Members</a></li>
+      </ul>
       </div>
-    </div> <!-- Layout Ends Here-->
-  </header>
-
-  <div class="mdl-layout__drawer"> <!-- Nav Bar Starts Here-->
-    <span class="mdl-layout-title"><b>Create a Task</b></span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="../ProjectBacklog/projectBacklog.html">Project Backlog</a>
-      <a class="mdl-navigation__link" href="../SprintList/sprintList.html">Sprint List</a>
-      <a class="mdl-navigation__link" href="../TeamMembers/teamMembers.html">Team Members</a>
-    </nav>
-  </div> <!-- Nav Bar Ends Here-->
-  <main class="mdl-layout__content">
-
-    <div class="page-content"> <!-- Page Content Starts Here-->
+        <div class = "pageDisplay">
         <div class = "pageTitle">TASK CREATION </div>
         <div class = "pageDescription">Use this page to add the details of a task for your project backlog </div>
-        
-        <!-- <div class = "mdl-grid"> -->
-        <!-- <div class = "mdl-cell mdl-cell--4-col"></div> -->
-        <!-- <div class = "mdl-cell mdl-cell--4-col"> -->
+        </div>
         <form class="taskCreationForm" method="get">  
             
         <p>
@@ -188,9 +171,13 @@
             
         </form>
         <p id = "errorMessage"></p>
-        <p><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--blue-400" id="taskCreationDoneBtn" onClick="taskCreationOnClick()">Done</button></p>
+        <div id = "doneContainer">
+            <button type ="button" class="doneButton" id="taskCreationDoneBtn" onClick="taskCreationOnClick()">Done</button>
+        </div>
             
-        <p><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400" id="taskCreationBackBtn" onClick="taskCreationBackOnClick()">Back</button></p>
+        <div id = "backContainer">
+            <button type ="button"  class="backButton" id="taskCreationBackBtn" onClick="taskCreationBackOnClick()">Back</button>
+        </div>
 
     </div> <!-- Page Content Ends Here-->
 

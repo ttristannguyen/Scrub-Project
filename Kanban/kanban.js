@@ -63,7 +63,7 @@ function loadKanban() {
         if (task.taskStatus == 0) {
             toDoHtml += `
                 <tr>
-                    <td id="${idString}" onclick = "showDialog('${idString}')" class = "mdl-data-table__cell--non-numeric">${task.taskName}</td>
+                    <td id="${idString}" onclick = "showDialog('${idString}')" class = "mdl-data-table__cell--non-numeric toDo">${task.taskName}</td>
                 </tr>
             `
         }
@@ -71,7 +71,7 @@ function loadKanban() {
         else if (task.taskStatus == 1) {
             inProgHtml += `
                 <tr>
-                    <td id="${idString}" onclick = "showDialog('${idString}')" class = "mdl-data-table__cell--non-numeric">${task.taskName}`
+                    <td id="${idString}" onclick = "showDialog('${idString}')" class = "mdl-data-table__cell--non-numeric inProgress">${task.taskName}`
                      
                     +`
                    
@@ -83,7 +83,7 @@ function loadKanban() {
         else if (task.taskStatus == 2) {
             doneHtml += `
                 <tr>
-                    <td id="${idString}" onclick = "showDialog('${idString}')" class = "mdl-data-table__cell--non-numeric">${task.taskName}
+                    <td id="${idString}" onclick = "showDialog('${idString}')" class = "mdl-data-table__cell--non-numeric done">${task.taskName}
                     
                    
                     </td>

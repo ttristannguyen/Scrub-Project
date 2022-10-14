@@ -101,13 +101,13 @@ function onProjectBacklogLoad()
         let taskTag = array[i].taskTag
         switch(taskTag){
             case("UI"):
-            grad = "background-image: linear-gradient(to right, white, rgba(0, 255, 175, 0.5));"
+            grad = "background-color: #87CEEB;"
             break
             case("Core"):
-            grad = "background-image: linear-gradient(to right, white, #89CFF0);"
+            grad = "background-color: #3CB371;"
             break
             case("Testing"):
-            grad = "background-image: linear-gradient(to right, white, pink);"
+            grad = "background-color: #FFC0CB;"
             break
         }
 
@@ -117,13 +117,13 @@ function onProjectBacklogLoad()
         if (array[i].taskTag == filterBy){
             elements += 1
             //style = ' ${grad} position: relative; top: 90%' id="${i}" 
-            htmlElements += `<div class = 'mdl-cell mdl-cell--3-col graybox pbiBox' onclick = createDetailedView(${i}) style = ' ${grad} position: relative; top: 90%' id="${i}"><p id = 'taskText'>${taskName}<br>Priority: ${priority}<br>Story Points:${storyPoints} Task Tag: ${taskTag}</p></div>` +
+            htmlElements += `<div id="box" class = 'mdl-cell mdl-cell--3-col graybox pbiBox' onclick = createDetailedView(${i}) style =  'position: relative; top: 90%' id="${i}"> <span class = 'dot' style = '${grad}' ></span><p id = 'taskText'>${taskName}<br>Priority: ${priority}<br>Story Points:${storyPoints} Task Tag: ${taskTag}</p></div>` +
             // "<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--green-400' + onclick = 'createDetailedView()' id = 'detailViewBtn'> See/Edit Details </button>" + 
             `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = 'deletePBI(${i})' id = 'deleteBtn'> Delete </button>`;
         }
         if (filterBy == "All"){
             elements = array.length
-            htmlElements += `<div class = 'mdl-cell mdl-cell--3-col graybox pbiBox' onclick = createDetailedView(${i}) style = ' ${grad} position: relative; top: 90%' id="${i}"><p id = 'taskText'>${taskName}<br>Priority: ${priority}<br>Story Points:${storyPoints}<br> Task Tag: ${taskTag}</p></div>` +
+            htmlElements += `<div class = 'mdl-cell mdl-cell--3-col graybox pbiBox' onclick = createDetailedView(${i}) style = 'position: relative; top: 90%' id="${i}"> <span class = 'dot' style = '${grad}' ></span><p id = 'taskText'>${taskName}<br>Priority: ${priority}<br>Story Points:${storyPoints}<br> Task Tag: ${taskTag}</p></div>` +
             // "<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--green-400' + onclick = 'createDetailedView()' id = 'detailViewBtn'> See/Edit Details </button>" + 
             `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = deletePBI(${i}) id = 'deleteBtn'> Delete </button>`;
         }
@@ -138,7 +138,7 @@ function onProjectBacklogLoad()
 
 function addTaskOnClick()
 {
-    window.location.href = 'taskCreation.html'   
+    window.location.href = '../ProjectBacklog/taskCreation.html'   
 }
 
 function deletePBI(index){

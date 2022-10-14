@@ -1,19 +1,131 @@
+
+html,body {
+	background-color: #121212;
+    height: 110%;
+}
+
+.pageTitle
+{
+    color: #FFF8DC; font-family: 'Helvetica Neue', sans-serif; font-size: 75px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+}
+.pageDescription
+{
+    color:  #FFF8DC; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 22px; text-align: center; font-style: italic;
+}
+.pageDisplay {
+    margin:auto;
+    border-radius: 25px;
+    border-style: solid;
+    color:#FFF8DC;
+    border-color: #FFF8DC;  
+    max-width: fit-content;
+    padding: 40px;
+  }
+
+
 form { 
     position: relative;
     margin: 0 auto; 
     width:250px;
     top: 30px;
     }
+ 
 
-#taskViewSaveBtn{
-        position: absolute;
-        left:66%;
-        top: 40%;
-        width: 120px;
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0px;    overflow: hidden;
+    background-color: #121212;
     }
-#taskViewBackBtn{
-        position: absolute;
-        left:66%;
-        top:47%;
-        width: 120px;
-    }  
+      
+    li {
+        margin: auto;
+        float: left;
+        border-right: 1px solid #bbb;
+      }
+      li:last-child {
+        border-right: none;
+      }
+      
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 100px;
+        /* padding-left: */
+        text-decoration: none;
+        font-weight: bold;
+      }
+      
+    /* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #121;
+}
+    
+.dot {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    /* padding: 2em; */
+    right: 42%;
+    top: -110px; 
+    /* transform: translateX(-50%) */
+}
+
+#saveContainer{
+    position: absolute;
+    left:50%;
+    top: 71%;
+    width: 120px;
+    bottom: 60%;
+    height: 55px;
+    /* background-color: white; */
+    /* border-style: solid; */
+    border-radius: 25px;
+    
+}
+.saveButton{
+    position: relative;
+    /* text-align: center; */
+    width: 120px;
+    height: 55px;
+    border-style: solid;
+    border-radius: 25px;
+    background-color: #FAF0E6;
+    font-weight: bold;
+
+    
+}
+.saveButton:hover {
+    box-shadow: inset 0px 0px 10px red;
+}
+
+#backContainer{
+    position: absolute;
+    left:50%;
+    top: 81%;
+    width: 120px;
+    bottom: 60%;
+    height: 55px;
+    /* background-color: white; */
+    /* border-style: solid; */
+    border-radius: 25px;
+    
+}
+.backButton{
+    position: relative;
+    /* text-align: center; */
+    width: 120px;
+    height: 55px;
+    border-style: solid;
+    border-radius: 25px;
+    background-color: #FAF0E6;
+    font-weight: bold;
+
+    
+}
+.backButton:hover {
+    box-shadow: inset 0px 0px 10px red;
+}

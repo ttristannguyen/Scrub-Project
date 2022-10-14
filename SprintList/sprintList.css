@@ -1,48 +1,53 @@
+
+html,body {
+	background-color: #121212;
+    height: 110%;
+}
+
 .pageTitle
 {
-    color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 75px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+    color: #FFF8DC; font-family: 'Helvetica Neue', sans-serif; font-size: 75px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
 }
 .pageDescription
 {
-    color: #111; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 22px; text-align: center; font-style: italic;
+    color:  #FFF8DC; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 22px; text-align: center; font-style: italic;
 }
-
-.body {
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
-	height: 100vh;
-}
-
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
+.pageDisplay {
+    margin:auto;
+    border-radius: 25px;
+    border-style: solid;
+    color:#FFF8DC;
+    border-color: #FFF8DC;  
+    max-width: fit-content;
+    padding: 40px;
+  }
 
 
-#addTaskButton{
+
+  #addSprintButtonContainer{
     position: absolute;
+    top: 50%;
     left: 88%;
     width: 120px;
     bottom: 60%;
+    height: 55px;
+    /* background-color: white; */
+    /* border-style: solid; */
+    border-radius: 25px;
     
 }
-.sprintBox {
+.addSprintButton{
     position: relative;
-    border: 0;
-    border-radius: 15px;
+    /* text-align: center; */
+    width: 120px;
+    height: 55px;
+    border-style: solid;
+    border-radius: 25px;
     background-color: #FAF0E6;
-    box-shadow: 0px 0px 10px white;
+    font-weight: bold;
+    
 }
-
-.sprintBox:hover{
+.addSprintButton:hover{
     box-shadow: inset 0px 0px 10px red;
 }
 
@@ -128,25 +133,68 @@
 
 .seeDetailsBtn {
     position: relative;
-    bottom: 70px;
-    right: 70px;
-    width: 100px;
+    bottom: 40px;
+    right: -10px;
+    width: 120px;
+    height: 55px;
+    border-style: solid;
+    border-radius: 25px;
+    background-color: #FAF0E6;
+    font-weight: bold;
 }
-
+.seeDetailsBtn:hover {
+    box-shadow: inset 0px 0px 10px red;
+}
 .deleteSprint {
     position: relative;
     right: 50px;
     width: 100px;
-    height: 45px;
-    top: 197.5px;
+    height: 35px;
+    bottom: 39px;
+    border-style: solid;
+    border-radius: 25px;
+    background-color: #FAF0E6;
+    font-weight: bold;
 }
-
-
-
-.resize {
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0px;    overflow: hidden;
+    background-color: #121212;
+    }
+      
+li {
+    margin: auto;
+    float: left;
+    border-right: 1px solid #bbb;
+    }
+    li:last-child {
+    border-right: none;
+    }
+    
+    li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 100px;
+    /* padding-left: */
+    text-decoration: none;
+    font-weight: bold;
+    }
+      
+    /* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #121;
+}
+    
+.dot {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
     position: relative;
-    width: 500px;
-    height: auto;
-    right: 170px;
-    top: 80px;
+    /* padding: 2em; */
+    right: 42%;
+    top: -110px; 
+    /* transform: translateX(-50%) */
 }

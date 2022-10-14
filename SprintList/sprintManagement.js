@@ -126,10 +126,10 @@ function displayPB(productBacklog) {
     for (let i = 0; i < productBacklog.length; i++) {
         idString = `pBtask${i}`;
         output += `
-            <tr>
-                <td class="mdl-data-table__cell--non-numeric" id="'${idString}'" onclick="showDialog('${idString}')">${productBacklog[i].taskName}</td>
+            <tr class = "tableItem">
+                <td class="mdl-data-table__cell--non-numeric productBacklogItem" id="'${idString}'" onclick="showDialog('${idString}')">${productBacklog[i].taskName}</td>
                 <td>
-                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="pBList${i}">
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect productBacklogCheckBox" for="pBList${i}">
                     <input type="checkbox" id="pBList${i}" class="mdl-checkbox__input" name="pBCheckbox">
                 </label>
             </td>
@@ -148,8 +148,8 @@ function displaySB(sprintBacklog) {
     for (let i = 0; i < sprintBacklog.length; i++) {
         idString = `sBtask${i}`;
         output += `
-            <tr>
-                <td class="mdl-data-table__cell--non-numeric" id = "${idString}" onclick="showDialog('${idString}')">${sprintBacklog[i].taskName + ' (' + sprintBacklog[i].taskTeamMember + ')'}</td>
+            <tr class = "sprintItem">
+                <td class="mdl-data-table__cell--non-numeric sprintBacklogItem" id = "${idString}" onclick="showDialog('${idString}')">${sprintBacklog[i].taskName + ' (' + sprintBacklog[i].taskTeamMember + ')'}</td>
                 <td>
                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="sBList${i}">
                         <input type="checkbox" id="sBList${i}" class="mdl-checkbox__input" name="sBCheckbox">
