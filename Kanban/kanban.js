@@ -105,7 +105,7 @@ function loadKanban() {
     let doneList = document.getElementById("sprintDone")
     doneList.innerHTML = doneHtml
 }
-
+let taskNumber = 10;
 function showDialog(taskID) {
     //
     // Function used to generate and show individual task detail
@@ -127,7 +127,7 @@ function showDialog(taskID) {
 
 
     let sprintList = sprint.sprintTaskList;
-    let taskNumber = taskID.slice(4, taskID.length) // Gets task number
+    taskNumber = taskID.slice(4, taskID.length) // Gets task number
     let task = sprintList[taskNumber]
     let modal = document.getElementById("modal");
     let taskName = document.getElementById("modalTaskName");
