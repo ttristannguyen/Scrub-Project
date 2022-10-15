@@ -99,6 +99,89 @@
         <div class = "pageTitle">TASK CREATION </div>
         <div class = "pageDescription">Use this page to add the details of a task for your project backlog </div>
         </div>
+
+        <div class="form">
+            <div class="title">Task Form</div>
+            <div class="subtitle">Please fill in the details below</div>
+    
+            <div class="input-container ic1">
+                <input id="taskName" name="taskName" class="input" type="text" placeholder=" " required>
+                <div class="cut"></div>
+                <label for="taskName" class="placeholder">Task Name</label>
+            </div>
+
+            <div class="input-container ic1">
+                <textarea id="taskDescription" name="taskDescription" class="inputDescription" type="text" placeholder=" " maxlength="500" required></textarea> 
+                <div class="cut"></div>
+                <label for="taskDescription" class="placeholder">Task Description</label>
+            </div>
+            <br>
+            <br>
+            <br>
+            
+            <div class="input-container ic1">
+                <select class="input" id="taskType" name="taskType" placeholder=" ">
+                    <option value="Story">Story</option>
+                    <option value="Bug">Bug</option>
+                  </select>
+                <div class="cut"></div>
+                <label for="taskType" class="placeholder">Task Type</label>
+            </div>
+                
+            <div class="input-container ic1">
+                <select class="input" id="taskTag" name="taskTag" placeholder=" " required>
+                    <option value="UI">Ui Based</option>
+                    <option value="Testing">Testing</option>
+                    <option value="Core">Core</option>
+                    
+              
+                  </select>
+                <div class="cut"></div>
+                <label for="taskName" class="placeholder">Task Tag</label>
+            </div> 
+
+            <div class="input-container ic1">
+                <input id="taskStoryPoint" name="taskStoryPoint" class="input" type="number" placeholder=" " required>
+                <div class="cut"></div>
+                <label for="taskStoryPoint" class="placeholder">Story points 1:4 ratio > 0:</label>
+            </div>
+            <br>
+            <br>
+
+            <fieldset>
+                <legend class="subtitle">Priority</legend>
+                    <br>
+                    <p>
+                        <input id = "priority" type="radio" value="Critical Priority" name = "priority" >
+                            <label class="subtitle">Critical Priority</label><br>
+                    </p> 
+                    <p>
+                        <input id = "priority" type="radio" value="High Priority" name = "priority" >
+                            <label class="subtitle">High Priority</label><br>
+                    </p> 
+                    <p>
+                        <input id = "priority" type="radio" value="Medium Priority" name = "priority" >
+                            <label class="subtitle">Medium Priority</label><br>
+                    </p>
+                    <p>
+                        <input id = "priority" type="radio" value="Low Priority" name = "priority" >
+                            <label class="subtitle">Low Priority</label><br>
+                    </p> 
+                    
+    
+            </fieldset>
+        
+            <p id = "errorMessage"></p>
+            <div id = "doneContainer">
+                <button type ="button" class="doneButton" id="taskCreationDoneBtn" onClick="taskCreationOnClick()">Done</button>
+            </div>
+                
+            <div id = "backContainer">
+                <button type ="button"  class="backButton" id="taskCreationBackBtn" onClick="taskCreationBackOnClick()">Back</button>
+            </div>
+        </div>
+
+        <!--
         <form class="taskCreationForm" method="get">  
             
         <p>
@@ -177,15 +260,18 @@
             
         <div id = "backContainer">
             <button type ="button"  class="backButton" id="taskCreationBackBtn" onClick="taskCreationBackOnClick()">Back</button>
-        </div>
+        </div>  --> 
 
-    </div> <!-- Page Content Ends Here-->
+     <!-- Page Content Ends Here-->
 
   </main>
 
 </div> <!-- Layout Ends Here-->
 
 </body>
+<br>
+<br>
+<br>
 <script>
 </script>
 </html>
