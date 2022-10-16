@@ -117,6 +117,10 @@ html,body {
     top: 45px;
     color: #FFF8DC; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 72px; text-align: center; font-style: italic;
 }
+#taskNameText{
+    color: #FFF8DC; font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+}
 .pageDisplay {
     margin:auto;
     border-radius: 25px;
