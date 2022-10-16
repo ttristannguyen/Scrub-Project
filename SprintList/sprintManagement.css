@@ -6,6 +6,7 @@
     float: left;
     width: 33.33%;
     margin-top: -2%;
+    
 }
 
 .selectionColumn table {
@@ -39,14 +40,42 @@
 
 .returnButton {
     position: absolute;
-    bottom: 10%;
+    bottom: 3%;
     left: 10%;
 }
-
+.buttonReturn{
+    position: relative;
+    /* text-align: center; */
+    width: 120px;
+    height: 55px;
+    border-style: solid;
+    border-radius: 25px;
+    background-color: #FAF0E6;
+    font-weight: bold;
+}
+.buttonReturn:hover{
+    box-shadow: inset 0px 0px 10px red;
+}
 #startButton {
     position: absolute;
-    bottom: 10%;
+    bottom: 3%;
     right: 10%;
+    width: 120px;
+    height: 55px;
+    border-radius: 25px;
+}
+.buttonStart{
+    position: relative;
+    /* text-align: center; */
+    width: 120px;
+    height: 55px;
+    border-style: solid;
+    border-radius: 25px;
+    background-color: #FAF0E6;
+    font-weight: bold;
+}
+.buttonStart:hover{
+    box-shadow: inset 0px 0px 10px blue;
 }
 
 #teamMembers {
@@ -77,4 +106,109 @@
     padding: 5px 0;
     color: white;
     margin: 10px auto;
+}
+
+.pageTitle
+{
+    position: relative;
+    margin:auto;
+    padding: 10px;
+    top: 45px;
+    color: #FFF8DC; font-family: 'Helvetica Neue', sans-serif; font-size: 75px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+}
+.pageDescription
+{
+    position: relative;
+    margin:auto;
+    padding: 10px;
+    top: 45px;
+    color: #FFF8DC; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 72px; text-align: center; font-style: italic;
+}
+.pageDisplay {
+    margin:auto;
+    border-radius: 25px;
+    border-style: solid;
+    color:#FFF8DC;
+    border-color: #FFF8DC;  
+    max-width: fit-content;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0px;    overflow: hidden;
+    background-color: #121212;
+  }
+  
+  li {
+    margin: auto;
+    float: left;
+    border-right: 1px solid #bbb;
+  }
+  li:last-child {
+    border-right: none;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 100px;
+    /* padding-left: */
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+html,body {
+	background-color: #121212;
+    height: 100%;
+}
+#productBacklogTitle{
+    color: #FFF8DC; font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    padding: 20px;
+}
+#sprintBacklogTitle{
+    color: #FFF8DC; font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    padding: 20px;
+}
+#teamMembersTitle{
+    color: #FFF8DC; font-family: 'Helvetica Neue', sans-serif;
+    /* font-weight: bold; */
+    /* padding: 20px; */
+}
+#selectedMember {
+    color: #FFF8DC; font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+}
+#taskNameText{
+    color: #FFF8DC; font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+}
+.tableItem{
+    color: #FFF8DC; font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    background-color: #454545;
+}
+.tableItem:hover{
+    color: black; font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+}
+
+#pBTable{
+    background-color: #232323;
+}
+.sprintItem{
+    color: #FFF8DC; font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    background-color: #454545;
+}
+.sprintItem:hover {
+    color: black; font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+}
+
+#sBTable{
+    background-color: #232323;
 }

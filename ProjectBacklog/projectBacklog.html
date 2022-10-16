@@ -10,29 +10,22 @@
     <title></title>
 </head>
 <body onload="onProjectBacklogLoad()">
-  <div class="btn-group my-5">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
-            mdl-layout--fixed-header"> <!-- Layout Starts Here-->
 
-  <header class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <div class="mdl-layout-spacer"></div>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                  mdl-textfield--floating-label mdl-textfield--align-right">
-      </div>
-    </div> <!-- Layout Ends Here-->
-  </header>
-  <div class="mdl-layout__drawer"> <!-- Nav Bar Starts Here-->
-    <span class="mdl-layout-title"><b>Project Backlog</b></span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="projectBacklog.html">Project Backlog</a>
-      <a class="mdl-navigation__link" href="../SprintList/sprintList.html">Sprint List</a>
-      <a class="mdl-navigation__link" href="../TeamMembers/teamMembers.html">Team Members</a>
-    </nav>
-  </div> <!-- Nav Bar Ends Here-->
-  <main class="mdl-layout__content">
-    <div> 
-    <div class="page-content" > <!-- Page Content Starts Here-->
+ <div id = "menu">
+    <ul>
+    <li><a href="projectBacklog.html ">Project Backlog</a></li>
+    <li><a href="../SprintList/sprintList.html">Sprint List</a></li>
+    <li><a href="../TeamMembers/teamMembers.html">Team Members</a></li>
+  </ul>
+  </div>
+    <div class = "pageDisplay">
+     <div class = "pageTitle"> 
+      PROJECT BACKLOG
+     </div>
+     <div class = "pageDescription">
+      Use this page to create tasks to be added to your sprints later. Click the “add task” button to get started
+     </div>
+    </div>
       <label id = "filterText">Filter By</label> 
       <div class="mdl-selectfield mdl-js-selectfield">
         <select class="mdl-selectfield__select" id="filterBy" name="filterBy" onchange="onProjectBacklogLoad()">
@@ -47,7 +40,7 @@
 
         <!-- Add Task Button-->
         <div style="text-align: left;" id = "addTaskButton" >
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+            <button class="addTaskButtonClass"
             onclick= "addTaskOnClick()">
                 Add Task
             </button>
@@ -55,11 +48,6 @@
 
         <div class = "mdl-grid" id = "taskPlacement">
          </div>
-
-    </div> <!-- Page Content Ends Here-->
-  </main>
-
-</div> <!-- Layout Ends Here-->
 
 </body>
 <script>

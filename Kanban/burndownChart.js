@@ -6,7 +6,9 @@ function loadBurndownChart() {
     sprintArray = JSON.parse(localStorage.getItem('sprintBacklogArray'));
     currSprint = sprintArray[sprintID]
     // accumulatedHours = currSprint.dateDifferences;
-
+    title = currSprint.sprintName;
+    sprintNameDisplay = document.getElementById("sprintNameDisplay");
+    sprintNameDisplay.innerHTML = title;
     currDate = new Date();
     startDate = new Date(currSprint.sprintStartDate);
     endDate =  new Date(currSprint.sprintEndDate)
@@ -79,9 +81,12 @@ function loadBurndownChart() {
         }
     ]},
       options: {
-        legend: {display: true,},
+        legend: {display: true,fontColor:'white'},
         scales: {
-          yAxes: [{ticks: {min:0, max:totalStoryPoints}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: "Story Points",fontColor:'white'}, ticks: {min:0, max:totalStoryPoints, fontColor:'white'}}],
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: "Dates", fontColor:'white'}, ticks: {fontColor:'white'}}]
+
+
         }
       }
     });

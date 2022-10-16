@@ -37,24 +37,36 @@
     <div class="page-content" > <!-- Page Content Starts Here-->
 
     </div>
-
+    <div class = "pageTitle"> 
+      TEAM MEMBERS
+     </div>
+     <div class = "pageDescription">
+      Use this page to add team members to your workplace, get started by clicking the ‘add team member’ button!
+     </div>
         <!-- Add Task Button-->
         <div style="text-align: left;" id = "addTaskButton" >
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-            onclick= "addTeamMemberOnClick()">
-                Add Team Member
-            </button>
-        </div>
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+          onclick= "addTeamMemberOnClick()">
+              Add Team Member
+          </button>
+      </div>
 
         <div class = "mdl-grid" id = "teamMemberPlacement">
+ 
          </div><br>
-         <div>Team Dashboard</div>
+         <hr style=height:0px;border-width:10px;border-color:black>
+         <div class = "pageTitle">TEAM DASHBOARD</div>
+         <div class= pageDescription>This dashboard provides insight into team performance for its entire duration</div>
          <br>
-         <div id="teamAnalytics">
+         <div id="teamAnalytics"> TEAM DAILY AVERAGE WORK: 
          
       
          </div>
-         <canvas id="myChart1" style="width:100%;max-width:700px"></canvas>
+         <div class="chartWrapper">
+          <div class="chartContainer">
+              <canvas id="myChart1"></canvas>
+          </div>
+      </div>
     </div> <!-- Page Content Ends Here-->
   </main>
 

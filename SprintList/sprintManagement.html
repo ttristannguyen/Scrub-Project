@@ -11,44 +11,28 @@
 </head>
 
 <body onload="loadBacklogs()">
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
-          mdl-layout--fixed-header"> <!-- Layout Starts Here-->
+  <div>
+    <ul>
+    <li><a href="../ProjectBacklog/projectBacklog.html">Project Backlog</a></li>
+    <li><a href="sprintList.html">Sprint List</a></li>
+    <li><a href="../TeamMembers/teamMembers.html">Team Members</a></li>
+  </ul>
+  </div>
 
-    <header class="mdl-layout__header">
-      <div class="mdl-layout__header-row">
-        <div class="mdl-layout-spacer"></div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                    mdl-textfield--floating-label mdl-textfield--align-right">
-          <!-- <label class="mdl-button mdl-js-button mdl-button--icon"
-                for="fixed-header-drawer-exp">
-            <i class="material-icons">search</i>
-          </label>
-          <div class="mdl-textfield__expandable-holder">
-            <input class="mdl-textfield__input" type="text" name="sample"
-                  id="fixed-header-drawer-exp">
-          </div> -->
-        </div>
-      </div> <!-- Layout Ends Here-->
-    </header>
-
-    <div class="mdl-layout__drawer"> <!-- Nav Bar Starts Here-->
-      <span class="mdl-layout-title"><b>Sprint Backlog</b></span>
-      <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="../ProjectBacklog/projectBacklog.html">Project Backlog</a>
-        <a class="mdl-navigation__link" href="../SprintList/sprintList.html">Sprint List</a>
-        <a class="mdl-navigation__link" href="../TeamMembers/teamMembers.html">Team Members</a>
-      </nav>
-    </div> <!-- Nav Bar Ends Here-->
-    <main class="mdl-layout__content">
-
-      <div class="page-content"> <!-- Page Content Starts Here-->
-
+  <div class = "pageDisplay">
+        <div class = "pageTitle"> 
+          SPRINT MANAGEMENT
+         </div>
+         <div class = "pageDescription">
+          Use this page to assign project backlog items to the sprint and specific team members via the “assign” button
+         </div>
+  </div>
         <div class="selectionColumn"> <!-- List of PBIs -->
-          <h3 style="text-align:center;">Product Backlog</h3>
+          <h3 id ="productBacklogTitle" style="text-align:center;">Product Backlog</h3>
           <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id = "pBTable">
             <thead>
               <tr>
-                <th class="mdl-data-table__cell--non-numeric">Task Name</th>
+                <th class="mdl-data-table__cell--non-numeric" id = "taskNameText">Task Name</th>
               </tr>
             </thead>
             <tbody id = "productBacklogList">
@@ -57,7 +41,7 @@
           
           <!-- Save Button -->
           <div class = "returnButton">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+            <button class="buttonReturn"
             onclick = "window.location.assign('sprintList.html')">
               Return
             </button>
@@ -79,7 +63,7 @@
               <option></option>
       
             </select>
-            <label class="mdl-textfield__label" for="teamMembers">Team Members</label>
+            <label id = "teamMembersTitle" class="mdl-textfield__label" for="teamMembers">Team Members</label>
           </div>
 
           <!-- Unassign Button -->
@@ -92,7 +76,7 @@
         </div>
 
         <div class="selectionColumn">
-          <h3 style="text-align:center;">Sprint Backlog</h3>
+          <h3 id = "sprintBacklogTitle" style="text-align:center;">Sprint Backlog</h3>
           <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="sBTable">
             <thead>
               <tr>
@@ -105,7 +89,7 @@
 
           <!-- Start Button -->
           <div id = "startButton">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+            <button class="buttonStart"
             onclick = "startSprint()">
               Start Sprint
             </button>
