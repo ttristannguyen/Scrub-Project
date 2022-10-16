@@ -67,12 +67,17 @@ html,body {
     font-weight:bold;
     position: relative;
     left: 80px
-    
-    
-    
-    
-
   }
+.sprintBox {
+    position: relative;
+    border: 0;
+    border-radius: 15px;
+    background-color: #FAF0E6;
+    box-shadow: 0px 0px 10px white;
+}
+.sprintBox:hover{
+    box-shadow: inset 0px 0px 10px red;
+}
 #taskText {
     font-size: medium;
     font-weight: bold;
@@ -94,17 +99,17 @@ html,body {
     font-weight: bold;
     text-align: center;
     margin: auto;
+    bottom: 100px;
     position: relative;
-    bottom: 70px; 
 
     /* left: 20%;*/
 }
 #taskName
 {    
-    font-size: xx-large;
+    font-size:x-large;
     font-weight: bold;
     text-align: center;
-    color: rgb(91, 23, 185);
+    color: black;
     margin: auto;
     border: #23a6d5;
     position: relative;
@@ -160,14 +165,10 @@ html,body {
 }
 .deleteSprint {
     position: relative;
-    left: 0px;
+    right: 120px;
     width: 100px;
     height: 35px;
-    bottom: 39px;
-    border-style: solid;
-    border-radius: 25px;
-    background-color: #FAF0E6;
-    font-weight: bold;
+    top: 180px;
 }
 ul {
     list-style-type: none;

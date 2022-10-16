@@ -69,13 +69,28 @@ function onSprintListLoad()
         let sprintStartDate = array[i].sprintStartDate; //Gets the priority for dynamic entering
         let sprintEndDate = array[i].sprintEndDate;
         let sprintInProgress = array[i].sprintInProgress;
+        let progression = ""
+        switch(sprintInProgress){
+            case(0):
+                progression = "Not Started";
+                break;
+            case(1):
+                progression = "In Progress";
+                break;
+            case(2):
+                progression = "Done";
+                break;
+            default:
+                break;
+        }
+
         htmlElements += `
-        <div class = "mdl-cell mdl-cell--3-col graybox" style = "position: relative; top: 90%"' id="${i}" onclick = "createDetailedView(${i})">
+        <div class = "mdl-cell mdl-cell--3-col sprintBox" style = "position: relative; top: 90%"' id="${i}" onclick = "createDetailedView(${i})">
             <p id = 'taskName'>${sprintName}</p>
             <p id='taskTextSprint'>
                 <br>Sprint Start Date: ${sprintStartDate}
                 <br>Sprint End Date: ${sprintEndDate}
-                <br>Sprint Progression: ${sprintInProgress}<br>
+                <br>Sprint Progression: ${progression}<br>
             </p>
         </div>
         <button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400 deleteSprint' onclick = 'deleteSprint(${i})'> Delete </button>`;

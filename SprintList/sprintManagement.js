@@ -226,7 +226,8 @@ function startSprint() {
     let currentSprintId = JSON.parse(localStorage.getItem("currentSprintId"));
     let sprintList = JSON.parse(localStorage.getItem("sprintBacklogArray"));
     let sprint = sprintList[currentSprintId];
-    
+    sprint.sprintInProgress = 1;
+    localStorage.setItem("sprintBacklogArray", JSON.stringify(sprintList));
     localStorage.setItem("activeSprint", JSON.stringify(sprint));
     localStorage.setItem("activeSprintID", JSON.stringify(currentSprintId));
     window.location.assign("../Kanban/kanban.html");
