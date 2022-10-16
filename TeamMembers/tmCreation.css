@@ -262,3 +262,33 @@
 .addSprintButton2:hover {
     box-shadow: inset 0px 0px 10px red;
 }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0px;    overflow: hidden;
+  background-color: #121212;
+}
+
+li {
+  margin: auto;
+  float: left;
+  border-right: 1px solid #bbb;
+}
+li:last-child {
+  border-right: none;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 100px;
+  /* padding-left: */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #121;
+}

@@ -10,7 +10,7 @@
     font-size: 1.1rem;
     font-weight: 600;
     line-height: 1;
-    padding: 1rem 1.6rem;
+    padding: 0.5rem;
     text-align: center;
     text-decoration: none #0d172a solid;
     text-decoration-thickness: auto;
@@ -20,7 +20,8 @@
     -webkit-user-select: none;
     touch-action: manipulation;
     position: relative;
-    left: 80px;
+    background-color: #FAF0E6;
+    max-width: 60%;
 }
 
 .teamMemberBox:hover {
@@ -28,47 +29,37 @@
     color: #fff;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 10%) {
     .teamMemberBox {
+
         font-size: 1.125rem;
-        padding: 1rem 2rem;
+        /* padding: 1rem 2rem; */
     }
 }
 
 
-
-#addTeamMembers{
-    position: fixed;
-    
-    width: 100%;
-    bottom: 5%
   
-}
-.mdl-cell {
-    background: #bdbdbd;
-    padding: 60px 0;
-    text-align: center;
-    color: #424242;
-    font-weight: bold;
-  }
-
-  .pageTitle
-  {
-      color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 45px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
-  }
-  .pageDescription
-  {
-      color: #111; font-family: 'Open Sans', sans-serif; font-size: 17px; font-weight: 300; line-height: 32px; margin: 0 0 22px; text-align: center; font-style: italic;
-  }
-  
-  #addTaskButton{
+  #addTeamButtonContainer{
     position: absolute;
-    left: 88%;
+    left: 90%;
+    top: 38%;
     width: 190px;
     bottom: 80%;
     
 }
-
+.addTeamButton{
+  position: relative;
+  /* text-align: center; */
+  width: 120px;
+  height: 55px;
+  border-style: solid;
+  border-radius: 25px;
+  background-color: #FAF0E6;
+  font-weight: bold;
+}
+.addTeamButton:hover {
+  box-shadow: inset 0px 0px 10px red;
+}
 div.chartWrapper {
     position: relative;
     overflow: auto;
@@ -78,6 +69,7 @@ div.chartWrapper {
 div.chartContainer {
     position: relative;
     height: 300px;
+    padding-left: 3%;
 
 }
 #teamAnalytics
@@ -92,7 +84,7 @@ div.chartContainer {
     grid-auto-flow: column;
     grid-auto-columns: 21%;
   
-    padding: 0 var(--_spacer) var(--_spacer);
+    padding-left: 10%;
   
     overflow-x: auto;
     overscroll-behavior-inline: contain;
@@ -130,14 +122,85 @@ div.chartContainer {
   }
 
   .media-scroller {
-    width: 900px;
+    width: 90%;
     height: 100px;
     overflow-y: scroll;
     scrollbar-width: auto;
   }
-  .mdl-button {
+
+
+html,body {
+	background-color: #121212;
+    /* height: 10%; */
+}
+.pageTitle
+{
     position: relative;
-    bottom: -60px;
-    right: 65px;
+    margin:auto;
+    padding: 10px;
+    top: 45px;
+    color: #FFF8DC; font-family: 'Helvetica Neue', sans-serif; font-size: 75px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+}
+.pageDescription
+{
+    position: relative;
+    margin:auto;
+    padding: 10px;
+    top: 45px;
+    color: #FFF8DC; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 72px; text-align: center; font-style: italic;
+}
+  
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0px;    overflow: hidden;
+    background-color: #121212;
+  }
+  
+  li {
+    margin: auto;
+    float: left;
+    border-right: 1px solid #bbb;
+  }
+  li:last-child {
+    border-right: none;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 100px;
+    /* padding-left: */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    background-color: #121;
+  }
+  .pageDisplay {
+    margin:auto;
+    border-radius: 25px;
+    border-style: solid;
+    color:#FFF8DC;
+    border-color: #FFF8DC;  
+    max-width: fit-content;
+  }
+  #text {
+    color: #FFF8DC;
+  }
+  #teamAnalytics {
+    font-weight: bold;
+    color: #FFF8DC;
+    padding-left: 3%;
+
+  }
+  .deleteButton{
+    position: relative;
+    top: 55px;
+    right: 240px;
+    height: 40px;
     width: 100px;
   }
