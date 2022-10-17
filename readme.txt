@@ -11,3 +11,8 @@ Please find our updated "definition of done": https://docs.google.com/document/d
 Please find our task and team management on : https://docs.google.com/document/d/1_kAFUx2mPeQUmhTbdckYOBrCqqhBzugjD_2VDzKUKX8/edit?usp=sharing
 
 Please find our google drive here: https://drive.google.com/drive/folders/1yOMmsk6jh0j3R1gANBlZ_AxeS1FeLgs8?usp=sharing
+
+Team member roles: All the details of these rolls are listed in the team members board on our Trello: Stefan 
+Product Owner: Stefan 
+Scrum Master: Tristan Nguyen 
+Team member's: Shannon Wallis, Yokabit Fesshaye, Chris How, Yao 
