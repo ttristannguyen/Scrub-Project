@@ -142,7 +142,7 @@ function checkOnClick2()
     let dates2 = dateRange(dateStarted, dateEnded);
       totalNumDays = dates2.length;
     let teamMemberPlacement = document.getElementById("placement");
-    teamMemberPlacement.innerHTML += tm[i].teamMemberFirstName + " accumulated hours,       " +  hoursAcc + " hrs,  " + "Average daily work = " + Math.ceil(hoursAcc/totalNumDays) + ".  "  + `\n`;
+    teamMemberPlacement.innerHTML += tm[i].teamMemberFirstName + " accumulated hours:       " +  hoursAcc + " hrs,  " + "       Average daily work = " + Math.ceil(hoursAcc/totalNumDays) + ".  "  + `<br>`;
   }
 }
 
@@ -205,6 +205,7 @@ function teamMemberDetailedView()
     var yValues = hours;
     var barColors = ["red", "green","blue","orange","brown"];
     var ctx = document.getElementById("myChart");
+    Chart.defaults.global.defaultFontColor = "White";
     var myChart = new Chart(ctx,{
       type: "bar",
       data: {
