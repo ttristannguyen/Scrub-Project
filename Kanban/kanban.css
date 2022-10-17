@@ -1,5 +1,6 @@
 .page-content {
     margin: 1%;
+    height: 120%;
 }
 
 .selectionColumn {
@@ -39,19 +40,19 @@
 
 .returnButton {
     position: absolute;
-    bottom: 10%;
+    bottom: -20%;
     left: 10%;
 }
 
 .burndownButton {
     position: absolute;
-    bottom: 10%;
+    bottom: -20%;
     right: 47%
 }
 
 .completeButton {
     position: absolute;
-    bottom: 10%;
+    bottom: -20%;
     right: 10%;
 }
 
@@ -211,4 +212,47 @@ html,body {
     background-color: white;
     color: black; font-family: 'Helvetica Neue', sans-serif;
     font-weight: bold;
+}
+
+.returnButtonClass{
+  position: relative;
+  /* text-align: center; */
+  width: 120px;
+  height: 55px;
+  border-style: solid;
+  border-radius: 25px;
+  background-color: #FAF0E6;
+  font-weight: bold;
+  
+}
+.returnButtonClass:hover {
+  box-shadow: inset 0px 0px 10px red;
+}
+.burndownButtonClass{
+  position: relative;
+  /* text-align: center; */
+  width: 120px;
+  height: 55px;
+  border-style: solid;
+  border-radius: 25px;
+  background-color: #FAF0E6;
+  font-weight: bold;
+  
+}
+.burndownButtonClass:hover {
+  box-shadow: inset 0px 0px 10px green;
+}
+.completeButtonClass{
+  position: relative;
+  /* text-align: center; */
+  width: 120px;
+  height: 55px;
+  border-style: solid;
+  border-radius: 25px;
+  background-color: #FAF0E6;
+  font-weight: bold;
+  
+}
+.completeButtonClass:hover {
+  box-shadow: inset 0px 0px 10px blue;
 }
