@@ -225,6 +225,9 @@ function teamMemberDetailedView()
                   bottom: 30
               }
             }
+        },
+        legend: {
+          display: false
         }
     }
     });
