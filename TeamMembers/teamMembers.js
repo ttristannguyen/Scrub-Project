@@ -82,7 +82,7 @@ function onTeamMembersLoad()
             let teamMemberFirstName = array[i].teamMemberFirstName; //this is the name of the task from the new object
             let teamMemberLastName = array[i].teamMemberLastName; //Gets the priority for dynamic entering
                 htmlElements += `<div class = 'teamMemberBox' id="teamMemberBox" onclick = createTeamMemberDetailedView(${i}) ><p id = 'teamMemberText'>${teamMemberFirstName}<br> ${teamMemberLastName}</p></div>` +
-                `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = 'deleteTeamMember(${i})' id = 'deleteTeamMember'> Delete </button>`;
+                `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400 deleteButton' + onclick = 'deleteTeamMember(${i})' id = 'deleteTeamMember'> Delete </button>`;
         }
         
 
@@ -195,8 +195,8 @@ function onTeamMembersLoad()
               data: { labels: datesUpdate,
                 datasets: [{
                   label: "Hours", 
-                  backgroundColor: "rgba(0,0,0,1.0)",
-                  borderColor: "rgba(0,0,0,0.1)",
+                  backgroundColor: "rgb(0,0,255)",
+                  borderColor: "rgb(0,0,255)",
                   data: yValues},
                   {
                     label: "Sprint number",
@@ -216,17 +216,33 @@ function onTeamMembersLoad()
             
                     title: {
                         display: true,
-                        text: 'Team logged hours'
+                        text: 'Team logged hours',
+                        fontColor: 'white'
                     },
                     scales: {
                         yAxes: [{
                           scaleLabel: {
                             display: true,
                             labelString: 'Hours / Sprint Number',
-                            size:20,
-                          }
+                            size:32,
+                            fontColor: 'white',
+                          },
+                          ticks: {fontColor:'white'},
+                        }],
+                        xAxes: [{
+                          scaleLabel: {
+                            display: true,
+                            labelString: 'Date',
+                            size:32,
+                            fontColor: 'white',
+                          },
+                          ticks: {fontColor:'white'}
                         }]
-                      }     
+                      },
+                      legend: {display: true,
+                        labels: {
+                          fontColor: 'white',
+                      }},     
                 
               }
           });

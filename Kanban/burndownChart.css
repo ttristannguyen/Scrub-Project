@@ -94,3 +94,11 @@ html,body {
     font-weight: bold;
     
 }
+.returnButton:hover {
+    box-shadow: inset 0px 0px 10px red;
+}
+#sprintNameDisplay{
+    color: #FFF8DC;
+    font-weight: bold;
+    padding-top: 10px;
+}
