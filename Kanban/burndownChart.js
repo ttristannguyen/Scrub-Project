@@ -136,3 +136,8 @@ function fromStartDatetoNow(startDate,endDate,array,value){
     }
     return
 }
+
+function returnOnClick()
+{
+    window.location = 'kanban.html'
+}

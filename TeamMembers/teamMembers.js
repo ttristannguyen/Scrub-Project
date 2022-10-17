@@ -357,8 +357,8 @@ function checkOnClick()
         data: { labels: datesUpdate2,
           datasets: [{
             label: "Hours", 
-            backgroundColor: "rgba(0,0,0,0)",
-            borderColor: "rgba(0,0,0,0.1)",
+            backgroundColor: "rgba(255,255,255,255)",
+            borderColor: "rgba(255,255,255,255)",
             data: yValues2},
       
 
@@ -366,19 +366,32 @@ function checkOnClick()
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            legend: {display: true,
+              labels: {
+                fontColor: 'white'
+              }},
       
               title: {
                   display: true,
-                  text:document.getElementById('teamMemberName').innerHTML + 's logged hours'
+                  text:document.getElementById('teamMemberName').innerHTML + 's logged hours',
+                  fontColor: 'white,'
               },
               scales: {
-                  yAxes: [{
+                  yAxes: [{display: true,
                     scaleLabel: {
                       display: true,
                       labelString: 'Hours logged',
-                      size:20,
-                    }
-                  }]
+                      fontColor:'white'},
+                      ticks: {fontColor:'white'},
+                      
+                    
+                  }],
+                  xAxes: [{display: true,
+                     scaleLabel:
+                      {display: true,
+                         labelString: "Dates",
+                          fontColor:'white'},
+                          ticks: {fontColor:'white'}}],
                 }     
           
         }

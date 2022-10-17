@@ -64,7 +64,7 @@ function taskCreationOnClick()
     }
     console.log(taskName)
     console.log(taskDescription)
-    if (taskName == null || taskDescription == null || taskPriority == null || taskStoryPoint == "" || taskStoryPoint <= 0){
+    if (taskName == null || taskDescription == null || taskPriority == null || taskStoryPoint == "" || taskStoryPoint <= 0 || taskStoryPoint > 4){
         errorMessageLocation = document.getElementById('errorMessage')
         errorMessageLocation.innerHTML = "Please Fill Out the Task Name ,Story Points, Description and Priority"
         return
@@ -229,7 +229,7 @@ function saveEditedDetails()
     taskPriorityTag = document.getElementsByTagName('input')
     taskTeamMember = "notAssigned"
     
-    if (taskName == "" || taskDescription == "" || taskTag == "" || taskStoryPoint == "" || taskStoryPoint <= 0){
+    if (taskName == "" || taskDescription == "" || taskTag == "" || taskStoryPoint == "" || taskStoryPoint <= 0 || taskStoryPoint > 4){
         console.log("taskName " + taskName )
         console.log("taskdesc " + taskDescription )
         console.log("taskTag " + taskTag)
