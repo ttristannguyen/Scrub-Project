@@ -1,6 +1,3 @@
-fit2101 READ ME
-MIRO: https://miro.com/app/board/uXjVOhaWMg8=/?share_link_id=411060614674
-TESTING: https://docs.google.com/spreadsheets/d/1BjAKA0JjxZwtL2m0NB0if4p2zXMHKTV5bwvAPKc9RWw/edit?usp=sharing
 SPRINT 3: 
 
 Sprint 3 Goal: The goal of this sprint is to complete the NFR's that were provided to the team in Week 9, which were UI Aesthetics,
