@@ -212,3 +212,31 @@ html,body {
 #sBTable{
     background-color: #232323;
 }
+.assignButtonClass{
+    position: relative;
+    /* text-align: center; */
+    width: 120px;
+    height: 55px;
+    border-style: solid;
+    border-radius: 25px;
+    background-color: #FAF0E6;
+    font-weight: bold;
+}
+.assignButtonClass:hover{
+    box-shadow: inset 0px 0px 10px green;
+
+}
+.unassignButtonClass{
+    position: relative;
+    /* text-align: center; */
+    width: 120px;
+    height: 55px;
+    border-style: solid;
+    border-radius: 25px;
+    background-color: #FAF0E6;
+    font-weight: bold;
+}
+.unassignButtonClass:hover{
+    box-shadow: inset 0px 0px 10px orchid;
+
+}
