@@ -229,7 +229,7 @@ function saveEditedDetails()
     taskPriorityTag = document.getElementsByTagName('input')
     taskTeamMember = "notAssigned"
     
-    if (taskName == "" || taskDescription == "" || taskTag == "" || taskStoryPoint == "" || taskStoryPoint <= 0){
+    if (taskName == "" || taskDescription == "" || taskTag == "" || taskStoryPoint == "" || taskStoryPoint <= 0 || taskStoryPoint > 4){
         console.log("taskName " + taskName )
         console.log("taskdesc " + taskDescription )
         console.log("taskTag " + taskTag)
