@@ -1,65 +1,36 @@
 
-.body {
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
-	height: 10vh;
-}
-
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+html,body {
+	background-color: #121212;
+    height: 100%;
 }
 
 
 #addTaskButton{
     position: absolute;
+    top: 50%;
     left: 88%;
-    width: 120px;
     bottom: 60%;
-        background-color: #fff;
-        border: 0 solid #000000;
-        border-radius: 1.5rem;
-        box-sizing: border-box;
-        color: #0d172a;
-        cursor: pointer;
-        display: inline-block;
-        font-family: "Basier circle", -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        font-size: 1.1rem;
-        font-weight: 600;
-        line-height: 1;
-        padding: 1rem 1.6rem;
-        text-align: center;
-        text-decoration: none #0d172a solid;
-        text-decoration-thickness: auto;
-        transition: all .1s cubic-bezier(.4, 0, .2, 1);
-        box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
-        user-select: none;
-        -webkit-user-select: none;
-        touch-action: manipulation;
-        position: relative;
-        left: 80px;
-    }
-
-    #addTaskButton:hover {
-        background-color: #1e293b;
-        color: #fff;
-    }
-
-    @media (min-width: 768px) {
-        #addTaskButton {
-            font-size: 1.125rem;
-            padding: 1rem 2rem;
-        }
-    }
+    width: 120px;
+    height: 55px;
+    /* background-color: white; */
+    /* border-style: solid; */
+    border-radius: 25px;
     
+}
+.addTaskButtonClass{
+    position: relative;
+    /* text-align: center; */
+    width: 120px;
+    height: 55px;
+    border-style: solid;
+    border-radius: 25px;
+    background-color: #FAF0E6;
+    font-weight: bold;
+    
+}
+.addTaskButtonClass:hover{
+    box-shadow: inset 0px 0px 10px red;
+}
 
 
 .mdl-cell {
@@ -77,25 +48,21 @@
     font-weight:bold;
     position: relative;
     left: 80px
-    
-    
-    
-    
 
   }
 #taskText {
     font-size: medium;
     font-weight: bold;
     position: relative;
-    top: -60px
-    /* text-align: center; */
+    top: -100px;
+    margin:auto;
 
 }
 
 .mdl-selectfield__select{
     position: absolute;
     left: 87%;
-    top: 22%;
+    top: 44%;
     width: 10%
 }
 
@@ -113,12 +80,13 @@
 
 
 #filterText {
+    color: #FFFFF0;
     position: absolute;
     left: 87%;
-    top: 19%;
+    top: 40%;
     width: 10%;
-    font-weight: lighter;
-    font-size: medium;
+    font-weight:normal;
+    font-size:large;
     
 }
 #deleteBtn {
@@ -133,14 +101,15 @@
 }
 
 .pbiBox {
+    position: relative;
     border: 0;
     border-radius: 15px;
-    background-color: #edeef6;
-    box-shadow: 0px 0px 10px;
+    background-color: #FAF0E6;
+    box-shadow: 0px 0px 10px white;
 }
 
 .pbiBox:hover{
-    box-shadow: inset 0px 0px 10px;
+    box-shadow: inset 0px 0px 10px red;
 }
 #mdl-layout-spacer
 {
@@ -148,9 +117,67 @@
 }
 .pageTitle
 {
-    color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 75px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+    position: relative;
+    margin:auto;
+    padding: 10px;
+    top: 45px;
+    color: #FFF8DC; font-family: 'Helvetica Neue', sans-serif; font-size: 75px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
 }
 .pageDescription
 {
-    color: #111; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 20px; text-align: center; font-style: italic;
+    position: relative;
+    margin:auto;
+    padding: 10px;
+    top: 45px;
+    color: #FFF8DC; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 72px; text-align: center; font-style: italic;
 }
+  
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0px;    overflow: hidden;
+    background-color: #121212;
+  }
+  
+  li {
+    margin: auto;
+    float: left;
+    border-right: 1px solid #bbb;
+  }
+  li:last-child {
+    border-right: none;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 100px;
+    /* padding-left: */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    background-color: #121;
+  }
+  .pageDisplay {
+    margin:auto;
+    border-radius: 25px;
+    border-style: solid;
+    color:#FFF8DC;
+    border-color: #FFF8DC;  
+    max-width: fit-content;
+  }
+  .dot {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    /* padding: 2em; */
+    right: 42%;
+    top: -110px; 
+    /* transform: translateX(-50%) */
+  }

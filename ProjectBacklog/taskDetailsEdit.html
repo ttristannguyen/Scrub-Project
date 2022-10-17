@@ -18,6 +18,7 @@ font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 font-size: 0.8em;
 width: 25%;
 padding: 1em;
+color: #FFF8DC;
 border: 1px solid #ccc;
 }
 
@@ -60,14 +61,14 @@ padding: 0.3em;
 height: 100px;
 }
 
-.taskViewForm button {
+/* .taskViewForm button {
 padding: 1em;
 border-radius: 0.5em;
 background: #eee;
 border: none;
 font-weight: bold;
 margin-top: 1em;
-}
+} */
 
 .taskViewForm button:hover {
 background: #ccc;
@@ -80,92 +81,107 @@ cursor: pointer;
 </style>
 
 </head>
-
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
-mdl-layout--fixed-header"> <!-- Layout Starts Here-->
-
-<header class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <div class="mdl-layout-spacer"></div>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                  mdl-textfield--floating-label mdl-textfield--align-right">
-      </div>
-    </div> <!-- Layout Ends Here-->
-</header>
-
-<div class="mdl-layout__drawer"> <!-- Nav Bar Starts Here-->
-    <span class="mdl-layout-title"><b>Edit Task Details</b></span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="../ProjectBacklog/projectBacklog.html">Project Backlog</a>
-      <a class="mdl-navigation__link" href="../SprintList/sprintList.html">Sprint List</a>
-      <a class="mdl-navigation__link" href="../TeamMembers/teamMembers.html">Team Members</a>
-    </nav>
-</div> <!-- Nav Bar Ends Here-->
-<main class="mdl-layout__content">
-    <div class="page-content"> <!-- Page Content Starts Here-->
-        <form class="taskViewForm" method="get">
         <body onload="detailedViewContent()">
-
-        <p>
-        <label>Task name: 
-        <input type="text" name="taskName" id = "taskName" required>
-        </label> 
-        </p>
-
-        <p>
-        <label>Task description: 
-        <textarea  name="taskDescription" id = "taskDescription" maxlength = "500" required></textarea> </p>
-
-        <p>
-        <label>Task type 
-            <div class="mdl-selectfield mdl-js-selectfield">
-                <select class="mdl-selectfield__select" id="taskType" name="taskType">
-                    <option value="Story">Story</option>
-                    <option value="Bug">Bug</option>
-                </select>
-            </div>
-        </label>
-
-        <label>Task tag 
-            <div class="mdl-selectfield mdl-js-selectfield">
-                <select class="mdl-selectfield__select" id="taskTag" name="taskTag">
-                  <option value="UI">Ui Based</option>
-                  <option value="Testing">Testing</option>
-                  <option value="Core">Core</option>
+        
+            <div>
+                <ul>
+                <li><a href="projectBacklog.html">Project Backlog</a></li>
+                <li><a href="../SprintList/sprintList.html">Sprint List</a></li>
+                <li><a href="../TeamMembers/teamMembers.html">Team Members</a></li>
+              </ul>
+              </div>
+                <div class = "pageDisplay">
+                <div class = "pageTitle">EDIT TASK </div>
+                <div class = "pageDescription">Use this page to edit the details of a task for your project backlog </div>
+                </div>
+        
+                <div class="form">
+                    <div class="title">Edit Task Form</div>
+                    <div class="subtitle">Please fill in the details below</div>
             
-                </select>
-            </div>
-        </label>
-        </p>
-
-        <p>
-            <label>Story points 1:4 Ratio > 0:
-                <input type = "number" id="taskStoryPoint">
-            </label>
-            </p>
-
-        <fieldset>
-        <legend>Priority</legend>
-        <p><input id = "priority" type="radio" value="Critical Priority" name = "priority">
-            <label class="choice">Critical Priority</label><br></p>
-        <p><input id = "priority" type="radio" value="High Priority" name = "priority">
-            <label class="choice">High Priority</label><br></p>
-        <p><input id = "priority" type="radio" value="Medium Priority" name = "priority" >
-            <label class="choice">Medium Priority</label><br></p>
-        <p><input id = "priority" type="radio" value="Low Priority" name = "priority" >
-                <label class="choice">Low Priority</label><br></p>
-        </form>
-
-
-
-    </div> <!-- Page Content Ends Here-->
-    <p><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--blue-400" id="taskViewSaveBtn" onClick="saveEditedDetails()">Save edits</button></p>
-
-    <p><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400" id="taskViewBackBtn" onClick="taskCreationBackOnClick()">Back</button></p>
+                    <div class="input-container ic1">
+                        <input id="taskName" name="taskName" class="input" type="text" placeholder=" " required>
+                        <div class="cut"></div>
+                        <label for="taskName" class="placeholder">Task Name</label>
+                    </div>
+        
+                    <div class="input-container ic1">
+                        <textarea id="taskDescription" name="taskDescription" class="inputDescription" type="text" placeholder=" " maxlength="500" required></textarea> 
+                        <div class="cut"></div>
+                        <label for="taskDescription" class="placeholder">Task Description</label>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    
+                    <div class="input-container ic1">
+                        <select class="input" id="taskType" name="taskType" placeholder=" ">
+                            <option value="Story">Story</option>
+                            <option value="Bug">Bug</option>
+                          </select>
+                        <div class="cut"></div>
+                        <label for="taskType" class="placeholder">Task Type</label>
+                    </div>
+                        
+                    <div class="input-container ic1">
+                        <select class="input" id="taskTag" name="taskTag" placeholder=" " required>
+                            <option value="UI">Ui Based</option>
+                            <option value="Testing">Testing</option>
+                            <option value="Core">Core</option>
+                            
+                      
+                          </select>
+                        <div class="cut"></div>
+                        <label for="taskName" class="placeholder">Task Tag</label>
+                    </div> 
+        
+                    <div class="input-container ic1">
+                        <input id="taskStoryPoint" name="taskStoryPoint" class="input" type="number" placeholder=" " required>
+                        <div class="cut"></div>
+                        <label for="taskStoryPoint" class="placeholder">Story points 1:4 ratio > 0:</label>
+                    </div>
+                    <br>
+                    <br>
+        
+                    <fieldset>
+                        <legend class="subtitle">Priority</legend>
+                            <br>
+                            <p>
+                                <input id = "priority" type="radio" value="Critical Priority" name = "priority" >
+                                    <label class="subtitle">Critical Priority</label><br>
+                            </p> 
+                            <p>
+                                <input id = "priority" type="radio" value="High Priority" name = "priority" >
+                                    <label class="subtitle">High Priority</label><br>
+                            </p> 
+                            <p>
+                                <input id = "priority" type="radio" value="Medium Priority" name = "priority" >
+                                    <label class="subtitle">Medium Priority</label><br>
+                            </p>
+                            <p>
+                                <input id = "priority" type="radio" value="Low Priority" name = "priority" >
+                                    <label class="subtitle">Low Priority</label><br>
+                            </p> 
+                            
+            
+                    </fieldset>
+                
+                    <p id = "errorMessage"></p>
+                    <div id = "saveContainer">
+                        <button type ="button" class="saveButton" id="taskViewSaveBtn" onClick="saveEditedDetails()">Save edits</button>
+                    </div>
+                        
+                    <div id = "backContainer">
+                        <button type ="button"  class="backButton" id="taskViewBackBtn" onClick="taskCreationBackOnClick()">Back</button>
+                    </div>
+                </div>
     </main>
 
 </div> <!-- Layout Ends Here-->
 
 </body>
+<br>
+<br>
+<br>
 
 </html>

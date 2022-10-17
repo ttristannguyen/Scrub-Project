@@ -9,43 +9,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   
     <script src="teamMembers.js"></script>
-    <title></title>
 </head>
 <body onload="onTeamMembersLoad()">
-  <div class="btn-group my-5">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
-            mdl-layout--fixed-header"> <!-- Layout Starts Here-->
-
-  <header class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <div class="mdl-layout-spacer"></div>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                  mdl-textfield--floating-label mdl-textfield--align-right">
-      </div>
-    </div> <!-- Layout Ends Here-->
-  </header>
-  <div class="mdl-layout__drawer"> <!-- Nav Bar Starts Here-->
-    <span class="mdl-layout-title"><b>Team Members</b></span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="../ProjectBacklog/projectBacklog.html">Project Backlog</a>
-      <a class="mdl-navigation__link" href="../SprintList/sprintList.html">Sprint List</a>
-      <a class="mdl-navigation__link" href="../TeamMembers/teamMembers.html">Team Members</a>
-    </nav>
-  </div> <!-- Nav Bar Ends Here-->
-  <main class="mdl-layout__content">
-
-    <div class="page-content" > <!-- Page Content Starts Here-->
-
-    </div>
+  <div id = "menu">
+    <ul>
+    <li><a href="../ProjectBacklog/projectBacklog.html ">Project Backlog</a></li>
+    <li><a href="../SprintList/sprintList.html">Sprint List</a></li>
+    <li><a href="teamMembers.html">Team Members</a></li>
+  </ul>
+  </div>
+  <div class = "pageDisplay">
     <div class = "pageTitle"> 
       TEAM MEMBERS
      </div>
      <div class = "pageDescription">
       Use this page to add team members to your workplace, get started by clicking the ‘add team member’ button!
      </div>
+  </div>
         <!-- Add Task Button-->
-        <div style="text-align: left;" id = "addTaskButton" >
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+        <div style="text-align: left;" id = "addTeamButtonContainer" >
+          <button class="addTeamButton"
           onclick= "addTeamMemberOnClick()">
               Add Team Member
           </button>
@@ -58,8 +41,10 @@
          </div>
          <br>
          <hr style=height:0px;border-width:10px;border-color:black>
-         <div class = "pageTitle">TEAM DASHBOARD</div>
-         <div class= pageDescription>This dashboard provides insight into team performance for its entire duration</div>
+         <div class = "pageDisplay">
+         <div id = "text" class = "pageTitle">TEAM DASHBOARD</div>
+         <div id = "text" class= pageDescription>This dashboard provides insight into team performance for its entire duration</div>
+        </div>
          <br>
          <div id="teamAnalytics"> 
          <div id="individualInfo"> 
