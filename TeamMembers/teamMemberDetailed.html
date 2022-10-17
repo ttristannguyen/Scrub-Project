@@ -72,23 +72,8 @@
         </div>
     </div>
     <div class="pageDescription">
-      <br>
-      <hr>
-      <span>Select a date range to view accumulated hours in selected period<br> </span>
-      <label>Date Started:</label>
-      <input type="date" id="dateStarted" >
-      <label>Date Ended:</label>
-      <input type="date" id="dateEnded" >
-     
-      <button onclick="checkOnClick()" id="seeAnalytics">SEE ANALYTICS</button>
-      <br>
-     <div id="teamAnalytics"></div> 
-    </div>
-    <div class="chartWrapper">
-      <div class="chartContainer">
-          <canvas id="myChart2"></canvas>
-      </div>
-  </div>
+      Hours worked each day for the current sprint 
+      <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
   </div>
      </div> <!-- Page Content Ends Here-->
   </main>
