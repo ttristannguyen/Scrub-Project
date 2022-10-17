@@ -46,15 +46,21 @@
          <div id = "text" class= pageDescription>This dashboard provides insight into team performance for its entire duration</div>
         </div>
          <br>
-         <div id="teamAnalytics"> TEAM DAILY AVERAGE WORK: 
+         <div id="teamAnalytics"> 
+         <div id="individualInfo"> 
+          <span>Select a date range to view accumulated hours in selected period<br> </span><br>
+          <label>Date Started:</label>
+          <input type="date" id="dateStarted" >
+          <label>Date Ended:</label>
+          <input type="date" id="dateEnded" >
          
-      
-         </div>
-         <div class="chartWrapper">
-          <div class="chartContainer">
-              <canvas id="myChart1"></canvas>
+          <button onclick="checkOnClick2()">SEE DAILY AVERAGE</button>
+          <br>
+          <div id="placement">
           </div>
-      </div>
+         </div>
+         </div>
+         
     </div> <!-- Page Content Ends Here-->
   </main>
 

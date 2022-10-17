@@ -90,71 +90,55 @@ function onTeamMembersLoad()
     let teamMemberPlacement = document.getElementById("teamMemberPlacement");
     teamMemberPlacement.innerHTML = htmlElements;
 
-        //Team member dashboard! 
-        let start = (JSON.parse(localStorage.getItem("firstDate")));
-        let end =  (JSON.parse(localStorage.getItem("lastDate")));
-        function dateRange(startDate, endDate, steps = 1) {
-            const dateArray = [];
-            let currentDate = new Date(startDate);
-            let endD = new Date(endDate);
-          
-            while (currentDate <= endD) {
-              dateArray.push(new Date(currentDate));
-              // Use UTC date to prevent problems with time zones and DST
-              currentDate.setUTCDate(currentDate.getUTCDate() + steps);
-            }
-          
-            return dateArray;
-          }
-          
-          let dates = dateRange(start, end);
-          totalNumDays = dates.length;
-          totalAccHours = 0;
-          yValues = []
-          let sprintSdEd = []
-          for (let i = 0; i<dates.length;i++)
-          {
-            yValues.push(0); //Space filler
-            sprintSdEd.push(0);
-          }
-          let sprintHoursOld = JSON.parse(localStorage.getItem("sprintBacklogArray"));
-          let sprintHours = []
-         
-          for (let i = 0; i<sprintHoursOld.length;i++)
-          {
+        //Team member dashboard! ''
 
+
+
+
+        //TM dashboard NEW
     
-            for (let j = 0; j<sprintHoursOld[i].sprintAccumulatedHours.length;j++)
-          {
-           
-            sprintHours.push(sprintHoursOld[i].sprintAccumulatedHours[j]);
-          }
-     
-           
-          }
-          for (let i = 0; i<sprintHoursOld.length;i++)
-          {
-            let sd = new Date(sprintHoursOld[i].sprintStartDate)
-            let ed = new Date(sprintHoursOld[i].sprintEndDate)
-            for (let j = 0; j < dates.length; j++)
-            {
-                if(sd.getTime() == dates[j].getTime())
-                {
-                    sprintSdEd[j] += i+1
-                }
-                
-                if(ed.getTime() == dates[j].getTime())
-                {
-                    sprintSdEd[j] += i+1
-                }
-            }
-          }
+    }
 
+
+
+
+function checkOnClick2() //THis is for when a user clicks on the SD and ED in the team.html page. 
+{
+  
+  let startDateStr = (document.getElementById('dateStarted').value); //Fromt the user inputted SD 
         
-          for (let i = 0; i < sprintHours.length; i++) 
-          {
-            let sprintDate = new Date(sprintHours[i][0]);
-            for (let j = 0; j < dates.length; j++)
+  let startDate = new Date(startDateStr); //As a date 
+  let endDateStr = (document.getElementById('dateEnded').value); //From the user inputted ED
+  let endDate = new Date (endDateStr); //Date Datatype
+
+  function dateRange(startDate, endDate, steps = 1) { //Work out the number of days between SD and ED
+      const dateArray = [];
+      let currentDate = new Date(startDate);
+      let endD = new Date(endDate);
+    
+      while (currentDate <= endD) {
+        dateArray.push(new Date(currentDate));
+        // Use UTC date to prevent problems with time zones and DST
+        currentDate.setUTCDate(currentDate.getUTCDate() + steps);
+      }
+    
+      return dateArray;
+    }
+
+    let dates = dateRange(startDate, endDate);
+    totalNumDays = dates.length;
+
+
+    //for loop 
+    let allTeamMember = JSON.parse(localStorage.getItem('teamMemberArray'));
+    let htmlElements2 = "";
+    let hoursaccumulated = 0;
+        for (let i = 0; i < allTeamMember.length; i++) 
+        {
+          hoursaccumulated = 0;
+            let teamMemberFirstName = array[i].teamMemberFirstName; //this is the name of the task from the new object
+            let teamMemberLastName = array[i].teamMemberLastName; //Gets the priority for dynamic entering
+            for (let j = 0; j<allTeamMember[i].teamMemberAccumulatedHours.length; j++)
             {
                 if(sprintDate.getTime() == dates[j].getTime())
                 {
@@ -257,12 +241,9 @@ function onTeamMembersLoad()
           myChart
           fitChart();
 
-          let averageHours = Math.ceil(totalAccHours/totalNumDays);
-          
-          document.getElementById('teamAnalytics').innerHTML += averageHours + 'hr/s per day' + `<br> <br>` + 'TOTAL TEAM HOURS: ' + totalAccHours + 'hrs';
-          
-          
-    }
+        let hoursAveragePlacement = document.getElementById("placement");
+    hoursAveragePlacement.innerHTML = htmlElements2;
+}    
 
 function addTeamMemberOnClick()
 {
@@ -316,10 +297,10 @@ function teamMemberDetailedView()
 function checkOnClick()
 {
     //checkOnClick.preventDefault();
-    let startDateStr = (document.getElementById('dateStarted').value);
-    console.log(startDateStr);
+    let activeSprint = JSON.parse(localStorage.getItem('activeSprintID'));
+    let startDateStr = localStorage.getItem('sprintBacklogArray')[activeSprint].sprintStartDate //CHECK
     let startDate = new Date(startDateStr);
-    let endDateStr = (document.getElementById('dateEnded').value);
+    let endDateStr = localStorage.getItem('sprintBacklogArray')[activeSprint].sprintStartDate //CHECK
     let endDate = new Date (endDateStr);
     function dateRange(startDate, endDate, steps = 1) {
         const dateArray = [];
