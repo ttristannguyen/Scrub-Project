@@ -227,8 +227,7 @@ function startSprint() {
     let sprintList = JSON.parse(localStorage.getItem("sprintBacklogArray"));
     let sprint = sprintList[currentSprintId];
     sprint.sprintInProgress = 1;
-    console.log(sprint)
-    
+    localStorage.setItem("sprintBacklogArray", JSON.stringify(sprintList));
     localStorage.setItem("activeSprint", JSON.stringify(sprint));
     localStorage.setItem("sprintBacklogArray", JSON.stringify(sprintList))
     localStorage.setItem("activeSprintID", JSON.stringify(currentSprintId));

@@ -75,43 +75,78 @@ function onSprintListLoad()
         let sprintStartDate = array[i].sprintStartDate; //Gets the priority for dynamic entering
         let sprintEndDate = array[i].sprintEndDate;
         let sprintInProgress = array[i].sprintInProgress;
-       htmlElements += ` <div class =  'mdl-cell mdl-cell--3-col graybox sprintBox' style = 'position: relative; top: 90%' id="${i}"><p id = 'taskName'> ${sprintName}</p> <p id='taskTextSprint'><br> Sprint Start Date: ${sprintStartDate}<br> Sprint End Date:  ${sprintEndDate}<br>Sprint Progression: ${sprintInProgress}<br><\p></div>` +
-       `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400 deleteSprint' + onclick = 'deleteSprint(${i})'> Delete </button>`;
-    
+        let progression = ""
+        switch(sprintInProgress){
+            case(0):
+                progression = "Not Started";
+                break;
+            case(1):
+                progression = "In Progress";
+                break;
+            case(2):
+                progression = "Done";
+                break;
+            default:
+                break;
+        }
+
+        htmlElements += `
+        <div class = "mdl-cell mdl-cell--3-col sprintBox" style = "position: relative; top: 90%"' id="${i}" onclick = "createDetailedView(${i})">
+            <p id = 'taskName'>${sprintName}</p>
+            <p id='taskTextSprint'>
+                <br>Sprint Start Date: ${sprintStartDate}
+                <br>Sprint End Date: ${sprintEndDate}
+                <br>Sprint Progression: ${progression}<br>
+            </p>
+        </div>
+        <button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400 deleteSprint' onclick = 'deleteSprint(${i})'> Delete </button>`;
+
     }
     let sprintPlacement = document.getElementById("sprintPlacement");
     sprintPlacement.innerHTML = htmlElements;
 
-    let activeSprintID = JSON.parse(localStorage.getItem("activeSprintID"))
-    for (let j = 0; j<array.length; j++)
-    {
-            let button = document.createElement('button');
-            button.type = 'button';
-            button.innerHTML = 'See/edit details';
-            button.className = "seeDetailsBtn" 
-            button.id = j.toString();
+    // let activeSprintID = JSON.parse(localStorage.getItem("activeSprintID"))
+    // for (let j = 0; j<array.length; j++)
+    // {
+    //         let button = document.createElement('button');
+    //         button.type = 'button';
+    //         button.innerHTML = 'See/edit details';
+    //         button.className = "seeDetailsBtn" 
+    //         button.id = j.toString();
 
-            if (j == activeSprintID || array[j].sprintInProgress == 2) {
-                button.onclick = function() {
-                    //I want to be able to click on the button, be taken to a 'detailed view' page, where i can possibly make a change to the task. 
-                    //This will edit the task in local storage.
-                    window.location.assign("../Kanban/kanban.html")
-                    localStorage.setItem('currentSprintId',JSON.stringify(button.id))
-                };
-            }
-            else {
-                button.onclick = function() {
-                    //I want to be able to click on the button, be taken to a 'detailed view' page, where i can possibly make a change to the task. 
-                    //This will edit the task in local storage.
-                    manageSprintView()  // @ Stefan this is where u come in
-                    localStorage.setItem('currentSprintId',JSON.stringify(button.id))
-                };
-            }
-            let id = j.toString();
-            let container = document.getElementById(id);
-            container.appendChild(button);
+    //         if (j == activeSprintID || array[j].sprintInProgress == 2) {
+    //             button.onclick = function() {
+    //                 //I want to be able to click on the button, be taken to a 'detailed view' page, where i can possibly make a change to the task. 
+    //                 //This will edit the task in local storage.
+    //                 window.location.assign("../Kanban/kanban.html")
+    //                 localStorage.setItem('currentSprintId',JSON.stringify(button.id))
+    //             };
+    //         }
+    //         else {
+    //             button.onclick = function() {
+    //                 //I want to be able to click on the button, be taken to a 'detailed view' page, where i can possibly make a change to the task. 
+    //                 //This will edit the task in local storage.
+    //                 manageSprintView()  // @ Stefan this is where u come in
+    //                 localStorage.setItem('currentSprintId',JSON.stringify(button.id))
+    //             };
+    //         }
+    //         let id = j.toString();
+    //         let container = document.getElementById(id);
+    //         container.appendChild(button);
+    // }
+
+}
+
+function createDetailedView(index) {
+    array = JSON.parse(localStorage.getItem('sprintBacklogArray'));
+    if (array[index].sprintInProgress == 1 || array[index].sprintInProgress == 2) {
+        window.location.href = "../Kanban/kanban.html"
+        localStorage.setItem('currentSprintId',JSON.stringify(index))
     }
-
+    else {
+        window.location.href = "sprintManagement.html"
+        localStorage.setItem('currentSprintId',JSON.stringify(index))
+    }
 }
 
 function deleteSprint(index){
@@ -134,17 +169,6 @@ function deleteSprint(index){
 
     }
 }
-
-function createDetailedView(index)
-{
-    // console.log(index)
-    window.location.href = "../Kanban/kanban.html"
-    localStorage.setItem('currentSprintId',JSON.stringify(index))
-    
-
-}
-
-
 
 function manageSprintView()
 {

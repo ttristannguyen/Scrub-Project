@@ -82,7 +82,7 @@ function onTeamMembersLoad()
             let teamMemberFirstName = array[i].teamMemberFirstName; //this is the name of the task from the new object
             let teamMemberLastName = array[i].teamMemberLastName; //Gets the priority for dynamic entering
                 htmlElements += `<div class = 'teamMemberBox' id="teamMemberBox" onclick = createTeamMemberDetailedView(${i}) ><p id = 'teamMemberText'>${teamMemberFirstName}<br> ${teamMemberLastName}</p></div>` +
-                `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400' + onclick = 'deleteTeamMember(${i})' id = 'deleteTeamMember'> Delete </button>`;
+                `<button class = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--red-400 deleteButton' + onclick = 'deleteTeamMember(${i})' id = 'deleteTeamMember'> Delete </button>`;
         }
         
 
@@ -135,22 +135,111 @@ function checkOnClick2() //THis is for when a user clicks on the SD and ED in th
     let hoursaccumulated = 0;
         for (let i = 0; i < allTeamMember.length; i++) 
         {
-  
+          hoursaccumulated = 0;
             let teamMemberFirstName = array[i].teamMemberFirstName; //this is the name of the task from the new object
             let teamMemberLastName = array[i].teamMemberLastName; //Gets the priority for dynamic entering
             for (let j = 0; j<allTeamMember[i].teamMemberAccumulatedHours.length; j++)
             {
-              //If the date in the array from local storage is >= SD AND <= ED, then add the number of hours (second sub element) to HOURSACCUMULATED variable 
-                 let arrayDate = new Date(allTeamMember[i].teamMemberAccumulatedHours[j][0]);
-                 if(arrayDate >= startDate & arrayDate<= endDate)
-                 {
-                  hoursaccumulated = hoursaccumulated + allTeamMember[i].teamMemberAccumulatedHours[j][1] //Accumulating the hours. 
-                 }
-             }
-            //THIS HTML needs to be changed
-                htmlElements2 += `<div>${teamMemberFirstName}<br> ${teamMemberLastName}` 
-                +` ${hoursaccumulated}  </div>`;
-        }
+                if(sprintDate.getTime() == dates[j].getTime())
+                {
+                    yValues[j] += parseInt(sprintHours[i][1])
+                    totalAccHours += parseInt(sprintHours[i][1]);
+                }
+            }
+          }
+          datesUpdate = []
+          for(let i = 0; i<dates.length; i++)
+          {
+            datesUpdate.push(dates[i].toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+              }),)
+          }
+          
+        /*  new Chart("myChart1", {
+            type: "line",
+            data: {
+              labels: datesUpdate,
+              datasets: [{
+                backgroundColor: "rgba(0,0,0,1.0)",
+                borderColor: "rgba(0,0,0,0.1)",
+                data: yValues
+              }]
+            },
+         
+          });*/
+          //For every new sprint, set all the dates of the sprint to 1, all other dates not in the sprint get set to 0 
+          //Each new sprint is +1 so that the date is cascading.
+
+
+          var xAxisLabelMinWidth = 15; // Replace this with whatever value you like
+          var myChart = new Chart(document.getElementById('myChart1').getContext('2d'), {
+              type: 'line',
+              data: { labels: datesUpdate,
+                datasets: [{
+                  label: "Hours", 
+                  backgroundColor: "rgb(0,0,255)",
+                  borderColor: "rgb(0,0,255)",
+                  data: yValues},
+                  {
+                    label: "Sprint number",
+                    fillColor: 'rgb(255,0,0)',
+                    backgroundColor: 'rgb(255,0,0)',
+                    pointColor: 'rgb(255,0,0)',
+                    showLine: false,
+                    data: sprintSdEd,
+                    pointStyle: 'triangle',
+                    radius: 6,
+                },
+
+                ]},
+              options: {
+                  responsive: true,
+                  maintainAspectRatio: false,
+            
+                    title: {
+                        display: true,
+                        text: 'Team logged hours',
+                        fontColor: 'white'
+                    },
+                    scales: {
+                        yAxes: [{
+                          scaleLabel: {
+                            display: true,
+                            labelString: 'Hours / Sprint Number',
+                            size:32,
+                            fontColor: 'white',
+                          },
+                          ticks: {fontColor:'white'},
+                        }],
+                        xAxes: [{
+                          scaleLabel: {
+                            display: true,
+                            labelString: 'Date',
+                            size:32,
+                            fontColor: 'white',
+                          },
+                          ticks: {fontColor:'white'}
+                        }]
+                      },
+                      legend: {display: true,
+                        labels: {
+                          fontColor: 'white',
+                      }},     
+                
+              }
+          });
+          
+          function fitChart(){
+              var chartCanvas = document.getElementById('myChart1');
+              var maxWidth = chartCanvas.parentElement.parentElement.clientWidth;
+              var width = Math.max(myChart.data.labels.length * xAxisLabelMinWidth, maxWidth);
+          
+              chartCanvas.parentElement.style.width = width +'px';
+          }
+          myChart
+          fitChart();
 
         let hoursAveragePlacement = document.getElementById("placement");
     hoursAveragePlacement.innerHTML = htmlElements2;
@@ -208,10 +297,10 @@ function teamMemberDetailedView()
 function checkOnClick()
 {
     //checkOnClick.preventDefault();
-    let startDateStr = (document.getElementById('dateStarted').value);
-    console.log(startDateStr);
+    let activeSprint = JSON.parse(localStorage.getItem('activeSprintID'));
+    let startDateStr = localStorage.getItem('sprintBacklogArray')[activeSprint].sprintStartDate //CHECK
     let startDate = new Date(startDateStr);
-    let endDateStr = (document.getElementById('dateEnded').value);
+    let endDateStr = localStorage.getItem('sprintBacklogArray')[activeSprint].sprintStartDate //CHECK
     let endDate = new Date (endDateStr);
     function dateRange(startDate, endDate, steps = 1) {
         const dateArray = [];

@@ -29,6 +29,7 @@
   </div>
         <div class="selectionColumn"> <!-- List of PBIs -->
           <h3 id ="productBacklogTitle" style="text-align:center;">Product Backlog</h3>
+          <div style = "height: 40vh; overflow: auto;">
           <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id = "pBTable">
             <thead>
               <tr>
@@ -38,6 +39,8 @@
             <tbody id = "productBacklogList">
             </tbody>
           </table>
+        </div>
+        </div>
           
           <!-- Save Button -->
           <div class = "returnButton">
@@ -51,7 +54,7 @@
         <div class="selectionColumn"> <!-- Assignment Buttons -->
           <!-- Assign Button -->
           <div class = "assignButton">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+            <button class="assignButtonClass"
             onclick = "assignTasks()">
               Assign
             </button>
@@ -68,7 +71,7 @@
 
           <!-- Unassign Button -->
           <div class = "unassignButton">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+            <button class="unassignButtonClass"
             onclick = "unassignTasks()">
               Unassign
             </button>
@@ -77,15 +80,18 @@
 
         <div class="selectionColumn">
           <h3 id = "sprintBacklogTitle" style="text-align:center;">Sprint Backlog</h3>
+          <div style = "height: 40vh; overflow: auto;">
           <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="sBTable">
             <thead>
               <tr>
-                <th class="mdl-data-table__cell--non-numeric">Task Name</th>
+                <th id = "taskNameText" class="mdl-data-table__cell--non-numeric">Task Name</th>
               </tr>
             </thead>
             <tbody id = "sprintBacklogList">
             </tbody>
           </table>
+          </div>
+          </div>
 
           <!-- Start Button -->
           <div id = "startButton">

@@ -4,39 +4,11 @@
     <head>
         <link rel="stylesheet" href="../ProjectBacklog/projectBacklog.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="sprintCreation.css">
+        <link rel="stylesheet" href="tmCreation.css">
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">    
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
         <script src="teamMembers.js"></script>
         <title>SPRINT LIST</title>
-    </head>
-    
-    <body onload="onSprintListLoad()">
-        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
-                mdl-layout--fixed-header"> <!-- Layout Starts Here-->
-    
-      <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
-          <div class="mdl-layout-spacer"></div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                      mdl-textfield--floating-label mdl-textfield--align-right">
-          </div>
-        </div> <!-- Layout Ends Here-->
-      </header>
-    
-      <div class="mdl-layout__drawer"> <!-- Nav Bar Starts Here-->
-        <span class="mdl-layout-title"><b>Sprint List</b></span>
-        <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="../ProjectBacklog/projectBacklog.html">Project Backlog</a>
-          <a class="mdl-navigation__link" href="../SprintList/sprintList.html">Sprint List</a>
-          <a class="mdl-navigation__link" href="../TeamMembers/teamMembers.html">Team Members</a>
-        </nav>
-      </div> <!-- Nav Bar Ends Here-->
-      <main class="mdl-layout__content">
-    
-        <div class="page-content"> <!-- Page Content Starts Here-->
-
-    <!-- CSS -->
     <style>
         .tmCreationForm {
             font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -145,43 +117,59 @@
 </head>
 
 <body onload="onTeamMemberCreationLoad()">
-    <div class = "pageTitle"> 
-        ADD TEAM MEMBER
-       </div>
-       <div class = "pageDescription">
-       Use this page to add the details of a team member
-       </div>
-<form class="tmCreationForm" method="get" >
+    <div id = "menu">
+        <ul>
+        <li><a href="../ProjectBacklog/projectBacklog.html ">Project Backlog</a></li>
+        <li><a href="../SprintList/sprintList.html">Sprint List</a></li>
+        <li><a href="teamMembers.html">Team Members</a></li>
+      </ul>
+      </div>
 
-    <form class="tmCreationForm" method="get">
-
-        <p>
-            <label>Team Member First Name:
-                <input type="text" name="teamMemberFirstName" id="teamMemberFirstName" required>
-            </label>
-        </p>
-
-        <p>
-            <label>Team Member Last Name:
-                <input type="text" name="teamMemberLastName" id="teamMemberLastName" required>
-            </label>
-        </p>
-
-        <p>
-            <label>Team Member Email:
-                <input type='text' name="teamMemberEmail" id="teamMemberEmail" required>
-            </label>        
-
-                </p>
+    <div class="pageDisplay">
+        <div class="pageTitle">
+            ADD TEAM MEMBER
+        </div>
+        <div class="pageDescription">
+            Use this page to add the details of a team member
+        </div>
+    </div>
 
 
+    <div class="form">
+        <div class="title">Team Member Form</div>
+        <div class="subtitle">Please fill in the details below</div>
 
+        <div class="input-container ic1">
+            <input id="teamMemberFirstName" name="teamMemberFirstName" class="input" type="text" placeholder=" " required>
+            <div class="cut"></div>
+            <label for="teamMemberFirstName" class="placeholder">Team Member First Name</label>
+        </div>
 
-        <p><button type='button' class="button-81" onClick="addTeamMemberSaveOnClick()">Done</button></p>
+        <div class="input-container ic2">
+            <input id="teamMemberLastName" name="teamMemberLastName" class="input" type="text" placeholder=" " required>
+            <div class="cut cut-short"></div>
+            <label for="teamMemberLastName" class="placeholder" required>Team Member Last Name</label>
 
-        <p><button type='button' class="button-81" onClick="addTeamMemberBackOnClick()">Back</button></p>
+        </div>
 
-    </form>
+        <div class="input-container ic2">
+            <input id="teamMemberEmail" name="teamMemberEmail" class="input" type="text" placeholder=" " required>
+            <div class="cut cut-short"></div>
+            <label for="teamMemberEmail" class="placeholder">Team Member Email</label>
+
+        </div>
+
+        <div id="addSprintButtonContainer1 "> <button class="addSprintButton1"  onClick="addTeamMemberSaveOnClick()"
+                type="button">Done</button></div> 
+        <div id="addSprintButtonContainer2"><button class="addSprintButton2" id="sprintCreationBackBtn" onClick="addTeamMemberBackOnClick()"
+                type="button">Back</button></div>
+    </div>
 </body>
+
+<br>
+<br>
+<br>
+<br>
+<br>
 
 </html>
