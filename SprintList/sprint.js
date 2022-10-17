@@ -41,12 +41,19 @@ function sprintCreationDoneBtnOnClick()
     sprintAccumulatedHours = [];//just for now
     //Checking if this is the first sprint!
 
+    if (sprintName == null || sprintStartDate == "" || sprintEndDate == ""){
+        errorMessageLocation = document.getElementById('errorMessage')
+        errorMessageLocation.innerHTML = "Please Fill Out the Sprint Name, Start Date and End Date"
+        return
+    }
+
     if (sprintStartDate > sprintEndDate)
     {
-        alert("Sprint Start Date kant be earlier than End date");
+        alert("Sprint Start Date cannot be earlier than End date");
         return
     }
     
+
     let sprintObject = new sprintObjectObj(sprintName,sprintStartDate,sprintEndDate,sprintInProgress,sprintTaskList,sprintAccumulatedHours);
     sprintItemsParsed = JSON.parse(localStorage.getItem('sprintBacklogArray'));
     if (sprintItemsParsed.length == 0)

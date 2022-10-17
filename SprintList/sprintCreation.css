@@ -25,6 +25,14 @@
       color: #FFF8DC; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 300; line-height: 32px; margin: 0 0 72px; text-align: center; font-style: italic;
   }
   
+  #errorMessage {
+    position: relative;
+    top: 150px;
+    color: red;
+    left: 0%;
+    font-weight: bold;
+}
+
   .form {
     background-color: #15172b;
     border-radius: 20px;
@@ -218,8 +226,8 @@
 .addSprintButton1{
     position: relative;
     /* text-align: center; */
-    left: 107px;
-    top: 20px;
+    right: 223px;
+    top: 100px;
     width: 150px;
     height: 55px;
     border-style: solid;

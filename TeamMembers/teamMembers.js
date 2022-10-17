@@ -39,7 +39,7 @@ function addTeamMemberSaveOnClick()
     teamMemberSprintInvolvement = "None" //Just for now
     teamMemberAccumulatedHours = [] //Just for now
 
-    if (teamMemberFirstName == null || teamMemberLastName == null || teamMemberEmail == null){
+    if (teamMemberFirstName == "" || teamMemberLastName == "" || teamMemberEmail == ""){
         errorMessageLocation = document.getElementById('errorMessage')
         errorMessageLocation.innerHTML = "Please Fill Out the team member: First and Last name and their email"
         return
