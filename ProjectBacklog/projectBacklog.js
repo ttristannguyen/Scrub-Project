@@ -64,7 +64,7 @@ function taskCreationOnClick()
     }
     console.log(taskName)
     console.log(taskDescription)
-    if (taskName == null || taskDescription == null || taskPriority == null || taskStoryPoint == "" || taskStoryPoint <= 0){
+    if (taskName == null || taskDescription == null || taskPriority == null || taskStoryPoint == "" || taskStoryPoint <= 0 || taskStoryPoint > 4){
         errorMessageLocation = document.getElementById('errorMessage')
         errorMessageLocation.innerHTML = "Please Fill Out the Task Name ,Story Points, Description and Priority"
         return
