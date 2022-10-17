@@ -147,9 +147,10 @@ function checkOnClick2() //THis is for when a user clicks on the SD and ED in th
                   hoursaccumulated = hoursaccumulated + Number(allTeamMember[i].teamMemberAccumulatedHours[j][1]) //Accumulating the hours. 
                  }
              }
+             let aveHours = Math.ceil(hoursaccumulated/totalNumDays);
             //THIS HTML needs to be changed
                 htmlElements2 += `<div>${teamMemberFirstName} ${teamMemberLastName}` 
-                +` ${hoursaccumulated}  </div>`;
+                +` ${aveHours}  </div>`;
         }
 
         let hoursAveragePlacement = document.getElementById("placement");
@@ -208,10 +209,10 @@ function teamMemberDetailedView()
 function checkOnClick()
 {
     //checkOnClick.preventDefault();
-    let startDateStr = (document.getElementById('dateStarted').value);
-    console.log(startDateStr);
+    let activeSprint = JSON.parse(localStorage.getItem('activeSprintID'));
+    let startDateStr = localStorage.getItem('sprintBacklogArray')[activeSprint].sprintStartDate //CHECK
     let startDate = new Date(startDateStr);
-    let endDateStr = (document.getElementById('dateEnded').value);
+    let endDateStr = localStorage.getItem('sprintBacklogArray')[activeSprint].sprintStartDate //CHECK
     let endDate = new Date (endDateStr);
     function dateRange(startDate, endDate, steps = 1) {
         const dateArray = [];
